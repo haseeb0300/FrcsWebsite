@@ -1,0 +1,102 @@
+.crossbtn{
+    background-color: #22577A;
+    border-radius: 50%;
+    height: 27px;
+    width: 27px;
+    color: white;
+    border: none;
+    font-size: 13px;
+}
+.login-container{
+    padding: 40px 30px;
+}
+.login_heading{
+    font-size: 19px;
+}
+.login_text{
+    font-size: 13px;
+    font-style: italic;
+
+}
+.login_text1{
+    font-size: 15px;
+color: #171717;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+.staric{
+    color: #FF3636;
+}
+.login_input{
+    padding-left: 20px;
+    height: 53px;
+    width: 100%;
+    font-size: 14px;
+    border: 1px solid #cdc7c7;
+    border-radius: 12px;
+}
+.login_input:focus{
+    outline: none;
+    border: 1px solid #8a8888;
+}
+.modal-content{
+    border-radius: 4.3em;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.visibiltyicon{
+    
+    position: absolute;
+    bottom: 18px;
+    right: 35px;
+
+}
+.visibiltyicon:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+.login_forgetpass{
+    font-size: 15px;
+    color: #393939;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.login_forgetpass:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+.loginbtn{
+    height: 48px;
+    width: 158px;
+    border: 2px solid #22577A;
+    background: white;
+    color: #22577A;
+    border-radius: 27px;
+    font-size: 12px;
+    margin-top: 25px;
+}
+.loginbtn:hover{
+    background: #22577A;
+    color: white;
+}
+.loginbtn:focus{
+    outline: none;
+    background: #1b72ac ;
+    color: white;
+}
+.alreadyacoont{
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.createAccount{
+    font-size: 14px;
+    color: #22577A;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.createAccount:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}

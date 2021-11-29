@@ -1,0 +1,202 @@
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+
+    src: url('../../fonts/poppins/Poppins-Thin.ttf') format('truetype');
+    font-weight: 100;
+  }
+
+  .loader-large{
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top:16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    margin: auto;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+  }
+  .loader-small {
+    border: 6px solid #f3f3f3; /* Light grey */
+    border-top:6px solid #3498db; /* Blue */
+    border-radius: 50%;
+    margin: auto;
+    width: 30px;
+    height: 30px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+
+    src: url('../../fonts/poppins/Poppins-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+
+    src: url('../../fonts/poppins/Poppins-Light.ttf') format('truetype');
+    font-weight: 300;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+
+    src: url('../../fonts/poppins/Poppins-Regular.ttf') format('truetype');
+    font-weight: 400;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+
+    src: url('../../fonts/poppins/Poppins-Medium.ttf') format('truetype');
+    font-weight: 500;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+
+    src: url('../../fonts/poppins/Poppins-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+
+    src: url('../../fonts/poppins/Poppins-Bold.ttf') format('truetype');
+    font-weight: 700;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+
+    src: url('../../fonts/poppins/Poppins-ExtraBold.ttf') format('truetype');
+    font-weight: 900;
+  }
+  @font-face {
+    font-family: 'MehrNastaliq';
+    font-style: normal;
+
+    src: url('../../fonts/urdu/MehrNastaliqWebRegular.ttf') format('truetype');
+    font-weight: 500;
+  }
+  @font-face {
+    font-family: 'Montserrat-Black';
+    font-style: normal;
+font-weight: normal;
+    src: url('../../fonts/monotf/Montserrat-Black.otf') format('OpenType');
+  }
+  
+  .MehrNastaliq_regular{
+    font-family: 'MehrNastaliq';
+    font-weight: 500;
+  }
+  .Montserrat-Black-regular{
+    font-family: 'Montserrat-Black';
+    font-weight: 500;
+  }
+ .poppins_thin{
+     font-family: poppins;
+     font-weight: 100;
+
+ }
+ 
+ .poppins_extralight{
+    font-family: poppins;
+    font-weight: 200;
+ }
+ .poppins_light{
+    font-family: poppins;
+    font-weight: 300;;
+
+}
+.poppins_regular{
+    font-family: poppins;
+    font-weight: 400;;
+
+}
+.poppins_medium{
+    font-family: poppins;
+    font-weight: 500;;
+
+}
+.poppins_semibold{
+    font-family: poppins;
+    font-weight: 600;;
+
+}
+.poppins_bold{
+    font-family: poppins;
+    font-weight: 700;;
+
+}
+.poppins_extrabold{
+    font-family: poppins;
+    font-weight: 900;;
+
+}
+.vertical_center{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.horizontal_center{
+    margin-left: auto;
+    margin-right: auto;
+}
+.primary-color{
+    color: #BB423B;
+}
+// .noty_body{
+//   background: lightcyan;
+//   position: absolute;
+//   top: 0px;
+//   right: 1px;
+//   font-size: 13px;
+//   padding: 10px;
+//   padding-left: 30px;
+//   padding-right: 30px;
+//   display: none;
+// }
+.servererror{
+  width: 40%;
+text-align: center;
+margin-left: auto;
+margin-right: auto;
+}
+.ohsnaptext{
+  font-size: 14px;
+  margin-left: 10p;
+  margin-right: 6px;
+}
+.servererrorText{
+  font-size: 11px;
+
+}
+.servererror1 {
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Urdu-Justified-text{
+  font-size: 44px !important;
+}
+p.Urdu-Justified-text {
+  font-size: 44px !important;
+
+}
+
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+  opacity: 1;
+}
+

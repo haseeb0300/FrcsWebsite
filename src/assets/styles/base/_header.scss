@@ -1,0 +1,61 @@
+.headerContainer{
+    height: 120px;
+    padding: 40px 10px;
+    background: #ffffff;
+
+}
+.logo{
+    height: 40px;
+}
+.headerTitle{
+    font-size: 15px;
+    margin-bottom: 0px;
+}
+.headerTitle:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+.login_btn{
+    height: 40px;
+    width: 100%;
+    background: white;
+    border: 1px solid #22577A;
+    border-radius: 22px;
+    font-size: 13px;
+    font-family: 'Poppins';
+    font-weight: 700;
+    color: #22577A;
+    text-align: left;
+}
+.login_btn:hover{
+    background: #22577A;
+    color: white;
+}
+.Signup_btn{
+    height: 40px;
+    width: 100%;
+    background: white;
+    border: 1px solid #57CC99;
+    border-radius: 22px;
+    font-size: 13px;
+    font-family: 'Poppins';
+    font-weight: 700;
+    color: #57CC99;
+    text-align: left;
+}
+.Signup_btn:hover{
+    background: #57CC99;
+    color: white;
+
+}
+.vertical_Center{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.login_Icon{
+   
+    margin-right: 9px;
+    margin-left: 11px;
+
+}
+

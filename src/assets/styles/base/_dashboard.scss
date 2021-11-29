@@ -1,0 +1,191 @@
+.body{
+    background: #F9F9F9;
+
+}
+.dashboardContainer{
+overflow: hidden;
+}
+.bannerText1{
+    font-size: 30px;
+    color: white;
+    margin-top: 70px;
+
+
+}
+.bannerText2{
+    font-size: 24px;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 40px;
+
+}
+.bannerText3{
+    font-size: 20px;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    line-height: 1;
+
+
+
+}
+.bannerImg{
+    position: absolute;
+    top: 0px;
+    z-index: -1;
+    left: 0px;
+    height: 100%;
+
+}
+.bannerCard{
+    height: 134px;
+    background: white;
+    border-radius: 80px;
+    margin-top: 18%;
+    padding: 40px 15px;
+    margin-bottom: 25px;
+
+
+}
+.bannerCardText{
+    font-size: 17px;
+    color: #171717;
+}
+.staric{
+     color: red;
+}
+.bannerCardSelect{
+    height: 53px;
+    width: 100%;
+    color: #686868;
+    font-size: 14px;
+    border-radius: 28px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 1px solid #707070;
+}
+.bannerCardBtn{
+    height: 53px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 28px;
+    
+    background-color: #22577A;
+    color: #FFFFFF;
+    border: none;
+}
+
+.Section2{
+    padding-top: 30px;
+    background: #F9F9F9;
+        .heading{
+        font-size: 24px;
+        color: #3E3E3E;
+
+    }
+    .text{
+        font-size: 20px;
+        line-height: 1.2;
+        color: #3E3E3E;
+
+    }
+    .text1{
+        font-size: 18px;
+        line-height: 1.3;
+        color: #3E3E3E;
+    }
+   
+      .Section2Card{
+height: 252px;
+background: white;
+border-radius: 24px;
+width: 100%;
+margin-top: 40px;
+padding: 40px;
+}
+      .Section2CardHeading{
+          font-size: 24px;
+          color: #3E3E3E;
+      }
+      .Section2CardText{
+        font-size: 18px;
+        color: #3E3E3E;
+    }
+    .h82{
+        height: 82%;
+    }
+}
+.Section3{
+    padding-top: 30px;
+    background: #F9F9F9;
+    color: #3E3E3E;
+    .heading{
+        font-size: 24px;
+    }
+    .text{
+        font-size: 17px;
+    }
+    .section3img{
+        height: 75%;
+
+    }
+
+}
+.Section4{
+    background-color: #f9f9f9;
+    z-index: -1;
+
+    .section4card{
+        padding: 30px;
+    color: #FFFFFF;
+    }
+    .heading{
+        font-size: 30px;
+    }
+    .text{
+        font-size: 18px;
+    }
+    .section4img{
+    position: absolute;
+    left: -5%;
+    width: 110%;
+    z-index: -1;
+    height: 86%;
+
+    }
+}
+.Section5{
+    background-color: #f9f9f9;
+    padding-top: 30px;
+
+    .heading{
+        font-size: 24px;
+    }
+    .testimonialimg{
+        width: 100px !important;
+            height: 100px;
+            margin-top: -55px;
+        
+    }
+    .testimonialCard{
+        margin-top: 100px;
+        background: white;
+        padding: 20px;
+        margin: 20px;
+    }
+    .heading2{
+        font-size: 24px;
+        color: #22577A;
+        margin-top: 10px;
+    }
+    .text{
+        color: #9FA7B2;
+        font-style: italic;
+        font-size: 20px;
+    }
+    .text{
+        color: #9FA7B2;
+        font-size: 20px;
+        margin-top: 20px;
+    }
+}
