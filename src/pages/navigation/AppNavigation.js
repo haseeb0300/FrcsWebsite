@@ -8,6 +8,7 @@ import Signup from '../Auth/Signup';
 import About from '../Dashboard/About';
 import Faq from '../Contact/Faq';
 import Contact from '../Contact/Contact';
+import TestSelection from '../Test/TestSelection';
 
 
 
@@ -92,6 +93,8 @@ class AppNavigation extends Component {
                         component={Contact} />
                             <Route exact path="/signup"
                         component={Signup} />
+                           <Route exact path="/testselection"
+                        component={TestSelection} />
                    
                    
                         

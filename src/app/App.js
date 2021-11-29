@@ -12,6 +12,7 @@ import '../assets/styles/base/_dashboard.scss'
 import '../assets/styles/base/_footer.scss'
 import '../assets/styles/base/_loginmodal.scss'
 import '../assets/styles/base/_signup.scss'
+import '../assets/styles/base/_testselection.scss'
 
 
 

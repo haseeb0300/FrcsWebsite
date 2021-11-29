@@ -7,3 +7,124 @@
     background: white;
     padding: 25px;
 }
+.signupcardText{
+    font-size: 16px;
+    color: #C9C9C9;
+}
+.signupcardPersonalInfo{
+    font-size: 16px;
+    color: #22577A;
+}
+.signupAlredy{
+    font-size: 14px;
+    color: #393939;
+}
+.primarycolor{
+    color: #22577A;
+}
+.hr{
+    width: 100%;
+    border-top: 1px solid #cbcbcb;
+    margin-left: auto;
+    margin-right: auto;
+}
+.hr1{
+    width: 94%;
+    border-top: 1px solid #fff;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.signup_text1{
+    font-size: 15px;
+color: #171717;
+margin-top: 10px;
+margin-bottom: 5px;
+}
+.staric{
+    color: #FF3636;
+}
+.signup_input{
+    padding-left: 20px;
+    height: 48px;
+    width: 100%;
+    font-size: 14px;
+    border: 1px solid #cdc7c7;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.signup_input:focus{
+    outline: none;
+    border: 1px solid #8a8888;
+}
+.signup_input1{
+    padding-left: 70px;
+    height: 48px;
+    width: 100%;
+    font-size: 14px;
+    border: 1px solid #cdc7c7;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.signup_input1:focus{
+    outline: none;
+    border: 1px solid #8a8888;
+}
+.cashIcon{
+    position: absolute;
+    left: 34px;
+    margin-top: 10px;
+}
+.subscriptioncard{
+    background-color: #22577A;
+    width: 93%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 35px 20px;
+    color: white;
+    border-radius: 32px;
+}
+.f15{
+    font-size: 15px;
+}
+.f13{
+    font-size: 13px;
+}
+.subscriptioncardprice{
+    font-size: 20px;
+    color: #22577A;
+}
+.checkboxLabel{
+    font-size: 16px;
+    line-height: 1.4;}
+.w-2{
+    width: 2%;
+}
+.w-98{
+    width: 98%;
+}
+.paybtn{
+    background: #fff;
+    color: #02C39A;
+    border: 2px solid #02C39A ;
+    height: 53px;
+    width: 280px;
+    font-size: 17px;
+    font-family: 'Poppins';
+    font-weight: 700;
+    border-radius: 35px;
+    margin-top: 45px;
+}
+.paybtn:hover{
+    background: #02C39A;
+    color: white;
+}
+.paybtn:focus{
+    outline: none;
+    background: #058f71;
+    color: white;
+
+
+}

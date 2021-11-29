@@ -1,0 +1,40 @@
+.Testselection-container{
+    background: #F9F9F9;
+    padding: 25px;
+    .testCard{
+        background-color: white;
+        padding: 30px;
+        text-align: center;
+    }
+    .heading{
+        font-size: 28px;
+        color: #38A3A5;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .text{
+        font-size: 16px;
+        color: #9F9F9F;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .quicktestbtn{
+        margin-top: 70px;
+        height: 41px;
+        font-size: 16px;
+        background: white;
+        border: 1px solid #38A3A5;
+        color: #38A3A5;
+        width: 70%;
+        border-radius: 31px;
+    }
+    .quicktestbtn:hover{
+        background-color: #38A3A5;
+        color: white;
+    }
+    .quicktestbtn:focus{
+        outline: none;
+        background-color: #2d7e80;
+        color: white;
+    }
+}
