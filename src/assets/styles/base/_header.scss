@@ -4,6 +4,19 @@
     background: #ffffff;
 
 }
+.headerContainerTest{
+    height: 120px;
+    padding: 40px 10px;
+    background: #ffffff;
+    box-shadow: 0px 1px 1px 1px #a7a5a5;
+}
+.headerloginContainer{
+    height: 120px;
+    padding: 40px 10px;
+    background: #fff;
+    border-bottom-left-radius: 45px;
+    border-bottom-right-radius: 45px;
+}
 .logo{
     height: 40px;
 }
@@ -59,3 +72,115 @@
 
 }
 
+.login_header{
+    .headerTitle{
+        font-size: 16px;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-right: 15px;
+        color: black;
+
+    
+    }
+    .headerTitleDiv{
+        height: 54px;
+        width: 54px;
+        background: #22577A;
+        color: white;
+        text-align: center;
+        border-radius: 50%;
+        font-size: 17px;
+        font-weight: bold;
+        font-family: 'Poppins';
+        padding-top: 14px;
+    }
+    .headerTitleDiv:hover{
+        cursor: pointer;
+        opacity: 0.9;
+    }
+    .colapseHeader{
+        
+    box-shadow: 0px 0px 4px 2px #d5d2d2;
+    position: absolute;
+    right: 0px;
+    z-index: 2;
+    top: 76px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    padding: 10px 25px;
+    border-bottom: 1px solid #f9f9f9;
+    background: #fff;
+    text-align: left;
+
+    }
+}
+.test_header{
+    .test_title{
+        font-size: 15px;
+        color: #22577A;
+    }
+    .vr{
+        position: absolute;
+        left: 0px;
+        height: 36px;
+        margin-top: -4PX;
+        border-left: 2px solid #cdc8c8;
+    }
+    .timmericon{
+        height: 17px;
+        width: 16px;
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+    .countDown{
+        color: #9B9A9A;
+        font-size: 15px;
+    }
+    .time{
+        font-size: 28px;
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+    .leaveCard{
+        background: #D48181;
+        height: 285%;
+        position: absolute;
+        right: -11px;
+        top: -40px;
+        width: 100%;
+        text-align: center;
+padding: 40px 0px;
+font-size: 13px;
+    color: white;
+    cursor: pointer;
+    }
+    .leaveCardLearning{
+        height: 299%;
+        background: #D48181;
+        position: absolute;
+        right: -11px;
+        top: -40px;
+        width: 100%;
+        text-align: center;
+padding: 40px 0px;
+font-size: 13px;
+    color: white;
+    cursor: pointer;
+
+    }
+    .leaveCard:hover{
+        opacity: 0.9;
+    }
+    .leaveCardLearning:hover{
+        opacity: 0.9;
+    }
+
+
+}
+// body{
+//     background-color: #F9F9F9 !important;
+// }
+body{
+    overflow-x: hidden;
+
+}

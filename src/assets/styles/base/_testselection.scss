@@ -3,8 +3,10 @@
     padding: 25px;
     .testCard{
         background-color: white;
-        padding: 30px;
+        padding: 40px;
         text-align: center;
+        height: 485px;
+
     }
     .heading{
         font-size: 28px;
@@ -25,8 +27,12 @@
         background: white;
         border: 1px solid #38A3A5;
         color: #38A3A5;
-        width: 70%;
+        width: 250px;
         border-radius: 31px;
+        position: absolute;
+    bottom: 35px;
+    text-align: center;
+    left: calc(50% - 125px);
     }
     .quicktestbtn:hover{
         background-color: #38A3A5;
@@ -35,6 +41,80 @@
     .quicktestbtn:focus{
         outline: none;
         background-color: #2d7e80;
+        color: white;
+    }
+    .learningModeHeading{
+        font-size: 28px;
+        color: #22577A;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .learningModetext{
+        font-size: 16px;
+        color: #9F9F9F;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .learningModebtn{
+        margin-top: 70px;
+        height: 41px;
+        font-size: 16px;
+        background: white;
+        border: 1px solid #22577A;
+        color: #22577A;
+        width: 250px;
+        border-radius: 31px;
+        position: absolute;
+    bottom: 35px;
+    text-align: center;
+    left: calc(50% - 125px);
+    }
+    .learningModebtn:hover{
+        background-color: #22577A;
+        color: white;
+    }
+    .learningModebtn:focus{
+        outline: none;
+        background-color: #105a8b;
+        color: white;
+    }
+
+
+    .ResourseHeading{
+        font-size: 28px;
+        color: #52575D;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .Resoursetext{
+        font-size: 16px;
+        color: #9F9F9F;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .Resoursebtn{
+        margin-top: 70px;
+        height: 41px;
+        font-size: 16px;
+        background: white;
+        border: 1px solid #52575D;
+        color: #52575D;
+        width: 250px;
+        border-radius: 31px;
+        position: absolute;
+    bottom: 35px;
+    text-align: center;
+    left: calc(50% - 125px);
+    }
+    .Resoursebtn:hover{
+        background-color: #52575D;
+        color: white;
+    }
+    .Resoursebtn:focus{
+        outline: none;
+        background-color: #37383a;
         color: white;
     }
 }

@@ -257,6 +257,11 @@ class Dashboard extends Component {
 
                      <div className="col-md-4">
                         <div className="testimonialCard text-center">
+
+                           <img className="testimonialimg" src={testimonialimg} />
+                           <p className="poppins_medium heading2">Muhammad Saad</p>
+                           <p className="poppins_light text">Assistant Professor, UIT</p>
+                           <p className="poppins_light text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
                         </div>
 
                      </div>
@@ -271,7 +276,13 @@ class Dashboard extends Component {
 
                      </div>
                      <div className="col-md-4">
+                        <div className="testimonialCard text-center">
 
+                           <img className="testimonialimg" src={testimonialimg} />
+                           <p className="poppins_medium heading2">Muhammad Saad</p>
+                           <p className="poppins_light text">Assistant Professor, UIT</p>
+                           <p className="poppins_light text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+                        </div>
                      </div>
                   </div>
 
@@ -286,40 +297,9 @@ class Dashboard extends Component {
             </div>
             <div className="Section5 pb-5">
 
-               <MultiCarousel centerMode={true} autoPlay infiniteLoop responsive={responsive}>
-                  <div className="testimonialCard text-center">
-
-                     <img className="testimonialimg" src={testimonialimg} />
-                     <p className="poppins_medium heading2">Muhammad Saad</p>
-                     <p className="poppins_light text">Assistant Professor, UIT</p>
-                     <p className="poppins_light text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
-                  </div>
-                  <div className="testimonialCard text-center">
-
-                     <img className="testimonialimg" src={testimonialimg} />
-                     <p className="poppins_medium heading2">Muhammad Saad</p>
-                     <p className="poppins_light text">Assistant Professor, UIT</p>
-                     <p className="poppins_light text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
-                  </div>
-                  <div className="testimonialCard text-center">
-
-                     <img className="testimonialimg" src={testimonialimg} />
-                     <p className="poppins_medium heading2">Muhammad Saad</p>
-                     <p className="poppins_light text">Assistant Professor, UIT</p>
-                     <p className="poppins_light text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
-                  </div>
-                  <div className="testimonialCard text-center">
-
-                     <img className="testimonialimg" src={testimonialimg} />
-                     <p className="poppins_medium heading2">Muhammad Saad</p>
-                     <p className="poppins_light text">Assistant Professor, UIT</p>
-                     <p className="poppins_light text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
-                  </div>
-
-               </MultiCarousel>
 
             </div>
-              <Footer/>
+            <Footer />
          </>
       )
    }

@@ -49,97 +49,39 @@ class LoginHeader extends Component {
       return (
          <>
 
-            <div className="headerContainer">
-               <Modal
-
-
-                  dialogClassName="col-xl-12 "
-                  show={this.state.LoginModal}
-                  size="lg"
-                  aria-labelledby="contained-modal-title-vcenter"
-                  centered
-               >
-                  <div className="login-container">
-
-                     <div className="col-md-12">
-                        <div className="text-right">
-                           <button className="crossbtn" onClick={() => this.toogleModal()}>X</button>
-                        </div>
-                        <div className="text-center">
-                           <p className="poppins_medium login_heading">Login to your Account</p>
-                           <p className="poppins_regular login_text">Hope you are doing well.</p>
-                        </div>
-                     </div>
-                     <div className="col-md-12 mt-5 ">
-                        <p className="poppins_regular login_text1">Email Address <label className="staric">*</label></p>
-                        <input className="poppins_light login_input" placeholder="Enter Here"></input>
-
-                     </div>
-                     <div className="col-md-12  ">
-                        <p className="poppins_regular login_text1">Password  <label className="staric">*</label></p>
-                        <input className="poppins_light col-md-12 login_input" placeholder="Enter Here" type="password"></input>
-                        <img className="visibiltyicon" src={visibilty} />
-                     </div>
-                     <div className="col-md-12  text-right">
-                        <p className="poppins_regular login_forgetpass">Forget your password?</p>
-
-                     </div>
-                     <div className="col-md-12  text-center">
-                        <button className="loginbtn poppins_medium">Login</button>
-                        <p className="poppins_regular alreadyacoont">Don't have an account?
-                           <Link to="signup">
-
-                              <label className="poppins_medium createAccount">Create Account </label>
-                           </Link>
-
-                        </p>
-                     </div>
-
-                  </div>
-
-               </Modal>
-
+            <div className="headerloginContainer login_header">
+        
                <div className="col-md-12">
                   <div className="row">
-                     <div className="col-md-3 text-center">
+                     <div className="col-md-9 ">
                         <img className="logo" src={Logo} />
 
                      </div>
-                     <div className="col-md-9 vertical_Center">
+                     <div className="col-md-3 vertical_Center text-right">
                         <div className="row">
-                           <div className="col-md-8 vertical_Center">
-                              <div className="col-md-3 p-0 text-center">
-                                 <p className="poppins_light headerTitle">Exams</p>
-                              </div>
-                              <div className="col-md-3 p-0 text-center">
-                                 <p className="poppins_light headerTitle">Features & Benefits </p>
-                              </div>
-                              <div className="col-md-3 p-0 text-center">
-                                 <p className="poppins_light headerTitle">Subscription Plans</p>
-                              </div>
-                              <div className="col-md-3 p-0 text-center">
-                                 <p className="poppins_light headerTitle">Contact Us</p>
-                              </div>
+                           <p className="poppins_light headerTitle">Hello, <label className="poppins_medium">Muhammad Saad Iqbal </label> </p>
+                           <div className="headerTitleDiv" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                              <p>MS</p>
                            </div>
-                           <div className="col-md-4 vertical_Center">
+                           <div class="collapse" id="collapseExample">
+                                    <div class="colapseHeader">
+                                      <p className="headerTitle poppins_light">Account Details</p>
+                                      <hr></hr>
+                                      <p className="headerTitle poppins_light">Settings</p>
+                                      <hr></hr>
+                                      <p className="headerTitle poppins_light">Support</p>
+                                      <hr></hr>
+                                      <p className="headerTitle poppins_light">Subscription Details</p>
+                                      <hr></hr>
+                                      <Link to="/">
 
-
-                              <div className="col-md-6 text-center">
-                                 <button className="login_btn" onClick={() => this.toogleModal()}><img className="login_Icon" src={LoginIcon} /> Login</button>
-                              </div>
-                              <div className="col-md-6 text-center">
-                                 <Link to="/signup">
-
-                                    <button className="Signup_btn"><img className="login_Icon" src={SignupIcon} /> Sign up</button>
-                                 </Link>
-                              </div>
-                           </div>
-
-
-
-
-
-
+                                      <p className="headerTitle poppins_light">Logout</p>
+                                      </Link>
+                                      <hr></hr>
+                              
+                                    </div>
+                                </div>
+                       
                         </div>
 
                      </div>

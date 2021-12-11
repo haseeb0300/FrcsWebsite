@@ -10,6 +10,10 @@ import Faq from '../Contact/Faq';
 import Contact from '../Contact/Contact';
 import TestSelection from '../Test/TestSelection';
 
+import QuickTest from '../Test/QuickTest';
+import LearningTest from '../Test/LearningTest';
+import Result from '../Test/Result';
+
 
 
 
@@ -95,8 +99,13 @@ class AppNavigation extends Component {
                         component={Signup} />
                            <Route exact path="/testselection"
                         component={TestSelection} />
+                          <Route exact path="/quicktest"
+                        component={QuickTest} />
+                           <Route exact path="/learningtest"
+                        component={LearningTest} />
                    
-                   
+                   <Route exact path="/result"
+                        component={Result} />
                         
 
                 </Switch>

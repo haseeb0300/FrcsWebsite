@@ -5,11 +5,12 @@ import { connect } from 'react-redux';
 
 import LoginHeader from '../../component/LoginHeader'
 import Footer from '../../component/Footer'
+import { Link, withRouter } from 'react-router-dom';
 
 
 import stopwatch from '../../assets/Images/TestSelection/stopwatch.png'
 import brain from '../../assets/Images/TestSelection/brain.png'
-import setting from '../../assets/Images/TestSelection/setting.png'
+import settingImg from '../../assets/Images/TestSelection/setting.png'
 
 
 class TestSelection extends Component {
@@ -53,29 +54,33 @@ class TestSelection extends Component {
                                 <img src={stopwatch} />
                                 <p className="poppins_medium heading">Quick Test</p>
                                 <p className="poppins_light text ">A time based test to assist your skills under time pressure, which help you to prepare you for the examination test of FRCS</p>
+                                <Link to="/quicktest">
 
 
                                 <button className="quicktestbtn">Start Quick Test Now</button>
+                                </Link>
                             </div>
                         </div>
                         <div className="col-md-4">
                             <div className="testCard">
-                                <img src={stopwatch} />
-                                <p className="poppins_medium heading">Quick Test</p>
-                                <p className="poppins_light text ">A time based test to assist your skills under time pressure, which help you to prepare you for the examination test of FRCS</p>
+                                <img src={brain} />
+                                <p className="poppins_medium learningModeHeading">Learning Mode</p>
+                                <p className="poppins_light learningModetext ">A Learning based test to increase your skills and concepts based on random questions, which help you to prepare you for the examination test of FRCS</p>
+                                <Link to="/learningtest">
 
 
-                                <button className="quicktestbtn">Start Quick Test Now</button>
+                                <button className="learningModebtn">Start Learning Mode Now</button>
+                                </Link>
                             </div>
                         </div>
                         <div className="col-md-4">
                             <div className="testCard">
-                                <img src={stopwatch} />
-                                <p className="poppins_medium heading">Quick Test</p>
-                                <p className="poppins_light text ">A time based test to assist your skills under time pressure, which help you to prepare you for the examination test of FRCS</p>
+                                <img src={settingImg} />
+                                <p className="poppins_medium ResourseHeading">Resources</p>
+                                <p className="poppins_light Resoursetext ">All the resources and keynotes provided by Grab the FRCS to help in learning materials, which help you to prepare you for the examination test of FRCS</p>
 
 
-                                <button className="quicktestbtn">Start Quick Test Now</button>
+                                <button className="Resoursebtn">Learning Resources</button>
                             </div>
                         </div>
 
@@ -85,7 +90,7 @@ class TestSelection extends Component {
                 </div>
 
 
-                <Footer />
+                {/* <Footer /> */}
             </>
         )
     }
