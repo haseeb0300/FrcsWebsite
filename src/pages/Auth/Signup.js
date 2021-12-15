@@ -75,9 +75,9 @@ class Signup extends Component {
                                     <p className="poppins_regular signup_text1">Date of Birth <label className="staric">*</label></p>
                                     <input className="poppins_light signup_input" placeholder="Enter Here" type="date"></input>
                                     <p className="poppins_regular signup_text1">Qualification  <label className="staric">*</label></p>
-                                    <input className="poppins_light signup_input" placeholder="Enter Here" type="date"></input>
+                                    <input className="poppins_light signup_input" placeholder="Enter Here" ></input>
                                     <p className="poppins_regular signup_text1">Gender   <label className="staric">*</label></p>
-                                    <input className="poppins_light signup_input" placeholder="Enter Here" type="date"></input>
+                                    <input className="poppins_light signup_input" placeholder="Enter Here" ></input>
                                 </div>
                                 <div className="col-md-4">
                                     <p className="poppins_regular signup_text1">Password <label className="staric">*</label></p>
