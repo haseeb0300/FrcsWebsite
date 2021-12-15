@@ -77,7 +77,13 @@ class Signup extends Component {
                                     <p className="poppins_regular signup_text1">Qualification  <label className="staric">*</label></p>
                                     <input className="poppins_light signup_input" placeholder="Enter Here" ></input>
                                     <p className="poppins_regular signup_text1">Gender   <label className="staric">*</label></p>
-                                    <input className="poppins_light signup_input" placeholder="Enter Here" ></input>
+                                    <select className="poppins_light signup_input" placeholder="Enter Here" >
+                                    <option>Please Select</option>
+
+                                        <option>Male</option>
+                                        <option>Female</option>
+
+                                    </select>
                                 </div>
                                 <div className="col-md-4">
                                     <p className="poppins_regular signup_text1">Password <label className="staric">*</label></p>
@@ -102,7 +108,7 @@ class Signup extends Component {
                                         <select className="poppins_light signup_input" placeholder="Enter Here">
                                             <option>FRCS 1 - Monthly Subscription</option>
                                         </select>
-                                        <p className="poppins_regular signup_text1">Email Address  <label className="staric">*</label></p>
+                                        <p className="poppins_regular signup_text1">Payment Method <label className="staric">*</label></p>
                                         <select className="poppins_light signup_input1" placeholder="Enter Here">
                                             <option>Cash on Delivery</option>
                                         </select>
