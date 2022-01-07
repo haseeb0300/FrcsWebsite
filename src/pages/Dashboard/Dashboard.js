@@ -82,7 +82,10 @@ class Dashboard extends Component {
       };
       return (
          <>
-            <Header />
+            <Header
+            history={this.props.history}
+            
+            />
             <div className="dashboardContainer">
                <div className="col-md-12 ">
                   <div className="row">

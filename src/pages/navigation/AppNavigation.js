@@ -14,6 +14,9 @@ import QuickTest from '../Test/QuickTest';
 import LearningTest from '../Test/LearningTest';
 import Result from '../Test/Result';
 
+import stripePayment from '../PaymentMethod/stripePayment';
+
+
 
 
 
@@ -80,35 +83,38 @@ class AppNavigation extends Component {
 
             <Router >
 
-{/* { user.Full_Name && <UserHeader />} */}
-                
-<ScrollToTop> 
-                <Switch >
-                    <Route exact path="/"
-                        component={Dashboard} />
+                {/* { user.Full_Name && <UserHeader />} */}
 
-                          <Route exact path="/about"
-                        component={About} />
+                <ScrollToTop>
+                    <Switch >
+                        <Route exact path="/"
+                            component={Dashboard} />
 
-                          <Route exact path="/faq"
-                        component={Faq} />
+                        <Route exact path="/about"
+                            component={About} />
 
-                          <Route exact path="/contact"
-                        component={Contact} />
-                            <Route exact path="/signup"
-                        component={Signup} />
-                           <Route exact path="/testselection"
-                        component={TestSelection} />
-                          <Route exact path="/quicktest"
-                        component={QuickTest} />
-                           <Route exact path="/learningtest"
-                        component={LearningTest} />
-                   
-                   <Route exact path="/result"
-                        component={Result} />
-                        
+                        <Route exact path="/faq"
+                            component={Faq} />
 
-                </Switch>
+                        <Route exact path="/contact"
+                            component={Contact} />
+                        <Route exact path="/signup"
+                            component={Signup} />
+                        <Route exact path="/testselection"
+                            component={TestSelection} />
+                        <Route exact path="/quicktest"
+                            component={QuickTest} />
+                        <Route exact path="/learningtest"
+                            component={LearningTest} />
+
+                        <Route exact path="/result"
+                            component={Result} />
+
+                        <Route exact path="/payement"
+                            component={stripePayment} />
+
+
+                    </Switch>
                 </ScrollToTop>
 
             </Router >

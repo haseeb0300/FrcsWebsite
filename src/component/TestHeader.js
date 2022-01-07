@@ -5,6 +5,7 @@ import { Carousel } from 'react-responsive-carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Link, withRouter } from 'react-router-dom';
 import { Dropdown, Modal, Form, DropdownButton } from 'react-bootstrap';
+import Countdown from 'react-countdown';
 
 
 import timer from '../assets/Images/Header/timer.png'
@@ -66,23 +67,28 @@ class TestHeader extends Component {
                             </div>
                             <div className="col-md-3 vertical_center ">
                                 <div className="row m-0">
-                                
-                                <div className="vr mt-2"></div>
-                                <img className="timmericon vertical_center" src={timer} />
-                                <p className="poppins_medium countDown vertical_center">Count Down</p>
-                                <p className="poppins_semibold time vertical_center">01:50:20</p>
+
+                                    <div className="vr mt-2"></div>
+                                    <img className="timmericon vertical_center" src={timer} />
+                                    <p className="poppins_medium countDown vertical_center">Count Down</p>
+                                    {/* <p className="poppins_semibold time vertical_center">01:50:20</p> */}
+                                    <Countdown
+                                        date={Date.now() + 7200000}
+                                        zeroPadTime={2}
+                                        renderer={props => <p className="poppins_semibold time vertical_center">{props.hours+':'+ props.minutes+':'+props.seconds}</p>}
+                                    />,
                                 </div>
 
                             </div>
                             <div className="col-md-1">
-                            <Link to="/testselection">
+                                <Link to="/testselection">
 
-                                <div className="leaveCard">
-                                    <img src={leave}/>
-                                    <p className="poppins_regular mt-2">Leave</p>
+                                    <div className="leaveCard">
+                                        <img src={leave} />
+                                        <p className="poppins_regular mt-2">Leave</p>
 
-                                </div>
-</Link>
+                                    </div>
+                                </Link>
                             </div>
                         </div>
 

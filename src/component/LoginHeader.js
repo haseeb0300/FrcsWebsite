@@ -27,7 +27,7 @@ class LoginHeader extends Component {
    }
 
    componentDidMount() {
-
+      console.log(this.props)
    }
 
    toogleModal = () => {
@@ -59,7 +59,7 @@ class LoginHeader extends Component {
                      </div>
                      <div className="col-md-3 vertical_Center text-right">
                         <div className="row">
-                           <p className="poppins_light headerTitle">Hello, <label className="poppins_medium">Muhammad Saad Iqbal </label> </p>
+                           <p className="poppins_light headerTitle">Hello, <label className="poppins_medium">{this.props?.user?.Full_Name}</label> </p>
                            <div className="headerTitleDiv" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                               <p>MS</p>
                            </div>

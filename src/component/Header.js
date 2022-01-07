@@ -11,6 +11,8 @@ import Logo from '../assets/Images/Header/Logo.png'
 import LoginIcon from '../assets/Images/Header/LoginIcon.svg'
 import SignupIcon from '../assets/Images/Header/SignupIcon.svg'
 import visibilty from '../assets/Images/Header/visibilty.png'
+import { loginStudent } from '../store/actions/authAction'
+
 
 class Header extends Component {
 
@@ -21,6 +23,8 @@ class Header extends Component {
          isLoading: false,
          newBookList: [],
          LoginModal: false,
+         Email:'',
+         Password:'',
 
 
       };
@@ -29,6 +33,46 @@ class Header extends Component {
    componentDidMount() {
 
    }
+
+   onChange = (e) => {
+      this.setState({ [e.target.name]: e.target.value })
+  }
+
+  onLogIn = () => {
+   var obj = {
+      'Email': this.state.Email,
+      'Password': this.state.Password,
+  }
+  this.props.loginStudent(obj).then((res) => {
+      this.setState({ isLoading: false })
+      //console.log(res)
+      if (res.status) {
+          console.log(res)
+          this.props.history.push('/testselection')
+        return
+      } else {
+         return
+      }
+  }).catch((err) => {
+      this.setState({ isLoading: false })
+      console.log(err)
+      var validationError = {}
+      var serverError = []
+      if (err.hasOwnProperty('validation')) {
+          err.validation.map(obj => {
+              if (obj.hasOwnProperty('param')) {
+                  validationError[obj["param"]] = obj["msg"]
+              } else {
+                  serverError = [...serverError, obj]
+              }
+          });
+          this.setState({ errors: validationError });
+          this.setState({ serverError: serverError });
+      } else {
+          this.setState({ serverError: [{ "msg": "server not responding" }] })
+      }
+  })
+  }
 
    toogleModal = () => {
       this.setState({
@@ -72,12 +116,12 @@ class Header extends Component {
                      </div>
                      <div className="col-md-12 mt-5 ">
                         <p className="poppins_regular login_text1">Email Address <label className="staric">*</label></p>
-                        <input className="poppins_light login_input" placeholder="Enter Here"></input>
+                        <input className="poppins_light login_input" placeholder="Enter Here" name="Email" onChange={this.onChange} value={this.state.Email}></input>
 
                      </div>
                      <div className="col-md-12  ">
                         <p className="poppins_regular login_text1">Password  <label className="staric">*</label></p>
-                        <input className="poppins_light col-md-12 login_input" placeholder="Enter Here" type="password"></input>
+                        <input className="poppins_light col-md-12 login_input" placeholder="Enter Here" type="password" name="Password" onChange={this.onChange} value={this.state.Password}></input>
                         <img className="visibiltyicon" src={visibilty} />
                      </div>
                      <div className="col-md-12  text-right">
@@ -85,10 +129,8 @@ class Header extends Component {
 
                      </div>
                      <div className="col-md-12  text-center">
-                     <Link to="testselection">
 
-                        <button className="loginbtn poppins_medium">Login</button>
-                        </Link>
+                        <button className="loginbtn poppins_medium" onClick={() => this.onLogIn()}>Login</button>
                         <p className="poppins_regular alreadyacoont">Don't have an account?
                            <Link to="signup">
 
@@ -161,7 +203,7 @@ const mapStatetoProps = ({ auth }) => ({
    user: auth.user
 })
 const mapDispatchToProps = ({
-
+   loginStudent,
 })
 Header.propTypes = {
 };

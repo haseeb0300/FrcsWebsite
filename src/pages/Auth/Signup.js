@@ -9,6 +9,9 @@ import Footer from '../../component/Footer'
 
 import Money from '../../assets/Images/Header/money.png'
 
+import { registerStudent } from '../../store/actions/authAction'
+
+
 
 class Signup extends Component {
 
@@ -18,6 +21,14 @@ class Signup extends Component {
             serverError: {},
             isLoading: false,
             newBookList: [],
+            Email:'',
+            Full_Name:'',
+            Qualification:'',
+            Mobile_Number:'',
+            Gender:'',
+            Date_Of_Birth:'',
+            Password:'',
+            Password2:'',
 
         };
     }
@@ -26,8 +37,52 @@ class Signup extends Component {
 
     }
 
+    onChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
 
-
+    onSignUp = () => {
+        var obj = {
+            'Email': this.state.Email,
+            'Full_Name': this.state.Full_Name,
+            'Qualification': this.state.Qualification,
+            'Mobile_Number': this.state.Mobile_Number,
+            'Gender': this.state.Gender,
+            'Date_Of_Birth': this.state.Date_Of_Birth,
+            'Password': this.state.Password,
+            'Password2': this.state.Password2
+        }
+        this.props.registerStudent(obj).then((res) => {
+            this.setState({ isLoading: false })
+            //console.log(res)
+            if (res.status) {
+                //console.log(res)
+                this.props.history.push('/testselection')
+              return
+            } else {
+               return
+            }
+        }).catch((err) => {
+            this.setState({ isLoading: false })
+            console.log(err)
+            var validationError = {}
+            var serverError = []
+            if (err.hasOwnProperty('validation')) {
+                err.validation.map(obj => {
+                    if (obj.hasOwnProperty('param')) {
+                        validationError[obj["param"]] = obj["msg"]
+                    } else {
+                        serverError = [...serverError, obj]
+                    }
+                });
+                this.setState({ errors: validationError });
+                this.setState({ serverError: serverError });
+            } else {
+                this.setState({ serverError: [{ "msg": "server not responding" }] })
+            }
+        })
+        //this.props.history.push('/payement')}
+    }
 
     render() {
         // const { t, i18n } = this.props
@@ -63,34 +118,34 @@ class Signup extends Component {
                             <div className="row">
                                 <div className="col-md-4 ">
                                     <p className="poppins_regular signup_text1">Full Name  <label className="staric">*</label></p>
-                                    <input className="poppins_light signup_input" placeholder="Enter Here"></input>
+                                    <input className="poppins_light signup_input" placeholder="Enter Here" name='Full_Name' onChange={this.onChange} ></input>
                                     <p className="poppins_regular signup_text1">Email Address  <label className="staric">*</label></p>
-                                    <input className="poppins_light signup_input" placeholder="Enter Here"></input>
+                                    <input className="poppins_light signup_input" placeholder="Enter Here" name='Email' onChange={this.onChange} value={this.state.Email}></input>
                                     <p className="poppins_regular signup_text1">Phone No  <label className="staric">*</label></p>
-                                    <input className="poppins_light signup_input" placeholder="Enter Here" type="number"></input>
+                                    <input className="poppins_light signup_input" placeholder="Enter Here" type="number" name='Mobile_Number' onChange={this.onChange} value={this.state.Mobile_Number}></input>
 
 
                                 </div>
                                 <div className="col-md-4">
                                     <p className="poppins_regular signup_text1">Date of Birth <label className="staric">*</label></p>
-                                    <input className="poppins_light signup_input" placeholder="Enter Here" type="date"></input>
+                                    <input className="poppins_light signup_input" placeholder="Enter Here" type="date" name='Date_Of_Birth' onChange={this.onChange} value={this.state.Date_Of_Birth}></input>
                                     <p className="poppins_regular signup_text1">Qualification  <label className="staric">*</label></p>
-                                    <input className="poppins_light signup_input" placeholder="Enter Here" ></input>
+                                    <input className="poppins_light signup_input" placeholder="Enter Here" name='Qualification' onChange={this.onChange} value={this.state.Qualification}></input>
                                     <p className="poppins_regular signup_text1">Gender   <label className="staric">*</label></p>
-                                    <select className="poppins_light signup_input" placeholder="Enter Here" >
+                                    <select className="poppins_light signup_input" placeholder="Enter Here" name='Gender' onChange={this.onChange} value={this.state.Gender}>
                                     <option>Please Select</option>
 
-                                        <option>Male</option>
-                                        <option>Female</option>
+                                        <option value='Male'>Male</option>
+                                        <option value='Female'>Female</option>
 
                                     </select>
                                 </div>
                                 <div className="col-md-4">
                                     <p className="poppins_regular signup_text1">Password <label className="staric">*</label></p>
-                                    <input className="poppins_light signup_input" placeholder="Enter Here" type="password"></input>
+                                    <input className="poppins_light signup_input" placeholder="Enter Here" type="password" name='Password' onChange={this.onChange} value={this.state.Password}></input>
 
                                     <p className="poppins_regular signup_text1">Re Password  <label className="staric">*</label></p>
-                                    <input className="poppins_light signup_input" placeholder="Enter Here" type="password"></input>
+                                    <input className="poppins_light signup_input" placeholder="Enter Here" type="password" name='Password2' onChange={this.onChange} value={this.state.Password2}></input>
 
                                 </div>
                             </div>
@@ -183,7 +238,7 @@ class Signup extends Component {
                                     </div>
                                 </div>
                                 <div className="text-center col-md-12">
-                                    <button className="paybtn">Pay & Continue</button>
+                                    <button className="paybtn" onClick={() => this.onSignUp()}>Pay & Continue</button>
                                 </div>
                             </div>
 
@@ -201,7 +256,7 @@ const mapStatetoProps = ({ auth }) => ({
     user: auth.user
 })
 const mapDispatchToProps = ({
-
+    registerStudent
 })
 Signup.propTypes = {
 };
