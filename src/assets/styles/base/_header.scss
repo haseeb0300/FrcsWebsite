@@ -23,6 +23,9 @@
 .headerTitle{
     font-size: 15px;
     margin-bottom: 0px;
+    margin-left: 13px;
+    margin-right: 13px;
+    color: #000000;
 }
 .headerTitle:hover{
     opacity: 0.8;
@@ -34,7 +37,7 @@
     background: white;
     border: 1px solid #22577A;
     border-radius: 22px;
-    font-size: 13px;
+    font-size: 11px;
     font-family: 'Poppins';
     font-weight: 700;
     color: #22577A;
@@ -50,7 +53,7 @@
     background: white;
     border: 1px solid #57CC99;
     border-radius: 22px;
-    font-size: 13px;
+    font-size: 11px;
     font-family: 'Poppins';
     font-weight: 700;
     color: #57CC99;
@@ -182,5 +185,106 @@ font-size: 13px;
 // }
 body{
     overflow-x: hidden;
+
+}
+.hamburgericon{
+    font-size: 20px;
+    color: #38a3a5;
+}
+.collapseHeader{
+    
+    background-color: #38a3a5;
+    font-size: 20px;
+    position: relative;
+    z-index: 2;
+    margin-top: 20px;
+    padding: 15px;
+    color: white;
+
+}
+.navhr{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid #fff;
+}
+.copyright{
+    text-align: center;
+    font-size: 12px;
+    margin-top: 25px;
+}
+.mobileheaderText{
+    color: white;
+}
+.headerContainerTestMobile{
+    display: none;
+}
+.headerloginContainerMobile{
+    display: none;
+}
+@media (max-width: 992px) {
+.headerloginContainer{
+    display: none;
+}
+.headerloginContainerMobile{
+    display: block;
+    padding: 30px 0px;
+}
+.login_header .headerTitle {
+    font-size: 10px;
+    margin-top: 10px;
+}
+.login_header .headerTitleDiv {
+    height: 30px;
+    width: 30px;
+    background: #22577A;
+    color: white;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: bold;
+    font-family: 'Poppins';
+    padding-top: 6px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.headerContainerTestMobile{
+padding: 20px 0px;
+box-shadow: 0px 0px 3px 4px #cbc8c8;
+display: block;
+
+}
+.headerContainerTestMobile {
+    .timmericon{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        height: 18px;
+    }
+    .headerloginContainer {
+        padding: 40px 0px;
+    }
+    .time {
+        font-size: 20px;
+    }
+    .leaveTest{
+        font-size: 16px;
+    color: #D48181;
+    }
+    .leaveTest:hover{
+        cursor: pointer;
+        opacity: 0.8;
+    }
+    .quicktest-container .explainationDiv {
+        background: #BFE7C4;
+        padding: 20px;
+        border-radius: 7px;
+        font-size: 13px;
+    }
+    .logo {
+        height: 37px;
+        width: 150px;
+    }
+
+}
 
 }

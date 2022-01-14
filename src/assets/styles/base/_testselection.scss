@@ -118,3 +118,16 @@
         color: white;
     }
 }
+
+@media (max-width: 576px) {
+
+.Testselection-container {
+    background: #F9F9F9;
+    padding: 10px;
+}
+.Testselection-container .testCard {
+ 
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+}

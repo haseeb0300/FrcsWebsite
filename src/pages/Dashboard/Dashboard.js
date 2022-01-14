@@ -108,17 +108,17 @@ class Dashboard extends Component {
                               <div className="bannerCard">
                                  <div className="col-md-12">
                                     <div className="row">
-                                       <div className="col-4 vertical_Center">
+                                       <div className="col-sm-4 vertical_Center">
                                           <p className="poppins_regular bannerCardText mb-0">Monthly Subscription Plans <label className="staric">*</label></p>
                                        </div>
-                                       <div className="col-5 vertical_Center">
+                                       <div className=" col-sm-5 vertical_Center">
                                           <select className="bannerCardSelect poppins_regular">
                                              <option>1 Month - PKR 5000</option>
                                              <option>1 Month - PKR 5000</option>
 
                                           </select>
                                        </div>
-                                       <div className="col-3 vertical_Center">
+                                       <div className="col-sm-3 vertical_Center">
                                           <button className="bannerCardBtn poppins_regular">Buy Now <img className="ml-3" src={rightarrow} /></button>
                                        </div>
                                     </div>
@@ -169,11 +169,11 @@ class Dashboard extends Component {
                               <p className="poppins_light Section2CardText">1000 questions focussed on the FRCS examination in General Surgery</p>
                               <div className="col-md-12">
                                  <div className="row">
-                                    <div className="col-md-4 mt-5 p-0">
+                                    <div className="col-md-4 col-lg-4 col-6 mt-5 p-0">
                                        <button className="bannerCardBtn poppins_regular">Take a Demo <img className="ml-3" src={rightarrow} /></button>
 
                                     </div>
-                                    <div className="col-md-3 mt-5 ">
+                                    <div className="col-md-4 col-lg-3 col-6 mt-5 ">
                                        <button className="bannerCardBtn poppins_regular">Sign In</button>
 
                                     </div>
@@ -203,11 +203,11 @@ class Dashboard extends Component {
                         </div>
                         <div className="col-md-6">
                            <p className="poppins_medium heading mb-5 mt-5">How we help you pass</p>
-                           <p className="mt-5 mb-5 poppins_extralight text"><img className="mr-3" src={tick} />Core Questions allows you to revise the most important topics</p>
-                           <p className="mt-5 mb-5 poppins_extralight text"><img className="mr-3" src={tick} />Revision prompts to encourage you to revise every day </p>
-                           <p className="mt-5 mb-5 poppins_extralight text"><img className="mr-3" src={tick} />Personalized daily question delivered at a time to suit you</p>
-                           <p className="mt-5 mb-5 poppins_extralight text"><img className="mr-3" src={tick} />Social Learning lets you learn with your peers and compare scores</p>
-                           <p className="mt-5 mb-5 poppins_extralight text"><img className="mr-3" src={tick} />Timed Mock Tests with themes from recent exams</p>
+                           <p className="poppins_extralight text"><img className="mr-3" src={tick} />Core Questions allows you to revise the most important topics</p>
+                           <p className=" poppins_extralight text"><img className="mr-3" src={tick} />Revision prompts to encourage you to revise every day </p>
+                           <p className=" poppins_extralight text"><img className="mr-3" src={tick} />Personalized daily question delivered at a time to suit you</p>
+                           <p className="poppins_extralight text"><img className="mr-3" src={tick} />Social Learning lets you learn with your peers and compare scores</p>
+                           <p className=" poppins_extralight text"><img className="mr-3" src={tick} />Timed Mock Tests with themes from recent exams</p>
 
                         </div>
                      </div>
@@ -218,11 +218,11 @@ class Dashboard extends Component {
 
                         <div className="col-md-6">
                            <p className="poppins_medium heading mb-5 mt-5">Access to the best quality content </p>
-                           <p className="mt-5 mb-5 poppins_extralight text"><img className="mr-3" src={tick} />625+ Single Best Answer questions </p>
-                           <p className="mt-5 mb-5 poppins_extralight text"><img className="mr-3" src={tick} />390+ Extended Matching Questions </p>
-                           <p className="mt-5 mb-5 poppins_extralight text"><img className="mr-3" src={tick} />Exam specific revision advice written by our FRCS clinical editor</p>
-                           <p className="mt-5 mb-5 poppins_extralight text"><img className="mr-3" src={tick} />Curriculum mapped questions cover Acute Abdomen</p>
-                           <p className="mt-5 mb-5 poppins_extralight text"><img className="mr-3" src={tick} />Subcutaneous Tissues, Critical Care, and Lower and Upper Gastrointestinal Diseases</p>
+                           <p className="poppins_extralight text"><img className="mr-3" src={tick} />625+ Single Best Answer questions </p>
+                           <p className=" poppins_extralight text"><img className="mr-3" src={tick} />390+ Extended Matching Questions </p>
+                           <p className="poppins_extralight text"><img className="mr-3" src={tick} />Exam specific revision advice written by our FRCS clinical editor</p>
+                           <p className=" poppins_extralight text"><img className="mr-3" src={tick} />Curriculum mapped questions cover Acute Abdomen</p>
+                           <p className=" poppins_extralight text"><img className="mr-3" src={tick} />Subcutaneous Tissues, Critical Care, and Lower and Upper Gastrointestinal Diseases</p>
 
                         </div>
                         <div className="col-md-6">

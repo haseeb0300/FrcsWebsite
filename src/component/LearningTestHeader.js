@@ -88,7 +88,18 @@ class LearningTestHeader extends Component {
 
                     </div>
 
-                </div>        </>
+                </div>   
+                <div className='headerContainerTestMobile'>
+                    <div className="col-md-12 text-center ">
+                        <img className="logo" src={Logo} />
+
+                    </div>
+              
+               
+                </div>
+                
+                
+                     </>
 
 
         )

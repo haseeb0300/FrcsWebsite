@@ -1,6 +1,58 @@
 .quicktest-container{
     padding: 40px;
+.skipQuestion{
+    margin-right: 24px;
+    color: #7294AA;
+    font-size: 15px;
+    margin-bottom: 0px;
+}
+.skipThis{
+    font-size: 16px;
+    color: #38A3A5;
+    margin-right: 20px;
 
+}
+.skipBtn{
+    height: 40px;
+    width: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #22577A;
+    border: 1px solid #22577A;
+    background: white;
+    font-size: 18px;
+    font-family: 'Poppins';
+    font-weight: 600;
+    border-radius: 5px;
+}
+.skipBtn-Done{
+    background: #22577A;
+    color: white;
+}
+.skipBtn-Skip{
+    background: #D48181;
+    color: white;
+}
+.skipColaspeCard{
+    position: absolute;
+}
+.skipThis:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+.leadin{
+    font-size: 16px;
+    font-family: 'Poppins';
+    font-weight: 200;
+}
+.leadinImg{
+    height: 170px;
+
+}
+.chooseCorrectAns{
+    font-size: 16px;
+    color: #22577A;
+}
     .leftbtn{
         height: 33px;
     width: 33px;
@@ -131,4 +183,24 @@
 .vertical_center{
     margin-top: auto;
     margin-bottom: auto;
+}
+@media (max-width: 576px) {
+    .quicktest-container {
+        padding: 40px 0px;
+    }
+    .headerContainerTest{
+        display: none;
+    }
+    .quicktest-container .tooltipp .tooltipptext {
+        left: -100px;
+    }
+    .card-body {
+        font-size: 14px;
+    }
+    .quicktest-container .refernceText{
+        margin-top: 15px;
+    }
+    .quicktest-container .quicktest-Btn {
+        width: 70%;
+    }
 }

@@ -36,3 +36,28 @@
     padding: 15px;
     color: white;
 }
+@media (max-width: 576px) {
+    .socialmediaDiv{
+        display: none;
+    }
+    .footer_heading {
+        font-size: 15px;
+        margin-top: 30px;
+    }
+    .footer_text {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    }
+    .footerBottom{
+        height: 60px;
+        background-color: #22577A;
+        font-size: 10px;
+        padding: 23px;
+        color: white;
+    }
+    .hamburger{
+        font-size: 25px;
+        color: #22577A;
+    }
+}

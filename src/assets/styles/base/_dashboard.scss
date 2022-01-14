@@ -2,6 +2,9 @@
     background: #F9F9F9;
 
 }
+.MobileHeader{
+    display: none;
+}
 .dashboardContainer{
 overflow: hidden;
 }
@@ -124,6 +127,8 @@ padding: 40px;
     }
     .text{
         font-size: 17px;
+        margin-top: 30px;
+        margin-bottom: 30px;
     }
     .section3img{
         height: 75%;
@@ -181,10 +186,363 @@ padding: 40px;
         color: #9FA7B2;
         font-style: italic;
         font-size: 20px;
+        margin-top: 20px;
+
     }
-    .text{
-        color: #9FA7B2;
+   
+}
+@media (max-width: 1200px) {
+
+.headerTitle {
+    font-size: 10px;
+    margin-bottom: 0px;
+}
+.logo {
+    height: 40px;
+    width: 182px;
+}
+}
+@media (max-width: 992px) {
+    .headerContainer{
+        display: none;
+    }
+    .MobileHeader{
+        height: 70px;
+        padding: 15px;
+        display: block;
+    }
+    .bannerText1 {
+        font-size: 24px;
+        margin-top: 70px;
+    }
+    .bannerText2 {
+        font-size: 18px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    .bannerText3 {
+        font-size: 14px;
+     
+    }
+    .bannerCardText {
+        font-size: 11px;
+    }
+    .bannerCardBtn {
+      
+        font-size: 10px;
+    }
+    .bannerCard {
+        height: 134px;
+        background: white;
+        border-radius: 80px;
+        margin-top: 10%
+    }
+    .Section2{
+         .heading {
         font-size: 20px;
+        color: #3E3E3E;
+    }
+    .text {
+        font-size: 15px;
+        line-height: 1.2;
+        color: #3E3E3E;
+    }    
+    .text1 {
+        font-size: 14px;
+    }
+    .Section2Card {
+        height: 252px;
+     
         margin-top: 20px;
     }
+    .Section2CardHeading {
+        font-size: 20px;
+    }
+    .Section2CardText {
+        font-size: 15px;
+        color: #3E3E3E;
+    }
+    .h82 {
+        height: 505px;
+    }
+}
+.Section3{ 
+    .text {
+    font-size: 12px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+    .section3img {
+        height: 235px;
+        margin-top: 20px;
+    }
+    .heading {
+        font-size: 20px;
+    }
+    
+}
+.Section4{ 
+    .heading {
+    font-size: 23px;
+}
+.text {
+    font-size: 13px;
+}
+}
+.Section5{
+ .heading2 {
+    font-size: 17px;
+    color: #22577A;
+    margin-top: 10px;
+}
+.text {
+    color: #9FA7B2;
+    font-size: 12px;
+    margin-top: 9px;
+}
+.testimonialimg {
+    width: 70px !important;
+    height: 70px;
+    margin-top: -42px;
+}
+}
+
+}
+@media (max-width: 768px) {
+   
+    .mobileLogo{
+            height: 34px;
+        
+    }
+    
+    .bannerImg {
+        position: absolute;
+        top: 0px;
+        z-index: -1;
+        left: 0px;
+        height: 100%;
+        object-fit: cover;
+    }
+    .bannerText1 {
+        font-size: 28px;
+        margin-top: 70px;
+        text-align: center;
+    }
+    .bannerText2 {
+        font-size: 22px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .bannerText3 {
+        font-size: 18px;
+        text-align: center;
+    }
+    .bannerCardSelect {
+       
+        font-size: 12px;
+    }
+    .Section2{ 
+        .heading {
+        font-size: 25px;
+        color: #3E3E3E;
+        text-align: center;
+    }
+     .text {
+        font-size: 17px;
+        line-height: 1.2;
+        color: #3E3E3E;
+        text-align: center;
+    }
+    .text1 {
+        font-size: 14px;
+        text-align: center;
+    }
+    .Section2Card {
+        height: 305px;
+        margin-top: 20px;
+    }
+    .Section2CardHeading {
+        font-size: 20px;
+        text-align: center;
+
+    }
+    .Section2CardText {
+        font-size: 15px;
+        color: #3E3E3E;
+        text-align: center;
+
+    }
+    .Section2Card {
+        height: 245px;
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+    .h82 {
+        height: 260px;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+.Section3 {
+    .section3img {
+    height: 265px;
+    margin-top: 0px;
+    object-fit: cover;
+}
+.heading {
+    font-size: 25px;
+    text-align: center;
+}
+ .text {
+    font-size: 12px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-left: 15%;
+}
+}
+.Section4{ 
+    .heading {
+    font-size: 15px;
+}
+ .text {
+    font-size: 10px;
+}
+}
+}
+
+@media (max-width: 576px) {
+   
+    .headerContainer{
+        display: none;
+    }
+   
+    .bannerText1 {
+        font-size: 16px;
+        margin-top: 60px;
+        text-align: center;
+    }
+    .bannerText2 {
+        font-size: 12px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .bannerCard {
+        height: 75%;
+        background: white;
+        border-radius: 30px;
+        margin-top: 10%;
+        margin-bottom: 10%;
+    }
+    .bannerCardText {
+        font-size: 15px;
+        text-align: center;
+    }
+    .bannerText3 {
+        font-size: 11px;
+        text-align: center;
+    }
+    .bannerCardSelect {
+        font-size: 12px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .bannerCardBtn{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .Section2{ 
+        .heading {
+            font-size: 20px;
+            color: #3E3E3E;
+            text-align: center;
+        }
+     .text {
+            font-size: 14px;
+            line-height: 1.2;
+            color: #3E3E3E;
+            text-align: center;
+        
+    }
+    
+    .text1 {
+        font-size: 12px;
+        text-align: center;
+    }
+    .Section2Card {
+        height: 100%;
+        margin-top: 20px;
+        margin-bottom: 15px;
+        padding: 30px 10px;
+    }
+    .Section2CardHeading {
+        font-size: 15px;
+        text-align: center;
+    }
+    .Section2CardText {
+        font-size: 12px;
+        color: #3E3E3E;
+        text-align: center;
+    }
+    .bannerCardBtn {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+  
+    .h82 {
+        height: 230px;
+        width: 100%;
+        object-fit: cover;
+        padding: 15px;
+        border-radius: 40px;
+    }
+}
+.Section3 {
+    .section3img {
+        height: 230px;
+    margin-top: 0px;
+    object-fit: cover;
+    border-radius: 0px;
+}
+.heading {
+    font-size: 22px;
+    text-align: center;
+}
+.text {
+    font-size: 13px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-left: 0%;
+}
+}
+.Section4{ 
+    .heading {
+    font-size: 15px;
+}
+.section4img{
+    position: absolute;
+    left: 0%;
+    width: 100%;
+    z-index: -1;
+    object-fit: cover;
+    height: 100%;
+
+}
+ .text {
+    font-size: 10px;
+}
+}
+.Section5{
+    .text {
+        color: #696d73;
+        font-size: 13px;
+        margin-top: 9px;
+    }
+    .heading2 {
+        font-size: 20px;
+        color: #22577A;
+        margin-top: 10px;
+    }
+}
 }

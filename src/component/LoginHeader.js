@@ -53,11 +53,11 @@ class LoginHeader extends Component {
         
                <div className="col-md-12">
                   <div className="row">
-                     <div className="col-md-9 ">
+                     <div className=" col-xl-9 col-lg-7 ">
                         <img className="logo" src={Logo} />
 
                      </div>
-                     <div className="col-md-3 vertical_Center text-right">
+                     <div className=" col-xl-3 col-lg-5 vertical_Center text-right">
                         <div className="row">
                            <p className="poppins_light headerTitle">Hello, <label className="poppins_medium">{this.props?.user?.Full_Name}</label> </p>
                            <div className="headerTitleDiv" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -89,7 +89,51 @@ class LoginHeader extends Component {
 
                </div>
 
-            </div>        </>
+            </div>  
+            
+            <div className="headerloginContainerMobile login_header">
+        
+        <div className="col-md-12">
+           <div className="row">
+              <div className="col-12 text-center ">
+                 <img className="logo" src={Logo} />
+
+              </div>
+              <div className="col-12 vertical_Center text-center">
+                 <div className="">
+                    <p className="poppins_light headerTitle">Hello, <label className="poppins_medium">Muhammad Saad Iqbal </label> </p>
+                    <div className="headerTitleDiv" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                       <p>MS</p>
+                    </div>
+                    <div class="collapse" id="collapseExample">
+                             <div class="colapseHeader">
+                               <p className="headerTitle poppins_light">Account Details</p>
+                               <hr></hr>
+                               <p className="headerTitle poppins_light">Settings</p>
+                               <hr></hr>
+                               <p className="headerTitle poppins_light">Support</p>
+                               <hr></hr>
+                               <p className="headerTitle poppins_light">Subscription Details</p>
+                               <hr></hr>
+                               <Link to="/">
+
+                               <p className="headerTitle poppins_light">Logout</p>
+                               </Link>
+                               <hr></hr>
+                       
+                             </div>
+                         </div>
+                
+                 </div>
+
+              </div>
+           </div>
+
+        </div>
+
+     </div>  
+            
+                  </>
 
 
       )

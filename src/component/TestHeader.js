@@ -94,7 +94,28 @@ class TestHeader extends Component {
 
                     </div>
 
-                </div>        </>
+                </div>
+                <div className='headerContainerTestMobile'>
+                    <div className="col-md-12 text-center ">
+                        <img className="logo" src={Logo} />
+
+                    </div>
+                    <div className='col-md-12 text-center'>
+                        <img className="timmericon vertical_center" src={timer} />
+                        <p className="poppins_medium countDown vertical_center">Count Down</p>
+                        <p className="poppins_semibold time vertical_center">01:50:20</p>
+                    </div>
+                    <div className='col-md-12 text-center'>
+                    <Link to="/testselection">
+
+                        <p className="poppins_regular leaveTest mt-2">Leave</p>
+                        </Link>
+
+                    </div>
+                </div>
+
+
+            </>
 
 
         )

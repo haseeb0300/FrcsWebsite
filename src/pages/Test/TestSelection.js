@@ -49,19 +49,19 @@ class TestSelection extends Component {
                 <LoginHeader />
                 <div className="col-md-12 Testselection-container">
                     <div className="row">
-                        <div className="col-md-4">
+                        <div className="col-md-12 col-lg-4">
                             <div className="testCard">
                                 <img src={stopwatch} />
                                 <p className="poppins_medium heading">Quick Test</p>
                                 <p className="poppins_light text ">A time based test to assist your skills under time pressure, which help you to prepare you for the examination test of FRCS</p>
-                                <Link to="/quicktest">
+                                <Link to="/selection">
 
 
                                 <button className="quicktestbtn">Start Quick Test Now</button>
                                 </Link>
                             </div>
                         </div>
-                        <div className="col-md-4">
+                        <div className="col-md-12 col-lg-4">
                             <div className="testCard">
                                 <img src={brain} />
                                 <p className="poppins_medium learningModeHeading">Learning Mode</p>
@@ -73,7 +73,7 @@ class TestSelection extends Component {
                                 </Link>
                             </div>
                         </div>
-                        <div className="col-md-4">
+                        <div className="col-md-12 col-lg-4">
                             <div className="testCard">
                                 <img src={settingImg} />
                                 <p className="poppins_medium ResourseHeading">Resources</p>

@@ -15,7 +15,9 @@ import '../assets/styles/base/_signup.scss'
 import '../assets/styles/base/_testselection.scss'
 import '../assets/styles/base/_QuickTest.scss'
 import '../assets/styles/base/_result.scss'
+import '../assets/styles/base/_ourteam.scss'
 
+import '../assets/styles/base/_selection.scss'
 
 
 

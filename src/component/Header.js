@@ -146,33 +146,37 @@ class Header extends Component {
 
                <div className="col-md-12">
                   <div className="row">
-                     <div className="col-md-3 text-center">
+                     <div className="col-md-2 col-lg-2 col-xl-3 text-center">
                         <img className="logo" src={Logo} />
 
                      </div>
-                     <div className="col-md-9 vertical_Center">
+                     <div className="col-md-10 col-lg-10 col-xl-9  text-center vertical_Center">
                         <div className="row">
-                           <div className="col-md-8 vertical_Center">
-                              <div className="col-md-3 p-0 text-center">
-                                 <p className="poppins_light headerTitle">Exams</p>
+                           <div className="col-md-8 col-xl-9 col-lg-7 vertical_Center">
+                              <div className=''>
+                              <label className="poppins_light headerTitle">Exams</label>
+                              <label className="poppins_light headerTitle">Features & Benefits </label>
+                              <label className="poppins_light headerTitle">Subscription Plans</label>
+                              <label className="poppins_light headerTitle">Contact Us</label>
+                              <Link to="/ourteam">
+
+                              <label className="poppins_light headerTitle">Team</label>
+                              </Link>
+                              <Link to="/booknow">
+
+                              <label className="poppins_light headerTitle">Book Now</label>
+                              </Link>
+
                               </div>
-                              <div className="col-md-3 p-0 text-center">
-                                 <p className="poppins_light headerTitle">Features & Benefits </p>
-                              </div>
-                              <div className="col-md-3 p-0 text-center">
-                                 <p className="poppins_light headerTitle">Subscription Plans</p>
-                              </div>
-                              <div className="col-md-3 p-0 text-center">
-                                 <p className="poppins_light headerTitle">Contact Us</p>
-                              </div>
+                             
                            </div>
-                           <div className="col-md-4 vertical_Center">
+                           <div className="col-md-4 col-xl-3 col-lg-5 vertical_Center">
 
 
-                              <div className="col-md-6 text-center">
+                              <div className="col-md-6 pl-1 pr-1 text-center">
                                  <button className="login_btn" onClick={() => this.toogleModal()}><img className="login_Icon" src={LoginIcon} /> Login</button>
                               </div>
-                              <div className="col-md-6 text-center">
+                              <div className="col-md-6 pl-1 pr-1  text-center">
                                  <Link to="/signup">
 
                                     <button className="Signup_btn"><img className="login_Icon" src={SignupIcon} /> Sign up</button>
@@ -192,7 +196,49 @@ class Header extends Component {
 
                </div>
 
-            </div>        </>
+            </div>
+            <div className="MobileHeader pl-0 pr-0">
+               <div className="col-12 p-0">
+                  <div className='row'>
+                     <div className='col-9 '>
+                        <img className="mobileLogo ml-3" src={Logo} />
+
+                     </div>
+                     <div className='col-3  text-right vertical_center'>
+                        <span className='hamburgericon mr-3' type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                           <i class="fa fa-bars" aria-hidden="true"></i>
+
+                        </span>
+
+                     </div>
+                  </div>
+                  <div class="collapse" id="collapseExample">
+                     <div class="collapseHeader">
+                     <p>Exams</p>
+                       <div className='navhr'></div>
+                       <p>Features & Benefits</p>
+                       <div className='navhr'></div>
+                       <p>Subscription Plans</p>
+                       <div className='navhr'></div>
+                       <p>Contact Us</p>
+                       <div className='navhr'></div>
+                       <p onClick={() => this.toogleModal()}>Login</p>
+                       <div className='navhr'></div>
+                       <Link to="/signup">
+
+                       <p className='mobileheaderText'>Sign up</p>
+                       </Link>
+                       <div className='navhr'></div>
+                       <p className='copyright'>Copyright © Creatorzsoft 2021</p>
+
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+
+
+         </>
 
 
       )

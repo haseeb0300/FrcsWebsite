@@ -64,3 +64,23 @@ font-size: 47px;
       cursor: pointer;
       opacity: 0.9;
   }
+
+  @media (max-width: 576px) {
+    .result-container {
+        padding: 20px 0px;
+    }
+    .totalquestioncard{
+        margin: 10px;
+    }
+    .correctanswercard{
+        margin: 10px;
+    }
+    .wronganswercard{
+        margin: 10px;
+    }
+    .back-to-home{
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+  }

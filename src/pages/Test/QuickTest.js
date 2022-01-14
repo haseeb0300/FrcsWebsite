@@ -12,7 +12,7 @@ import Polygon from '../../assets/Images/TestSelection/Polygon.png'
 import lightimg from '../../assets/Images/TestSelection/lightimg.png'
 import rightarrow from '../../assets/Images/TestSelection/rightarrow.png'
 import { getFrcs1Question } from '../../store/actions/questionsAction'
-
+import skipquestion from '../../assets/Images/TestSelection/skipquestion.png'
 
 class QuickTest extends Component {
 
@@ -21,10 +21,10 @@ class QuickTest extends Component {
         this.state = {
             serverError: {},
             isLoading: false,
-            questionList:[],
-            index:0,
-            correctAnsware:0,
-            wrongAnsware:0,
+            questionList: [],
+            index: 0,
+            correctAnsware: 0,
+            wrongAnsware: 0,
 
         };
     }
@@ -46,11 +46,11 @@ class QuickTest extends Component {
 
 
     nextIndex = () => {
-        this.setState({index:this.state.index + 1})
+        this.setState({ index: this.state.index + 1 })
     }
 
     backIndex = () => {
-        this.setState({index:this.state.index - 1})
+        this.setState({ index: this.state.index - 1 })
     }
 
     selectedOption = (e) => {
@@ -60,15 +60,15 @@ class QuickTest extends Component {
     render() {
         // const { t, i18n } = this.props
         const { t, i18n, location, user } = this.props
-        const { isLoading,questionList,index } = this.state;
-        
+        const { isLoading, questionList, index } = this.state;
+
         if (isLoading) {
             return (
                 <div className="loader-large"></div>
             )
         }
 
-        
+
 
         return (
             <>
@@ -76,15 +76,51 @@ class QuickTest extends Component {
                 <div className="quicktest-container">
                     <div className="col-md-12 ">
                         <div className="row">
-                            <div className="col-md-2 col-2 vertical_center">
-                                <button className="leftbtn" onClick={(e)=> this.backIndex(e)}><i class="fa fa-angle-left arrowIcon" aria-hidden="true" ></i></button>
+                            <div className=" col-2 vertical_center">
+                                <button className="leftbtn" onClick={(e) => this.backIndex(e)}><i class="fa fa-angle-left arrowIcon" aria-hidden="true" ></i></button>
                             </div>
-                            <div className="col-md-8 col-8  vertical_center text-center">
-                                <p className="poppins_light QuestionsHeading">{'Question '+ (index + 1)+ ' of 10'}</p>
+                            <div className=" col-5  vertical_center text-center">
+                                <p className="poppins_light QuestionsHeading">{'Question ' + (index + 1) + ' of 10'}</p>
                             </div>
-                            <div className="col-md-2 col-2 text-right vertical_center">
-                                <button className="leftbtn" onClick={(e)=> this.nextIndex(e)}><i class="fa fa-angle-right arrowIcon" aria-hidden="true" ></i></button>
+                            <div className=" col-2 text-right vertical_center">
+                                <button className="leftbtn" onClick={(e) => this.nextIndex(e)}><i class="fa fa-angle-right arrowIcon" aria-hidden="true" ></i></button>
 
+                            </div>
+                            <div className=" col-3  vertical_center">
+                                <div className='text-center'>
+                                    <label className='skipQuestion'>Skipped Questions</label>
+                                    <img src={skipquestion} type="button" data-toggle="collapse" data-target="#SkipQuestionCollapse" aria-expanded="false" aria-controls="SkipQuestionCollapse"/>
+                                </div>
+                                <div class="collapse" id="SkipQuestionCollapse">
+                                    <div class="card card-body skipColaspeCard">
+                                      <div className='row'>
+                                          <div className='col-3 '>
+                                          <button className='skipBtn skipBtn-Done'>1</button>
+                                          </div>
+                                          <div className='col-3'>
+                                          <button className='skipBtn skipBtn-Skip'>2</button>
+                                          </div>
+                                          <div className='col-3'>
+                                          <button className='skipBtn'>3</button>
+                                          </div>
+                                          <div className='col-3'>
+                                          <button className='skipBtn'>4</button>
+                                          </div>
+                                          <div className='col-3'>
+                                          <button className='skipBtn'>5</button>
+                                          </div>
+                                          <div className='col-3'>
+                                          <button className='skipBtn'>6</button>
+                                          </div>
+                                          <div className='col-3'>
+                                          <button className='skipBtn'>7</button>
+                                          </div>
+
+                                       
+
+                                      </div>
+                                    </div>
+                                </div>
                             </div>
                             <div className="quicktest-hr"></div>
 
@@ -95,10 +131,10 @@ class QuickTest extends Component {
                         <div className="row">
                             <div className="col-md-7">
                                 <p className="poppins_light quicktest-Text">{questionList[index]?.Question}
-                                    <div class="tooltipp"><img className="tooltipp" src={helpicon} />
+                                    {/* <div class="tooltipp"><img className="tooltipp" src={helpicon} />
 
                                         <span class="tooltipptext">{questionList[index]?.LeadIn}</span>
-                                    </div>
+                                    </div> */}
                                 </p>
                                 <button class="collapsebtn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                                     <img className="mr-3" src={Polygon} /> Vital Signs
@@ -122,7 +158,21 @@ class QuickTest extends Component {
                                         group A blood. This is dangerous for which of the following reasons?
                                     </div>
                                 </div>
+                                <div className="col-md-12 mt-5 p-0">
+                                    <div className="row">
+                                        <div className="col-md-5">
+                                            <img className="w-100 leadinImg" src={questionList[index]?.Image ? questionList[index]?.Image : lightimg} />
+                                        </div>
+                                        <div className="col-md-7 vertical_center">
+                                            <p className='leadin'>{questionList[index]?.LeadIn}</p>
+                                        </div>
+                                    </div>
+                                </div>
 
+
+                            </div>
+                            <div className="col-md-5">
+                                <p className='poppins_medium chooseCorrectAns'>Choose the right answer:</p>
                                 <p class="mt-3">
                                     <input className="radioInput" type="radio" id="forOptionA" name="radio-group" onClick={(e) => this.selectedOption(e)} />
                                     <label className="poppins_light radioLabel " for="forOptionA">{questionList[index]?.OptionA}</label>
@@ -149,30 +199,12 @@ class QuickTest extends Component {
                                     <label className="poppins_light radioLabel " for="forOptionE">{questionList[index]?.OptionE}</label>
 
                                 </p>
-                            </div>
-                            <div className="col-md-5">
-                                <div className="col-md-12">
-                                    <div className="row">
-                                        <div className="col-md-7">
-                                            <img className="w-100" src={questionList[index]?.Image?questionList[index]?.Image: lightimg} />
-                                        </div>
-                                        <div className="col-md-5 vertical_center">
-                                            <p className="poppins_regular refernceText">Reference Link </p>
-                                            <p className="poppins_regular refernceLink">{questionList[index]?.ReferenceUrl} </p>
-                                            <p className="poppins_regular refernceText">Video Link  </p>
-                                            <p className="poppins_regular refernceLink">{questionList[index]?.VideoLink}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-md-12 mt-5">
-                                    <p className="poppins_regular explaination">Explanation</p>
-                                    <div className="explainationDiv">
-                                        <p className="poppins_light">{questionList[index]?.AnswerExplenation}</p>
-                                    </div>
-                                </div>
+
                                 <div className="text-right">
-                                <Link to="/result">
-                                    <button className="quicktest-Btn">Submit & next <img src={rightarrow}/></button>
+                                <label className='poppins_medium skipThis'>Skip this</label>
+
+                                    <Link to="/result">
+                                        <button className="quicktest-Btn">Submit & next <img src={rightarrow} /></button>
                                     </Link>
                                 </div>
                             </div>

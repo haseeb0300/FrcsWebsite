@@ -104,10 +104,10 @@ class Signup extends Component {
                     <div className="signupcard col-md-12">
                         <div className="col-md-12">
                             <div className="row">
-                                <div className="col-md-6 col-6">
+                                <div className="col-md-6 ">
                                     <p className="poppins_regular signupcardText">Create Account <label className="poppins_medium signupcardPersonalInfo">Personal Information</label></p>
                                 </div>
-                                <div className="col-md-6 col-6 text-right">
+                                <div className="col-md-6 text-right">
                                     <p className="signupAlredy poppins_regular ">Already have an account?  <label className="primarycolor">Login</label></p>
 
                                 </div>
@@ -151,7 +151,7 @@ class Signup extends Component {
                             </div>
                         </div>
 
-                        <div className="col-md-12  mt-5 pt-5">
+                        <div className="col-md-12 pl-0 pr-0  mt-5 pt-5">
                             <p className="poppins_medium signupcardPersonalInfo">Subscription Plans</p>
                             <div className="hr"></div>
                             <div className="container mt-5">

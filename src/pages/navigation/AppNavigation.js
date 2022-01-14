@@ -15,7 +15,10 @@ import LearningTest from '../Test/LearningTest';
 import Result from '../Test/Result';
 
 import stripePayment from '../PaymentMethod/stripePayment';
+import OurTeam from '../OurTeam/OurTeam';
 
+import BookNow from '../OurTeam/BookNow';
+import Selection from '../Test/Selection';
 
 
 
@@ -112,7 +115,14 @@ class AppNavigation extends Component {
 
                         <Route exact path="/payement"
                             component={stripePayment} />
+                        <Route exact path="/ourteam"
+                            component={OurTeam} />
 
+                        <Route exact path="/booknow"
+                            component={BookNow} />
+
+                        <Route exact path="/selection"
+                            component={Selection} />
 
                     </Switch>
                 </ScrollToTop>
