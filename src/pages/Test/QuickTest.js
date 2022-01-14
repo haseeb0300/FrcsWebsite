@@ -163,7 +163,7 @@ class QuickTest extends Component {
                                         <div className="col-md-5">
                                             <img className="w-100 leadinImg" src={questionList[index]?.Image ? questionList[index]?.Image : lightimg} />
                                         </div>
-                                        <div className="col-md-7 vertical_center">
+                                        <div className="col-md-7 ">
                                             <p className='leadin'>{questionList[index]?.LeadIn}</p>
                                         </div>
                                     </div>
@@ -173,28 +173,28 @@ class QuickTest extends Component {
                             </div>
                             <div className="col-md-5">
                                 <p className='poppins_medium chooseCorrectAns'>Choose the right answer:</p>
-                                <p class="mt-3">
+                                <p class="mt-5">
                                     <input className="radioInput" type="radio" id="forOptionA" name="radio-group" onClick={(e) => this.selectedOption(e)} />
                                     <label className="poppins_light radioLabel " for="forOptionA">{questionList[index]?.OptionA}</label>
 
                                 </p>
 
-                                <p class="mt-3">
+                                <p class="mt-5">
                                     <input className="radioInput" type="radio" id="forOptionB" name="radio-group" />
                                     <label className="poppins_light radioLabel " for="forOptionB">{questionList[index]?.OptionB}</label>
 
                                 </p>
-                                <p class="mt-3">
+                                <p class="mt-5">
                                     <input className="radioInput" type="radio" id="forOptionC" name="radio-group" />
                                     <label className="poppins_light radioLabel " for="forOptionC">{questionList[index]?.OptionC}</label>
 
                                 </p>
-                                <p class="mt-3">
+                                <p class="mt-5">
                                     <input className="radioInput" type="radio" id="forOptionD" name="radio-group" />
                                     <label className="poppins_light  radioLabel" for="forOptionD">{questionList[index]?.OptionD}</label>
 
                                 </p>
-                                <p class="mt-3">
+                                <p class="mt-5">
                                     <input className="radioInput" type="radio" id="forOptionE" name="radio-group" />
                                     <label className="poppins_light radioLabel " for="forOptionE">{questionList[index]?.OptionE}</label>
 
