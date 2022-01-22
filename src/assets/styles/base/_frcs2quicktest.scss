@@ -1,0 +1,36 @@
+.frcs2QuickTest-Container{
+
+    .frcs2QuickTest-Heading{
+        font-size: 17px;
+    }
+    .frcs2QuickTest-Textarea{
+        height: 158px;
+        width: 96%;
+        font-size: 14px;
+        padding-left: 15px;
+        /* padding-right: 15px; */
+        padding: 15px;
+        color: #9B9B9B;
+        font-family: 'Poppins';
+        font-weight: 400;
+        border: 1px solid #b5a9a9;
+        border-radius: 10px;
+    }
+    .frcs2QuickTest-Textarea:focus{
+        outline: none;
+    }
+    .writeanwser{
+        background: #BFE7C4;
+        font-size: 14px;
+        padding: 20px;
+        border-radius: 15px;
+    }
+    .writeanwser1{
+        font-size: 14px;
+        border-radius: 15px;
+    }
+    .imgurl{
+        color: #22577A;
+        font-size: 14px;
+    }
+}

@@ -54,7 +54,10 @@ class LoginHeader extends Component {
                <div className="col-md-12">
                   <div className="row">
                      <div className=" col-xl-9 col-lg-7 ">
+                     <Link to="/testselection">
+
                         <img className="logo" src={Logo} />
+                        </Link>
 
                      </div>
                      <div className=" col-xl-3 col-lg-5 vertical_Center text-right">
@@ -65,9 +68,15 @@ class LoginHeader extends Component {
                            </div>
                            <div class="collapse" id="collapseExample">
                                     <div class="colapseHeader">
+                                    <Link to="/accountdetail">
+
                                       <p className="headerTitle poppins_light">Account Details</p>
+                                      </Link>
                                       <hr></hr>
+                                      <Link to="/setting">
+
                                       <p className="headerTitle poppins_light">Settings</p>
+                                      </Link>
                                       <hr></hr>
                                       <p className="headerTitle poppins_light">Support</p>
                                       <hr></hr>

@@ -18,6 +18,9 @@ import '../assets/styles/base/_result.scss'
 import '../assets/styles/base/_ourteam.scss'
 
 import '../assets/styles/base/_selection.scss'
+import '../assets/styles/base/_account.scss'
+
+import '../assets/styles/base/_frcs2quicktest.scss'
 
 
 

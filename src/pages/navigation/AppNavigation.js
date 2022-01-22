@@ -11,7 +11,11 @@ import Contact from '../Contact/Contact';
 import TestSelection from '../Test/TestSelection';
 
 import QuickTest from '../Test/QuickTest';
+import QuickTestFrcs2 from '../Test/Frcs2QuickTest';
+
 import LearningTest from '../Test/LearningTest';
+import LearningTestFrcs2 from '../Test/LearningTestFrcs2';
+
 import Result from '../Test/Result';
 
 import stripePayment from '../PaymentMethod/stripePayment';
@@ -19,9 +23,12 @@ import OurTeam from '../OurTeam/OurTeam';
 
 import BookNow from '../OurTeam/BookNow';
 import Selection from '../Test/Selection';
+import AccountDetail from '../Setiing/AccountDetail';
+
+import Setting from '../Setiing/Setting';
 
 
-
+import ResourseSelection from '../Test/ResourseSelection';
 
 
 
@@ -109,7 +116,8 @@ class AppNavigation extends Component {
                             component={QuickTest} />
                         <Route exact path="/learningtest"
                             component={LearningTest} />
-
+    <Route exact path="/learningtest/frcs2"
+                            component={LearningTestFrcs2} />
                         <Route exact path="/result"
                             component={Result} />
 
@@ -123,6 +131,15 @@ class AppNavigation extends Component {
 
                         <Route exact path="/selection"
                             component={Selection} />
+                                   <Route exact path="/accountdetail"
+                            component={AccountDetail} />
+       <Route exact path="/setting"
+                            component={Setting} />
+                                  <Route exact path="/resourse/selection"
+                            component={ResourseSelection} />
+                              <Route exact path="/QuickTest/Frcs2"
+                            component={QuickTestFrcs2} />
+
 
                     </Switch>
                 </ScrollToTop>

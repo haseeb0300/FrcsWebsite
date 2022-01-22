@@ -140,22 +140,90 @@ class QuickTest extends Component {
                                     <img className="mr-3" src={Polygon} /> Vital Signs
                                 </button>
                                 <div class="collapse" id="collapseExample">
-                                    <div class="card card-body">
-                                        A 45 year old man undergoes a laparoscopic right hemicolectomy. There is
-                                        torrential intraoperative haemorrhage and an emergency blood transfusion
-                                        is required. In the   ensuing panic the patient (who is blood group B) receives
-                                        group A blood. This is dangerous for which of the following reasons?
+                                    <div class="card card-body vitalSign-Card">
+                                     <div className='col-12'>
+                                         <div className='row'>
+                                             <div className='col-4 text-center'>
+                                                 <p className='vitalSign-Heading poppins_medium '>Heading</p>
+                                                 
+                                             </div>
+                                             <div className='col-4 text-center'>
+                                                 <p className='poppins_medium vitalSign-StandardValue'>Standard Value</p>
+                                             </div>
+                                             <div className='col-4 text-center'>
+                                                 <p  className='poppins_medium vitalSign-StandardValue'>Patient Count</p>
+                                             </div>
+                                         </div>
+                                         <div className='row'>
+                                             <div className='col-4 text-center'>
+                                                 <p className='vitalSign-StandardValue poppins_medium '>Glocose</p>
+                                                 
+                                             </div>
+                                             <div className='col-4 text-center'>
+                                                 <p className='poppins_light vitalSign-StandardValue'>21.42</p>
+                                             </div>
+                                             <div className='col-4 text-center'>
+                                                 <p  className='poppins_light vitalSign-StandardValue'>12.423</p>
+                                             </div>
+                                         </div>
+                                         <div className='row'>
+                                             <div className='col-4 text-center'>
+                                                 <p className='vitalSign-StandardValue poppins_medium '>Glocose</p>
+                                                 
+                                             </div>
+                                             <div className='col-4 text-center'>
+                                                 <p className='poppins_light vitalSign-StandardValue'>21.42</p>
+                                             </div>
+                                             <div className='col-4 text-center'>
+                                                 <p  className='poppins_light vitalSign-StandardValue'>12.423</p>
+                                             </div>
+                                         </div>
+                                     </div>
                                     </div>
                                 </div>
                                 <button class="collapsebtn" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
                                     <img className="mr-3" src={Polygon} /> Laboratory Report
                                 </button>
                                 <div class="collapse" id="collapseExample1">
-                                    <div class="card card-body">
-                                        A 45 year old man undergoes a laparoscopic right hemicolectomy. There is
-                                        torrential intraoperative haemorrhage and an emergency blood transfusion
-                                        is required. In the   ensuing panic the patient (who is blood group B) receives
-                                        group A blood. This is dangerous for which of the following reasons?
+                                <div class="card card-body vitalSign-Card">
+                                     <div className='col-12'>
+                                         <div className='row'>
+                                             <div className='col-4 text-center'>
+                                                 <p className='vitalSign-Heading poppins_medium '>Heading</p>
+                                                 
+                                             </div>
+                                             <div className='col-4 text-center'>
+                                                 <p className='poppins_medium vitalSign-StandardValue'>Standard Value</p>
+                                             </div>
+                                             <div className='col-4 text-center'>
+                                                 <p  className='poppins_medium vitalSign-StandardValue'>Patient Count</p>
+                                             </div>
+                                         </div>
+                                         <div className='row'>
+                                             <div className='col-4 text-center'>
+                                                 <p className='vitalSign-StandardValue poppins_medium '>Glocose</p>
+                                                 
+                                             </div>
+                                             <div className='col-4 text-center'>
+                                                 <p className='poppins_light vitalSign-StandardValue'>21.42</p>
+                                             </div>
+                                             <div className='col-4 text-center'>
+                                                 <p  className='poppins_light vitalSign-StandardValue'>12.423</p>
+                                             </div>
+                                         </div>
+                                         <div className='row'>
+                                             <div className='col-4 text-center'>
+                                                 <p className='vitalSign-StandardValue poppins_medium '>Glocose</p>
+                                                 
+                                             </div>
+                                             <div className='col-4 text-center'>
+                                                 <p className='poppins_light vitalSign-StandardValue'>21.42</p>
+                                             </div>
+                                             <div className='col-4 text-center'>
+                                                 <p  className='poppins_light vitalSign-StandardValue'>12.423</p>
+                                             </div>
+                                         </div>
+                                     </div>
                                     </div>
                                 </div>
                                 <div className="col-md-12 mt-5 p-0">

@@ -109,8 +109,10 @@ class Selection extends Component {
                                         <p className='poppins_medium Selection-Container-Heading'>Test Questions</p>
                                         <p className='poppins_light checkboxLabel'>Number of Questions in a test <label className='staric'>*</label></p>
                                         <input className='QuestionInput' type='number' placeholder='Enter here'></input>
+                                        <Link to="/quicktest">
 
                                         <button className='startNowbtn'>Start Now</button>
+                                        </Link>
                                     </div>
                                 </div>
 
@@ -119,7 +121,7 @@ class Selection extends Component {
                             <div className='col-md-10'>
                                 <div className='row'>
                                     <div className='col-md-4'>
-                                        <p className='poppins_medium Selection-Container-Heading'>Basic Science Domain</p>
+                                        <p className='poppins_medium Selection-Container-Heading'>Domains</p>
                                         <div className='row m-0'>
 
                                             <div className="w-5 text-center">
@@ -127,7 +129,7 @@ class Selection extends Component {
 
                                             </div>
                                             <div className="w-95">
-                                                <label className="poppins_light checkboxLabel ml-3" for="AllDomain">All Domain </label>
+                                                <label className="poppins_light checkboxLabel ml-3" for="AllDomain">Sub Domain </label>
 
                                             </div>
                                         </div>
@@ -156,7 +158,7 @@ class Selection extends Component {
                                         </div>
                                     </div>
                                     <div className='col-md-4'>
-                                        <p className='poppins_medium Selection-Container-Heading'>Speciality Domain</p>
+                                        <p className='poppins_medium Selection-Container-Heading'>Domains</p>
                                         <div className='row m-0'>
 
                                             <div className="w-5 text-center">
@@ -164,7 +166,7 @@ class Selection extends Component {
 
                                             </div>
                                             <div className="w-95">
-                                                <label className="poppins_light checkboxLabel ml-3" for="AllSubDomains">All Sub Domains</label>
+                                                <label className="poppins_light checkboxLabel ml-3" for="AllSubDomains">Test Questions</label>
 
                                             </div>
                                         </div>
@@ -172,14 +174,13 @@ class Selection extends Component {
 
                                     </div>
                                     <div className='col-md-4'>
-                                        <p className='poppins_medium Selection-Container-Heading'>Test Questions</p>
-                                        <p className='poppins_light checkboxLabel'>Number of Questions in a test <label className='staric'>*</label></p>
-                                        <input className='QuestionInput' type='number' placeholder='Enter here'></input>
-                                        <Link to="/quicktest">
+                                     
+                                        <Link to="/QuickTest/Frcs2">
 
                                         <button className='startNowbtn'>Start Now</button>
                                         </Link>
                                     </div>
+                                
                                 </div>
 
                             </div>

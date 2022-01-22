@@ -10,6 +10,19 @@
     font-size: 17px;
 
 }
+.vitalSign-Heading{
+    color: #018786;
+    font-size: 15px;
+
+}
+.vitalSign-Card{
+    background: #EEF7F7;
+    height: 200px;
+    overflow: auto;}
+.vitalSign-StandardValue{
+    color: #383838;
+    font-size: 15px;
+}
 .checkAnswerBtn{
     height: 54px;
     width: 200px;
@@ -39,9 +52,13 @@ color: #38A3A5;
 }
 .feedbackinput{
     height: 50px;
-    width: 100%;
+    width: 98%;
     padding-left: 20px;
-    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #b5a9a9;
+    font-size: 14px;
+    font-family: 'Poppins';
+    font-weight: 400;
 }
 .skipThis{
     font-size: 16px;
