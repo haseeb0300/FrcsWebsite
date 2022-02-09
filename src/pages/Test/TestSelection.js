@@ -30,7 +30,14 @@ class TestSelection extends Component {
     }
 
 
-
+        onClickQuickTest = () => {
+            this.props.history.push('/selection',{'lastPage' : 'quickTest'})
+        
+    }
+    onClickLearningTest = () => {
+        this.props.history.push('/selection',{'lastPage' : 'learningTest'})
+    
+}
 
     render() {
         // const { t, i18n } = this.props
@@ -54,11 +61,10 @@ class TestSelection extends Component {
                                 <img src={stopwatch} />
                                 <p className="poppins_medium heading">Quick Test</p>
                                 <p className="poppins_light text ">A time based test to assist your skills under time pressure, which help you to prepare you for the examination test of FRCS</p>
-                                <Link to="/selection">
+                               
 
 
-                                <button className="quicktestbtn">Start Quick Test Now</button>
-                                </Link>
+                                <button className="quicktestbtn" onClick={(e)=>this.onClickQuickTest()}>Start Quick Test Now</button>
                             </div>
                         </div>
                         <div className="col-md-12 col-lg-4">
@@ -66,11 +72,9 @@ class TestSelection extends Component {
                                 <img src={brain} />
                                 <p className="poppins_medium learningModeHeading">Learning Mode</p>
                                 <p className="poppins_light learningModetext ">A Learning based test to increase your skills and concepts based on random questions, which help you to prepare you for the examination test of FRCS</p>
-                                <Link to="/selection">
 
 
-                                <button className="learningModebtn">Start Learning Mode Now</button>
-                                </Link>
+                                <button className="learningModebtn" onClick={(e)=> this.onClickLearningTest()}>Start Learning Mode Now</button>
                             </div>
                         </div>
                         <div className="col-md-12 col-lg-4">

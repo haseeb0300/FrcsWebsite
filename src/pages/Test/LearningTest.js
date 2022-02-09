@@ -26,16 +26,32 @@ class LearningTest extends Component {
             index: 0,
             correctAnsware: 0,
             wrongAnsware: 0,
+            NumberOfQuestion: '',
+            visibleAnswer: false,
+
 
         };
     }
 
     componentDidMount() {
 
-        this.props.getFrcs1Question().then((res) => {
+        this.props.getFrcs1Question(this?.props?.location?.state?.NumberOfQuestion).then((res) => {
             console.log(res)
             this.setState({
                 questionList: res.content,
+            }, () => {
+                var tmpArray = []
+                for (var i = 0; i < this.state.questionList.length; i++) {
+                    //console.log(this.state.questionList[i])
+                    var obj = {
+                        question: this.state.questionList[i],
+                        selectedOption: '',
+                        correctOption: this.state.questionList[i]?.CorrectOption,
+                        key: i,
+                    }
+                    tmpArray.push(obj)
+                }
+                this.setState({ answerList: tmpArray })
             })
 
         }).catch((err) => {
@@ -44,6 +60,14 @@ class LearningTest extends Component {
         })
 
     }
+    componentWillMount() {
+
+        if (this?.props?.location?.state?.NumberOfQuestion) {
+            console.log(this.props.location.state.NumberOfQuestion)
+            this.setState({ NumberOfQuestion: this.props.location.state.NumberOfQuestion })
+        }
+    }
+
 
     changeRating(newRating, name) {
         this.setState({
@@ -51,7 +75,59 @@ class LearningTest extends Component {
         });
     }
     nextIndex = () => {
-        this.setState({ index: this.state.index + 1 })
+        let { questionList, index, answerList } = this.state
+        var totalQuestion = questionList?.length
+        if (index + 1 < totalQuestion) {
+            this.setState({ index: index + 1 }, () => {
+
+                this.selectedOption({}, questionList[index + 1], answerList[index + 1]?.selectedOption || '')
+
+            })
+
+        } else {
+            return
+        }
+    }
+    renderVitalSign = () => {
+        let { questionList, answerList, index } = this.state
+
+        return questionList[index]?.QuestionVitalSifnValues && questionList[index]?.QuestionVitalSifnValues.map((item, i) =>
+            <>
+                <div className='row'>
+                    <div className='col-4 text-center'>
+                        <p className='vitalSign-StandardValue poppins_medium '>{item.Name}</p>
+
+                    </div>
+                    <div className='col-4 text-center'>
+                        <p className='poppins_light vitalSign-StandardValue'>{item.Normal_Value}</p>
+                    </div>
+                    <div className='col-4 text-center'>
+                        <p className='poppins_light vitalSign-StandardValue'>{item.ChangeValue}</p>
+                    </div>
+                </div>
+            </>
+        )
+    }
+
+    renderReportValue = () => {
+        let { questionList, answerList, index } = this.state
+
+        return questionList[index]?.QuestionReportValues && questionList[index]?.QuestionReportValues.map((item, i) =>
+            <>
+                <div className='row'>
+                    <div className='col-4 text-center'>
+                        <p className='vitalSign-StandardValue poppins_medium '>{item.Name}</p>
+
+                    </div>
+                    <div className='col-4 text-center'>
+                        <p className='poppins_light vitalSign-StandardValue'>{item.Normal_Value}</p>
+                    </div>
+                    <div className='col-4 text-center'>
+                        <p className='poppins_light vitalSign-StandardValue'>{item.ChangeValue}</p>
+                    </div>
+                </div>
+            </>
+        )
     }
 
     backIndex = () => {
@@ -60,6 +136,18 @@ class LearningTest extends Component {
 
     selectedOption = (e) => {
         console.log(e)
+    }
+
+    setVisibityAnswer = (question, i) => {
+        const { questionList } = this.state
+        let tmpArray = questionList
+        var obj = {
+            ...question,
+            visibleAnswer: true,
+        }
+        tmpArray.splice(i, 1, obj);
+        this.setState({ questionList: tmpArray })
+        return
     }
 
     render() {
@@ -79,67 +167,71 @@ class LearningTest extends Component {
 
         return (
             <>
-                <LearningTestHeader />
+                <LearningTestHeader
+                    NumberOfQuestion={this.state.NumberOfQuestion}
+
+
+                />
                 <div className="quicktest-container">
-                    {/* <div className="col-md-12 ">
-                        <div className="row">
-                            <div className=" col-2 vertical_center">
-                                <button className="leftbtn" onClick={(e)=> this.backIndex(e)}><i class="fa fa-angle-left arrowIcon" aria-hidden="true" ></i></button>
-                            </div>
-                            <div className=" col-5  vertical_center text-center">
-                                <p className="poppins_light QuestionsHeading">{'Question '+ (index + 1)+ ' of 10'}</p>
-                            </div>
-                            <div className=" col-2 text-right vertical_center">
-                                <button className="leftbtn" onClick={(e)=> this.nextIndex(e)}><i class="fa fa-angle-right arrowIcon" aria-hidden="true" ></i></button>
 
-                            </div>
-                            <div className=" col-3  vertical_center">
-<div className='text-center'>
-    <label className='skipQuestion'>Skipped Questions</label>
-    <img src={skipquestion}/>
-</div>
-                            </div>
-                            <div className="quicktest-hr"></div>
-
-
-                        </div>
-                    </div> */}
                     <div className="col-md-12">
                         <div className="row">
                             <div className="col-md-7">
                                 <p className='poppins_medium QuestionTittle'>Question 01</p>
                                 <p className="poppins_light quicktest-Text">{questionList[index]?.Question}
-                                    {/* <div class="tooltipp"><img className="tooltipp" src={helpicon} />
 
-                                        <span class="tooltipptext">{questionList[index]?.LeadIn}</span>
-                                    </div> */}
                                 </p>
                                 <button class="collapsebtn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                                     <img className="mr-3" src={Polygon} /> Vital Signs
                                 </button>
                                 <div class="collapse" id="collapseExample">
-                                    <div class="card card-body">
-                                        A 45 year old man undergoes a laparoscopic right hemicolectomy. There is
-                                        torrential intraoperative haemorrhage and an emergency blood transfusion
-                                        is required. In the   ensuing panic the patient (who is blood group B) receives
-                                        group A blood. This is dangerous for which of the following reasons?
+                                    <div class="card card-body vitalSign-Card">
+                                        <div className='col-12'>
+                                            <div className='row'>
+                                                <div className='col-4 text-center'>
+                                                    <p className='vitalSign-Heading poppins_medium '>Heading</p>
+
+                                                </div>
+                                                <div className='col-4 text-center'>
+                                                    <p className='poppins_medium vitalSign-StandardValue'>Standard Value</p>
+                                                </div>
+                                                <div className='col-4 text-center'>
+                                                    <p className='poppins_medium vitalSign-StandardValue'>Patient Count</p>
+                                                </div>
+                                            </div>
+
+                                            {this.renderVitalSign()}
+
+                                        </div>
                                     </div>
                                 </div>
                                 <button class="collapsebtn" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
                                     <img className="mr-3" src={Polygon} /> Laboratory Report
                                 </button>
                                 <div class="collapse" id="collapseExample1">
-                                    <div class="card card-body">
-                                        A 45 year old man undergoes a laparoscopic right hemicolectomy. There is
-                                        torrential intraoperative haemorrhage and an emergency blood transfusion
-                                        is required. In the   ensuing panic the patient (who is blood group B) receives
-                                        group A blood. This is dangerous for which of the following reasons?
+                                    <div class="card card-body vitalSign-Card">
+                                        <div className='col-12'>
+                                            <div className='row'>
+                                                <div className='col-4 text-center'>
+                                                    <p className='vitalSign-Heading poppins_medium '>Heading</p>
+
+                                                </div>
+                                                <div className='col-4 text-center'>
+                                                    <p className='poppins_medium vitalSign-StandardValue'>Standard Value</p>
+                                                </div>
+                                                <div className='col-4 text-center'>
+                                                    <p className='poppins_medium vitalSign-StandardValue'>Patient Count</p>
+                                                </div>
+                                            </div>
+
+                                            {this.renderReportValue()}
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="col-md-12 mt-5 p-0">
                                     <div className="row">
                                         <div className="col-md-5">
-                                            <img className="w-100 leadinImg" src={questionList[index]?.Image ? questionList[index]?.Image : lightimg} />
+                                        <img className="w-100 leadinImg" src={questionList[index]?.Image ? questionList[index]?.Image : lightimg} />
                                         </div>
                                         <div className="col-md-7 ">
                                             <p className='leadin'>{questionList[index]?.LeadIn}</p>
@@ -184,30 +276,30 @@ class LearningTest extends Component {
                                     <label className="poppins_light radioLabel " for="forOptionE">{questionList[index]?.OptionE}</label>
 
                                 </p>
-                                <button className='checkAnswerBtn'>Check Answer</button>
+                                <button className='checkAnswerBtn' onClick={(e) => this.setVisibityAnswer(questionList[index],index)} >Check Answer</button>
+                                {questionList[index]?.visibleAnswer && (
 
-                                <div className="col-md-12 mt-5">
-                                    <p className="poppins_regular explaination">Explanation</p>
-                                    <div className="explainationDiv">
-                                        <p className="poppins_light">{questionList[index]?.AnswerExplenation}
-                                            <br></br>
-                                            <label className='seeimg'><i>See Image</i></label>
+                                    <div className="col-md-12 mt-5">
+                                        <p className="poppins_regular explaination">Explanation</p>
+                                        <div className="explainationDiv">
+                                            <p className="poppins_light">{questionList[index]?.AnswerExplenation}
+                                                <br></br>
+                                                <label className='seeimg'><i>See Image</i></label>
 
-                                        </p>
+                                            </p>
+                                        </div>
+                                        <p className="poppins_regular explaination mt-5">Question Feedback:</p>
+                                        <input className='feedbackinput poppins_regular'></input>
+                                        <p className="poppins_regular explaination mt-4">Rate this question</p>
+                                        <StarsRating
+                                            count={5}
+                                            onChange={ratingChanged}
+                                            size={30}
+                                            color2={'#ffd700'} />
                                     </div>
-                                    <p className="poppins_regular explaination mt-5">Question Feedback:</p>
-                                    <input className='feedbackinput poppins_regular'></input>
-                                    <p className="poppins_regular explaination mt-4">Rate this question</p>
-                                    <StarsRating
-                                        count={5}
-                                        onChange={ratingChanged}
-                                        size={30}
-                                        color2={'#ffd700'} />
-                                </div>
+                                )}
                                 <div className="text-right">
-                                    <Link to="/result">
-                                        <button className="quicktest-Btn">Submit & next <img src={rightarrow} /></button>
-                                    </Link>
+                                    <button onClick={(e) => this.nextIndex(e)} className="quicktest-Btn">Submit & next <img src={rightarrow} /></button>
                                 </div>
                             </div>
 

@@ -73,7 +73,7 @@ class TestHeader extends Component {
                                     <p className="poppins_medium countDown vertical_center">Count Down</p>
                                     {/* <p className="poppins_semibold time vertical_center">01:50:20</p> */}
                                     <Countdown
-                                        date={Date.now() + 7200000}
+                                        date={Date.now() + (this.props.NumberOfQuestion * 67500)}
                                         zeroPadTime={2}
                                         renderer={props => <p className="poppins_semibold time vertical_center">{props.hours+':'+ props.minutes+':'+props.seconds}</p>}
                                     />,

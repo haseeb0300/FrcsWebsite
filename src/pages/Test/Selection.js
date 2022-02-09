@@ -18,7 +18,9 @@ class Selection extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeTab: 1
+            activeTab: 1,
+            lastPage:"",
+            NumberOfQuestion:"",
 
 
         };
@@ -28,12 +30,45 @@ class Selection extends Component {
 
     }
 
+    componentWillMount() {
+
+        if (this?.props?.location?.state?.lastPage) {
+            console.log(this.props.location.state.lastPage)
+            this.setState({lastPage:this.props.location.state.lastPage})
+        }
+    }
+
     onClickBottomBar = (val) => {
         this.setState({
             activeTab: val
         })
     }
 
+    onClickStartrcs1 = () =>
+    {
+        if(this.state.lastPage === "quickTest"){
+            this.props.history.push('/quicktest',{"NumberOfQuestion": this.state.NumberOfQuestion})
+
+        }else{
+            this.props.history.push('/learningtest',{"NumberOfQuestion": this.state.NumberOfQuestion})
+
+        }
+    }
+
+    onClickStartrcs2 = () =>
+    {
+        if(this.state.lastPage === "quickTest"){
+            this.props.history.push('/QuickTest/Frcs2',)
+
+        }else{
+            this.props.history.push('/learningtest/frcs2',)
+
+        }
+    }
+
+    onChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
 
     render() {
         // const { t, i18n } = this.props
@@ -108,11 +143,9 @@ class Selection extends Component {
                                     <div className='col-md-4'>
                                         <p className='poppins_medium Selection-Container-Heading'>Test Questions</p>
                                         <p className='poppins_light checkboxLabel'>Number of Questions in a test <label className='staric'>*</label></p>
-                                        <input className='QuestionInput' type='number' placeholder='Enter here'></input>
-                                        <Link to="/quicktest">
+                                        <input className='QuestionInput' type='number' name="NumberOfQuestion" onChange={this.onChange} value={this.state.NumberOfQuestion} placeholder='Enter here'></input>
 
-                                        <button className='startNowbtn'>Start Now</button>
-                                        </Link>
+                                        <button className='startNowbtn' onClick={(e) => this.onClickStartrcs1()}>Start Now</button>
                                     </div>
                                 </div>
 
@@ -175,10 +208,8 @@ class Selection extends Component {
                                     </div>
                                     <div className='col-md-4'>
                                      
-                                        <Link to="/QuickTest/Frcs2">
 
-                                        <button className='startNowbtn'>Start Now</button>
-                                        </Link>
+                                        <button className='startNowbtn' onClick={(e) => this.onClickStartrcs2()}>Start Now</button>
                                     </div>
                                 
                                 </div>
