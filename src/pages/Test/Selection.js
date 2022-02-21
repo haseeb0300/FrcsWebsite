@@ -21,7 +21,7 @@ class Selection extends Component {
             activeTab: 1,
             lastPage:"",
             NumberOfQuestion:"",
-
+            testType:"",
 
         };
     }
@@ -57,11 +57,14 @@ class Selection extends Component {
 
     onClickStartrcs2 = () =>
     {
+        const {testType} = this.state
+        
         if(this.state.lastPage === "quickTest"){
-            this.props.history.push('/QuickTest/Frcs2',)
+            
+            this.props.history.push('/QuickTest/Frcs2', {'testType':testType})
 
         }else{
-            this.props.history.push('/learningtest/frcs2',)
+            this.props.history.push('/learningtest/frcs2', {'testType':testType})
 
         }
     }
@@ -73,7 +76,7 @@ class Selection extends Component {
     render() {
         // const { t, i18n } = this.props
         const { t, i18n, location, user } = this.props
-        const { isLoading } = this.state;
+        const { isLoading,testType } = this.state;
         if (isLoading) {
             return (
                 <div className="loader-large"></div>
@@ -158,7 +161,7 @@ class Selection extends Component {
                                         <div className='row m-0'>
 
                                             <div className="w-5 text-center">
-                                                <input type="checkbox" id="AllDomain" />
+                                                <input type="checkbox" id="AllDomain"  />
 
                                             </div>
                                             <div className="w-95">
@@ -170,7 +173,7 @@ class Selection extends Component {
                                         <div className='row m-0'>
 
                                             <div className="w-5 text-center">
-                                                <input type="checkbox" id="Oral" />
+                                                <input type="radio" id="Oral" onChange={e => this.setState({testType:'Oral'})} />
 
                                             </div>
                                             <div className="w-95">
@@ -181,7 +184,7 @@ class Selection extends Component {
                                         <div className='row m-0'>
 
                                             <div className="w-5 text-center">
-                                                <input type="checkbox" id="Clinical" />
+                                                <input type="radio" id="Clinical" onChange={e => this.setState({testType:'Clinical'})}  />
 
                                             </div>
                                             <div className="w-95">

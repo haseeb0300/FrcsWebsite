@@ -57,7 +57,9 @@ import jwt_decode from 'jwt-decode';
 
 import { logoutUser, setCurrentUser } from '../../store/actions/authAction';
 if (process.env.NODE_ENV === 'production') {
-    axios.defaults.baseURL = 'https://littlebookcompany.net:3002/v1';
+    //axios.defaults.baseURL = 'https://littlebookcompany.net:3002/v1';
+    axios.defaults.baseURL = 'http://localhost:4002/v1';
+
 } else {
     axios.defaults.baseURL = 'http://localhost:4002/v1';
 }
