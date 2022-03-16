@@ -11,6 +11,7 @@ import Member1 from '../../assets/Images/OurTeam/1.png'
 import Member2 from '../../assets/Images/OurTeam/2.png'
 import Member3 from '../../assets/Images/OurTeam/3.png'
 import Member4 from '../../assets/Images/OurTeam/4.png'
+import AvatarPic from '../../assets/Images/OurTeam/avatar.jpg'
 
 
 
@@ -54,12 +55,12 @@ class OurTeam extends Component {
                                 <div className='col-md-4 mt-3 text-center'>
                                     <div className='OurTeamCard'>
                                         <img className='MemberImg' src={Member1} />
-                                        <p className='poppins_medium text mb-0'>Mr. Muhammad Shafique
+                                        <p className='poppins_medium text mb-0'>Mr. Muhammad Shafiq
                                         </p>
                                         <p className='poppins_light text mb-0'><i>MBBS; MRCS; FRCSED
                                         </i></p>
                                         <p className='poppins_medium text'>Section Editor, General, Emergency & Breast Surgery
-                                            Department of General and Colorectal Surgery, Besti Cadwaladr, UK</p>
+                                            Calderdale and Huddersfield NHS Foundation Trust</p>
                                     </div>
 
                                 </div>
@@ -101,7 +102,7 @@ class OurTeam extends Component {
                                 </div>
                                 <div className='col-md-4 mt-3 text-center'>
                                     <div className='OurTeamCard'>
-                                        <img className='MemberImg' src={Member4} />
+                                        <img className='MemberImg' src={AvatarPic} />
                                         <p className='poppins_medium text mb-0'>Mr. Badereldin-Elbagir
 
                                         </p>
@@ -117,29 +118,47 @@ class OurTeam extends Component {
                                 </div>
                                 <div className='col-md-4 mt-3 text-center'>
                                     <div className='OurTeamCard'>
-                                        <img className='MemberImg' src={Member4} />
-                                        <p className='poppins_medium text mb-0'>Founder and Chief Executive 
-
+                                        <img className='MemberImg' src={AvatarPic} />
+                                        <p className='poppins_medium text mb-0'>Manager IT and Operation
                                         </p>
-                                    
-                                        <p className='poppins_medium text'>Dr. Mrs Afshan Khalid 
+
+                                        <p className='poppins_medium text'>Saad Iqbal
 
                                         </p>
                                     </div>
 
                                 </div>
-                                <div className='col-md-4 mt-3 text-center'>
+                                <div className='col-md-6 mt-3 text-center'>
                                     <div className='OurTeamCard'>
-                                        <img className='MemberImg' src={Member4} />
-                                        <p className='poppins_medium text mb-0'>Manager IT and Operation 
+                                        <img className='MemberImg' src={AvatarPic} />
+                                        <p className='poppins_medium text mb-0'>Founder and Chief Executive
+
                                         </p>
-                                    
-                                        <p className='poppins_medium text'>Saad Iqbal 
+
+                                        <p className='poppins_medium text'>Dr. Mrs Afshan Khalid
 
                                         </p>
                                     </div>
 
                                 </div>
+                                <div className='col-md-6 mt-3 text-center'>
+                                    <div className='OurTeamCard'>
+                                        <img className='MemberImg' src={AvatarPic} />
+                                        <p className='poppins_medium text mb-0'>Cheif Editor
+
+                                        </p>
+                                        <p className='poppins_light text mb-0'><i>
+                                            MBBS; MRCS; FCPS; FRCS; MHPE
+
+                                        </i></p>
+
+                                        <p className='poppins_medium text'>Mr. Khalid M Bhatti
+
+                                        </p>
+                                    </div>
+
+                                </div>
+
                             </div>
                         </div>
                     </div>

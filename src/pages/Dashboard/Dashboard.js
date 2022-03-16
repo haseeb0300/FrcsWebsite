@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 import { Carousel } from 'react-responsive-carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Link, withRouter } from 'react-router-dom';
-import Banner from '../../assets/Images/Dashboard/banner.png'
+import Banner from '../../assets/Images/Dashboard/banner.jpg'
+import figure2 from '../../assets/Images/Dashboard/f2.jpg'
+
 import rightarrow from '../../assets/Images/Dashboard/right-arrow.png'
 
 import Header from '../../component/Header'
@@ -87,17 +89,14 @@ class Dashboard extends Component {
             
             />
             <div className="dashboardContainer">
-               <div className="col-md-12 ">
+               <div className="col-md-12 Section1 ">
                   <div className="row">
                      <div className="col-md-6"></div>
                      <div className="col-md-6">
-                        <p className="poppins_semibold bannerText1">FRCS General Surgery </p>
-                        <p className="poppins_regular bannerText2">Revision Resources to help you pass your FRCS exam  </p>
-                        <p className="poppins_extralight bannerText3">- 1015+ FRCS exam revision questions</p>
-                        <p className="poppins_extralight bannerText3">- Offline App to revise on the go</p>
-                        <p className="poppins_extralight bannerText3">- View your progress on the Performance Dashboard </p>
-                        <p className="poppins_extralight bannerText3">- Detailed analytical tools highlight your weaker areas</p>
-
+                        <p className="poppins_semibold bannerText1">GrabTheFRCS  </p>
+                        {/* <p className="poppins_regular bannerText2">Revision Resources to help you pass your FRCS exam  </p> */}
+                        <p className="poppins_light mb-0 bannerText2">is an extensive resource for passing the both components of the FRCS general Surgery exam. It equips the candidates appearing for <label className='poppins_medium'>Speciality based FRCS or international FRCS,</label> with essential knowledge and skills to pass the exam in the first attempt. </p>
+                     
                      </div>
                      <div className="col-md-12">
                         <div className="row">
@@ -113,8 +112,13 @@ class Dashboard extends Component {
                                        </div>
                                        <div className=" col-sm-5 vertical_Center">
                                           <select className="bannerCardSelect poppins_regular">
-                                             <option>1 Month - PKR 5000</option>
-                                             <option>1 Month - PKR 5000</option>
+                                          <option>please select</option>
+
+                                             <option>4 Month - 120 pounds</option>
+                                             <option>8 Month - 220 pounds</option>
+                                             <option>12 Month - 300 pounds</option>
+                                             <option>Monthly Subscriptions at  - 30 pounds</option>
+
 
                                           </select>
                                        </div>
@@ -134,7 +138,7 @@ class Dashboard extends Component {
 
 
 
-                  <img className="w-100 bannerImg" src={Banner} />
+                  {/* <img className="w-100 img_overlay" src={Banner} /> */}
 
                </div>
                {/* Section 2 */}
@@ -142,15 +146,12 @@ class Dashboard extends Component {
                   <div className="row">
                      <div className="col-md-7">
                         <div className="col-md-11">
-                           <p className="poppins_medium heading">Online revision for the intercollegiate FRCS</p>
+                           <p className="poppins_medium heading">Single subscription</p>
 
-                           <p className="text poppins_light">Welcome to eFRCS, the innovative online revision
-                              portal for the FRCS Intercollegiate examination in
-                              General Surgery. Thank you for taking the time to
-                              visit our website.</p>
+                           <p className="poppins_light text1">Single subscription provides you an access to all the resources essential for section 1 and 2 of the FRCS exam.</p>
                         </div>
 
-                        <div className="col-md-12">
+                        {/* <div className="col-md-12">
                            <p className="poppins_light text1">- Written by Surgeons for Surgeons</p>
                            <p className="poppins_light text1">- Quality, relevant questions accompanied by detailed teaching notes</p>
                            <p className="poppins_light text1">- Questions are closely aligned with the new FRCS syllabus and many are based on themes from previous exams</p>
@@ -161,7 +162,7 @@ class Dashboard extends Component {
 
 
 
-                        </div>
+                        </div> */}
 
                         <div className="col-md-12">
                            <div className="Section2Card">
@@ -186,7 +187,7 @@ class Dashboard extends Component {
 
                      </div>
                      <div className="col-md-5 text-center">
-                        <img className="h82" src={Section2Img} />
+                        <img className="h82" src={figure2} />
                      </div>
 
                   </div>
@@ -198,7 +199,7 @@ class Dashboard extends Component {
                   <div className="col-md-12 mt-5">
                      <div className="row">
                         <div className="col-md-6">
-                           <img className="w-100 section3img" src={Section3Img} />
+                           <img className="w-100 section3img" src={figure2} />
 
                         </div>
                         <div className="col-md-6">
