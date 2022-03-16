@@ -234,7 +234,7 @@ class LearningTest extends Component {
                                         <img className="w-100 leadinImg" src={questionList[index]?.Image ? questionList[index]?.Image : lightimg} />
                                         </div>
                                         <div className="col-md-7 ">
-                                            <p className='leadin'>{questionList[index]?.LeadIn}</p>
+                                            {/* <p className='leadin'>{questionList[index]?.LeadIn}</p> */}
                                         </div>
 
                                     </div>
@@ -248,7 +248,7 @@ class LearningTest extends Component {
 
                             </div>
                             <div className="col-md-5">
-                                <p className='poppins_medium chooseCorrectAns'>Choose the right answer:</p>
+                                <p className='poppins_medium chooseCorrectAns'>{questionList[index]?.LeadIn}</p>
 
                                 <p class="mt-4">
                                     <input className="radioInput" type="radio" id="forOptionA" name="radio-group" onClick={(e) => this.selectedOption(e)} />

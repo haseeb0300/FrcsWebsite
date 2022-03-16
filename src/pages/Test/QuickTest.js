@@ -26,7 +26,7 @@ class QuickTest extends Component {
             correctAnsware: 0,
             wrongAnsware: 0,
             answerList: [],
-            NumberOfQuestion:'',
+            NumberOfQuestion: '',
 
         };
     }
@@ -63,7 +63,7 @@ class QuickTest extends Component {
 
         if (this?.props?.location?.state?.NumberOfQuestion) {
             console.log(this.props.location.state.NumberOfQuestion)
-            this.setState({NumberOfQuestion:this.props.location.state.NumberOfQuestion})
+            this.setState({ NumberOfQuestion: this.props.location.state.NumberOfQuestion })
         }
     }
 
@@ -187,7 +187,7 @@ class QuickTest extends Component {
         return (
             <>
                 <TestHeader
-                NumberOfQuestion={this.state.NumberOfQuestion}
+                    NumberOfQuestion={this.state.NumberOfQuestion}
                 />
                 <div className="quicktest-container">
                     <div className="col-md-12 ">
@@ -196,7 +196,7 @@ class QuickTest extends Component {
                                 <button className="leftbtn" onClick={(e) => this.backIndex(e)}><i class="fa fa-angle-left arrowIcon" aria-hidden="true" ></i></button>
                             </div>
                             <div className=" col-5  vertical_center text-center">
-                                <p className="poppins_light QuestionsHeading">{'Question ' + (index + 1) + ' of '+ (questionList.length)}</p>
+                                <p className="poppins_light QuestionsHeading">{'Question ' + (index + 1) + ' of ' + (questionList.length)}</p>
                             </div>
                             <div className=" col-2 text-right vertical_center">
                                 <button className="leftbtn" onClick={(e) => this.nextIndex(e)}><i class="fa fa-angle-right arrowIcon" aria-hidden="true" ></i></button>
@@ -271,7 +271,7 @@ class QuickTest extends Component {
                                                  <p  className='poppins_light vitalSign-StandardValue'>12.423</p>
                                              </div>
                                          </div> */}
-                                         {this.renderVitalSign()}
+                                            {this.renderVitalSign()}
 
                                         </div>
                                     </div>
@@ -328,7 +328,6 @@ class QuickTest extends Component {
                                             <img className="w-100 leadinImg" src={questionList[index]?.Image ? questionList[index]?.Image : lightimg} />
                                         </div>
                                         <div className="col-md-7 ">
-                                            <p className='leadin'>{questionList[index]?.LeadIn}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -336,7 +335,8 @@ class QuickTest extends Component {
 
                             </div>
                             <div className="col-md-5">
-                                <p className='poppins_medium chooseCorrectAns'>Choose the right answer:</p>
+                                <p className='poppins_medium chooseCorrectAns'>                                          
+                                  {questionList[index]?.LeadIn}</p>
                                 <p class="mt-5">
                                     <input checked={answerList[index]?.selectedOption === "OptionA"} className="radioInput" type="radio" id="forOptionA" name="radio-group" onClick={(e) => this.selectedOption(e, questionList[index], 'OptionA')} />
                                     <label className="poppins_light radioLabel " for="forOptionA">{questionList[index]?.OptionA}</label>

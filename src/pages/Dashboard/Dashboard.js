@@ -6,6 +6,11 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Link, withRouter } from 'react-router-dom';
 import Banner from '../../assets/Images/Dashboard/banner.jpg'
 import figure2 from '../../assets/Images/Dashboard/f2.jpg'
+import figure3 from '../../assets/Images/Dashboard/f3.jpg'
+import figure4 from '../../assets/Images/Dashboard/f4.jpg'
+import figure5 from '../../assets/Images/Dashboard/f5.jpg'
+
+
 
 import rightarrow from '../../assets/Images/Dashboard/right-arrow.png'
 
@@ -144,7 +149,7 @@ class Dashboard extends Component {
                {/* Section 2 */}
                <div className="col-md-12 Section2">
                   <div className="row">
-                     <div className="col-md-7">
+                     <div className="col-md-5">
                         <div className="col-md-11">
                            <p className="poppins_medium heading">Single subscription</p>
 
@@ -170,11 +175,11 @@ class Dashboard extends Component {
                               <p className="poppins_light Section2CardText">1000 questions focussed on the FRCS examination in General Surgery</p>
                               <div className="col-md-12">
                                  <div className="row">
-                                    <div className="col-md-4 col-lg-4 col-6 mt-5 p-0">
+                                    <div className="col-md-6 col-lg-6 col-6 mt-5 p-0">
                                        <button className="bannerCardBtn poppins_regular">Take a Demo <img className="ml-3" src={rightarrow} /></button>
 
                                     </div>
-                                    <div className="col-md-4 col-lg-3 col-6 mt-5 ">
+                                    <div className="col-md-5 col-lg-4 col-6 mt-5 ">
                                        <button className="bannerCardBtn poppins_regular">Sign In</button>
 
                                     </div>
@@ -186,29 +191,28 @@ class Dashboard extends Component {
                         </div>
 
                      </div>
-                     <div className="col-md-5 text-center">
-                        <img className="h82" src={figure2} />
+                     <div className="col-md-7 text-center">
+                        <img className="h82 w-100" src={figure2} />
                      </div>
 
                   </div>
                </div>
                <div className="col-md-12 Section3">
                   <div className="text-center">
-                     <p className="poppins_medium heading">Why choose us?</p>
+                     <p className="poppins_medium heading">How are we different?</p>
                   </div>
                   <div className="col-md-12 mt-5">
                      <div className="row">
                         <div className="col-md-6">
-                           <img className="w-100 section3img" src={figure2} />
+                           <img className="w-100 section3img" src={figure3} />
 
                         </div>
                         <div className="col-md-6">
-                           <p className="poppins_medium heading mb-5 mt-5">How we help you pass</p>
-                           <p className="poppins_extralight text"><img className="mr-3" src={tick} />Core Questions allows you to revise the most important topics</p>
-                           <p className=" poppins_extralight text"><img className="mr-3" src={tick} />Revision prompts to encourage you to revise every day </p>
-                           <p className=" poppins_extralight text"><img className="mr-3" src={tick} />Personalized daily question delivered at a time to suit you</p>
-                           <p className="poppins_extralight text"><img className="mr-3" src={tick} />Social Learning lets you learn with your peers and compare scores</p>
-                           <p className=" poppins_extralight text"><img className="mr-3" src={tick} />Timed Mock Tests with themes from recent exams</p>
+                           <label className="poppins_extralight text"> Resources have been developed by the dedicated team of surgeons with <label className='poppins_medium'>deep interest in speciality as well as medical education</label> </label>
+                           <label className=" poppins_extralight text">Teaching strategies are based on the<label className='poppins_medium'>Pedagogical Principles of Adult Learning</label> </label>
+                           <label className=" poppins_extralight text"><label className='poppins_medium'>FRCS 1 questions (1000+)</label>are based on the guidance by the <label className='poppins_medium'>National Board of Medical Examiners</label> and covers the <label className='poppins_medium'> whole curriculum developed by the Intercollegiate Specialty Examination</label> in General Surgery </label>
+                           <label className="poppins_extralight text"><label className='poppins_medium'>FRCS 2</label> questions <label className='poppins_medium'>(250+)</label>  have been developed according to the <label className='poppins_medium'>real exam format</label> i.e. table viva, short case, long case; and are based on the Structured oral question writing <label className='poppins_medium'>guidelines developed by the Joint committee on intercollegiate examination </label>   </label>
+                           <label className=" poppins_extralight text"><label className='poppins_medium'>Video resources (250+)</label> provide and excellent review of the general and surgical specialities in a systematic manner to develop deep understanding of the subject for both FRCS 1 and 2 Exams</label>
 
                         </div>
                      </div>
@@ -218,42 +222,49 @@ class Dashboard extends Component {
                      <div className="row">
 
                         <div className="col-md-6">
-                           <p className="poppins_medium heading mb-5 mt-5">Access to the best quality content </p>
-                           <p className="poppins_extralight text"><img className="mr-3" src={tick} />625+ Single Best Answer questions </p>
-                           <p className=" poppins_extralight text"><img className="mr-3" src={tick} />390+ Extended Matching Questions </p>
-                           <p className="poppins_extralight text"><img className="mr-3" src={tick} />Exam specific revision advice written by our FRCS clinical editor</p>
-                           <p className=" poppins_extralight text"><img className="mr-3" src={tick} />Curriculum mapped questions cover Acute Abdomen</p>
-                           <p className=" poppins_extralight text"><img className="mr-3" src={tick} />Subcutaneous Tissues, Critical Care, and Lower and Upper Gastrointestinal Diseases</p>
-
+                           <p className="poppins_medium text mb-5 mt-5">We are also in process to conduct Face to Face/ Online courses for FRCS 1 and 2- Please register your interest  </p>
+                         
                         </div>
                         <div className="col-md-6">
-                           <img className="w-100 section3img" src={Section3Img} />
+                           <img className="w-100 section3img" src={figure4} />
 
                         </div>
                      </div>
                   </div>
+                  <div className="col-md-12 mt-5">
+                     <div className="row">
+                        <div className="col-md-6">
+                           <img className="w-100 section3img" src={figure5} />
 
+                        </div>
+                        <div className="col-md-6">
+                           <label className="poppins_medium text mb-5 ">To develop your laparoscopic Skills- register your interest for GrabTheLaparoscopic Skills Course </label>
+                    
+                        </div>
+                     </div>
+                  </div>
                </div>
                <div className="col-md-12 Section4 text-center p-0">
                   <div className="section4card">
                      <img className="section4img" src={Section4img} />
 
-                     <p className="poppins_semibold heading pt-5 mb-5">Why choose us for your FRCS General Surgery exam revision?</p>
-                     <p className="poppins_extralight mb-0 mt-5 text">Improve your knowledge for the Royal College of Surgeons’ ISB Section 1 Exam in General Surgery. </p>
-                     <p className="poppins_extralight mb-5 text">We provide you with the resources you need to revise effectively and increase your chances of success. </p>
+                     <p className="poppins_semibold heading pt-5 mb-3">How are we different?</p>
+                     <p className="poppins_extralight mb-0 mt-3 text">Resources have been developed by the dedicated team of surgeons with <label className='poppins_medium'>deep interest in speciality as well as medical education</label> </p>
+                     <p className="poppins_extralight mb-3 mt-0 text">Teaching strategies are based on the<label className='poppins_medium'>Pedagogical Principles of Adult Learning</label>  </p>
 
-                     <p className="poppins_extralight mb-0 mt-5 text">Revise with over our bank of Single Best Answer questions (SBAs) and Extended Matching Questions (EMQs).  </p>
-                     <p className="poppins_extralight mb-5 text">We help you to maximise your revision time with questions based on previous exams and hot topics that are likely to appear in your exam. </p>
+                     <p className="poppins_extralight mt-3 text"><label className='poppins_medium'>FRCS 1 questions (1000+)</label>are based on the guidance by the <label className='poppins_medium'>National Board of Medical Examiners</label> and covers the <label className='poppins_medium'> whole curriculum developed by the Intercollegiate Specialty Examination</label> in General Surgery </p>
 
-                     <p className="poppins_extralight mb-0 mt-5 text">Identify your weak points, compare yourself to your peers and find out how likely you are to pass your exam first time.   </p>
-                     <p className="poppins_extralight mb-5 text">Our revision features are designed to allow you to study efficiently and focus on the highest value questions.</p>
+
+                     <p className="poppins_extralight mb-3 text"><label className='poppins_medium'>FRCS 2</label> questions <label className='poppins_medium'>(250+)</label>  have been developed according to the <label className='poppins_medium'>real exam format</label> i.e. table viva, short case, long case; and are based on the Structured oral question writing <label className='poppins_medium'>guidelines developed by the Joint committee on intercollegiate examination </label> </p>
+
+                     <p className="poppins_extralight mb-0 mt-3 text"><label className='poppins_medium'>Video resources (250+)</label> provide and excellent review of the general and surgical specialities in a systematic manner to develop deep understanding of the subject for both FRCS 1 and 2 Exams  </p>
 
 
                   </div>
 
 
                </div>
-               <div className="col-md-12 Section5 ">
+               {/* <div className="col-md-12 Section5 ">
                   <div className="row">
                      <div className="col-md-12 text-center">
                         <p className="poppins_medium heading">Testimonials</p>
@@ -292,7 +303,7 @@ class Dashboard extends Component {
 
 
 
-               </div>
+               </div> */}
 
 
 

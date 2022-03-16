@@ -151,6 +151,8 @@ padding: 40px;
     }
     .h82{
         height: 82%;
+        border-radius: 20px;
+
     }
 }
 .Section3{
@@ -162,11 +164,12 @@ padding: 40px;
     }
     .text{
         font-size: 17px;
-        margin-top: 30px;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
+        line-height: 20px;
     }
     .section3img{
-        height: 75%;
+        height: 95%;
+        border-radius: 20px;
 
     }
 
@@ -190,7 +193,7 @@ padding: 40px;
     left: -5%;
     width: 110%;
     z-index: -1;
-    height: 86%;
+    height: 92%;
 
     }
 }

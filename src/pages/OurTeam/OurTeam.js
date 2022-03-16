@@ -11,7 +11,12 @@ import Member1 from '../../assets/Images/OurTeam/1.png'
 import Member2 from '../../assets/Images/OurTeam/2.png'
 import Member3 from '../../assets/Images/OurTeam/3.png'
 import Member4 from '../../assets/Images/OurTeam/4.png'
+import Member5 from '../../assets/Images/OurTeam/badder.jpg'
+import Member6 from '../../assets/Images/OurTeam/6.jpg'
+
 import AvatarPic from '../../assets/Images/OurTeam/avatar.jpg'
+import FemaleAvatar from '../../assets/Images/OurTeam/femaleavatar.png'
+
 
 
 
@@ -45,7 +50,9 @@ class OurTeam extends Component {
         }
         return (
             <>
-                <Header></Header>
+                <Header
+                    history={this.props.history}
+                />
                 <div className='OurTeamContainer'>
                     <div className='container'>
 
@@ -102,7 +109,7 @@ class OurTeam extends Component {
                                 </div>
                                 <div className='col-md-4 mt-3 text-center'>
                                     <div className='OurTeamCard'>
-                                        <img className='MemberImg' src={AvatarPic} />
+                                        <img className='MemberImg' src={Member5} />
                                         <p className='poppins_medium text mb-0'>Mr. Badereldin-Elbagir
 
                                         </p>
@@ -128,9 +135,10 @@ class OurTeam extends Component {
                                     </div>
 
                                 </div>
-                                <div className='col-md-6 mt-3 text-center'>
+                                <div className='col-md-2'></div>
+                                <div className='col-md-4 mt-3 text-center'>
                                     <div className='OurTeamCard'>
-                                        <img className='MemberImg' src={AvatarPic} />
+                                        <img className='MemberImg' src={FemaleAvatar} />
                                         <p className='poppins_medium text mb-0'>Founder and Chief Executive
 
                                         </p>
@@ -141,9 +149,9 @@ class OurTeam extends Component {
                                     </div>
 
                                 </div>
-                                <div className='col-md-6 mt-3 text-center'>
+                                <div className='col-md-4 mt-3 text-center'>
                                     <div className='OurTeamCard'>
-                                        <img className='MemberImg' src={AvatarPic} />
+                                        <img className='MemberImg' src={Member6} />
                                         <p className='poppins_medium text mb-0'>Cheif Editor
 
                                         </p>

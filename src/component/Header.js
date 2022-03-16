@@ -147,17 +147,32 @@ class Header extends Component {
                <div className="col-md-12">
                   <div className="row">
                      <div className="col-md-2 col-lg-2 col-xl-3 text-center">
+                     <Link to="/">
+
                         <img className="logo" src={Logo} />
+                        </Link>
 
                      </div>
                      <div className="col-md-10 col-lg-10 col-xl-9  text-center vertical_Center">
                         <div className="row">
                            <div className="col-md-8 col-xl-9 col-lg-7 vertical_Center">
                               <div className=''>
+                              <Link to="/UnderConstruction">
+
                               <label className="poppins_light headerTitle">Exams</label>
+                              </Link>
+                              <Link to="/UnderConstruction">
+
                               <label className="poppins_light headerTitle">Features & Benefits </label>
+                              </Link>
+                              <Link to="/UnderConstruction">
+
                               <label className="poppins_light headerTitle">Subscription Plans</label>
+                              </Link>
+                              <Link to="/UnderConstruction">
+
                               <label className="poppins_light headerTitle">Contact Us</label>
+                              </Link>
                               <Link to="/ourteam">
 
                               <label className="poppins_light headerTitle">Team</label>

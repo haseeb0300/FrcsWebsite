@@ -30,6 +30,7 @@ import Setting from '../Setiing/Setting';
 
 import ResourseSelection from '../Test/ResourseSelection';
 
+import UnderConstruction from '../UnderConstruction/UnderConstruction';
 
 
 
@@ -58,7 +59,7 @@ import jwt_decode from 'jwt-decode';
 import { logoutUser, setCurrentUser } from '../../store/actions/authAction';
 if (process.env.NODE_ENV === 'production') {
     // axios.defaults.baseURL = 'https://3.92.255.28.com:4002/v1';
-     axios.defaults.baseURL = 'http://localhost:4002/v1';
+    axios.defaults.baseURL = 'http://localhost:4002/v1';
     // axios.defaults.baseURL = 'https://grabthefrcs.com//v1';
 
 } else {
@@ -119,7 +120,7 @@ class AppNavigation extends Component {
                             component={QuickTest} />
                         <Route exact path="/learningtest"
                             component={LearningTest} />
-    <Route exact path="/learningtest/frcs2"
+                        <Route exact path="/learningtest/frcs2"
                             component={LearningTestFrcs2} />
                         <Route exact path="/result"
                             component={Result} />
@@ -134,14 +135,16 @@ class AppNavigation extends Component {
 
                         <Route exact path="/selection"
                             component={Selection} />
-                                   <Route exact path="/accountdetail"
+                        <Route exact path="/accountdetail"
                             component={AccountDetail} />
-       <Route exact path="/setting"
+                        <Route exact path="/setting"
                             component={Setting} />
-                                  <Route exact path="/resourse/selection"
+                        <Route exact path="/resourse/selection"
                             component={ResourseSelection} />
-                              <Route exact path="/QuickTest/Frcs2"
+                        <Route exact path="/QuickTest/Frcs2"
                             component={QuickTestFrcs2} />
+                        <Route exact path="/UnderConstruction"
+                            component={UnderConstruction} />
 
 
                     </Switch>

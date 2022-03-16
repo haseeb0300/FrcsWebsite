@@ -98,7 +98,9 @@ class Signup extends Component {
 
         return (
             <>
-                <Header />
+                <Header
+                history={this.props.history}
+                />
 
                 <div className="signupContainer col-md-12">
                     <div className="signupcard col-md-12">

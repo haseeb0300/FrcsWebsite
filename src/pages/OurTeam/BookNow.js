@@ -44,7 +44,9 @@ class BookNow extends Component {
         }
         return (
             <>
-                <Header></Header>
+  <Header
+                history={this.props.history}
+                />
                 <div className='OurTeamContainer'>
                     <div className='container'>
 
