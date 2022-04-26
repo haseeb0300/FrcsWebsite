@@ -32,6 +32,14 @@ import ResourseSelection from '../Test/ResourseSelection';
 
 import UnderConstruction from '../UnderConstruction/UnderConstruction';
 
+//Resources
+import Frcs1Domain from '../../pages/Resources/Frcs1Domain'
+import Frcs1Chapter from '../../pages/Resources/Frcs1Chapter'
+import Frcs1Title from '../../pages/Resources/Frcs1Title'
+import Frcs1ChooseResource from '../../pages/Resources/Frcs1ChooseResource'
+import Frcs1Video from '../../pages/Resources/Frcs1Video'
+import Frcs2ClinicalTopic from '../../pages/Resources/Frcs2ClinicalTopic'
+import ClinicalResources from '../../pages/Resources/ClinicalResources'
 
 
 
@@ -101,6 +109,26 @@ class AppNavigation extends Component {
 
                 <ScrollToTop>
                     <Switch >
+
+                    <Route exact path="/clinicalresources"
+                            component={ClinicalResources} />
+                    <Route exact path="/frcs1domain"
+                            component={Frcs1Domain} />
+                                 <Route exact path="/Frcs2clinicaltopic"
+                            component={Frcs2ClinicalTopic} />
+                                <Route exact path="/frcs1video"
+                            component={Frcs1Video} />
+                              
+                              <Route exact path="/frcs1chooseresource"
+                            component={Frcs1ChooseResource} />
+                              
+                    <Route exact path="/frcs1title"
+                            component={Frcs1Title} />
+                            
+     <Route exact path="/frcs1chapter"
+                            component={Frcs1Chapter} />
+
+
                         <Route exact path="/"
                             component={Dashboard} />
 

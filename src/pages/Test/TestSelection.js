@@ -83,7 +83,7 @@ class TestSelection extends Component {
                                 <p className="poppins_medium ResourseHeading">Resources</p>
                                 <p className="poppins_light Resoursetext ">All the resources and keynotes provided by Grab the FRCS to help in learning materials, which help you to prepare you for the examination test of FRCS</p>
 
-                                <Link to="/resourse/selection">
+                                <Link to="/frcs1domain">
 
                                 <button className="Resoursebtn">Learning Resources</button>
                                 </Link>

@@ -23,6 +23,7 @@ import '../assets/styles/base/_account.scss'
 import '../assets/styles/base/_frcs2quicktest.scss'
 
 import '../assets/styles/base/_undercontruction.scss'
+import '../assets/styles/base/_resources.scss'
 
 
 

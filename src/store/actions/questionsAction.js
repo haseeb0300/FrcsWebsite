@@ -19,8 +19,6 @@ export const getFrcs1Question = (NumberOfQuestion) => dispatch => {
       url = '/api/frcs2testoral'
     }else{
       url = '/api/frcs2testclinical'
-
-      
     }
     return axios
       .get(url)

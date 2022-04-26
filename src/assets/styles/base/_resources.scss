@@ -1,0 +1,97 @@
+    .table-head {
+        background-color: #E3E9EF;
+        border-radius: 10px;
+    }
+    .table thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #dee2e6;
+        font-size: 15px;
+
+    }
+    .table-text {
+        font-size: 14px;
+        color: #52575D;
+    }
+    .FRCS1ResourcesHeading{
+        font-size: 24px;
+        font-family: 'Poppins';
+        font-weight: 600;
+        margin-bottom: 30px;
+        color: #788b9f;
+
+    }
+
+    .FRCS-1 {
+        width: 100%;
+        height: 200px;
+        background-color: white;
+        border-radius: 8px;
+    }
+    .FRCS-1:hover{
+        background-color: #b8e0e0;
+        color: #38A3A5;
+        }
+    
+    .frcs-txt {
+        font-size: 26px;
+        padding-top: 25px;
+    }
+    .frcsTabs{
+        width: calc(100% - 20px);
+        box-shadow: 0 1px 2px 0 #999595;
+        background-color: #fff;
+        height: 66px;
+        border: none;
+        margin: 20px 0px;
+        font-size: 16px;
+        font-family: 'Poppins';
+        font-weight: 400;
+        color: #4d4b4b;
+    }
+    .frcsTabs:hover{
+        border-bottom: 3px solid #38A3A5
+    
+    }
+    .frcsTabs:focus{
+        border-bottom: 3px solid #38A3A5;
+        outline: none !important;
+    
+    }
+    
+    .frcsTabsActive{
+        width: calc(100% - 20px);
+        box-shadow: 0 1px 2px 0 #999595;
+        background-color: #fff;
+        height: 66px;
+        border: none;
+        margin: 20px 0px;
+        font-size: 16px;
+        font-family: 'Poppins';
+        font-weight: 400;
+        color: #4d4b4b;
+        border-bottom: 3px solid #38A3A5
+    }
+    .frcsTabsActive:hover{
+        border-bottom: 3px solid #38A3A5
+    
+    }
+    .frcsTabsActive:focus{
+        border-bottom: 3px solid #38A3A5;
+        outline: none !important;
+    
+    }
+    .edit-btn{
+        color: #38A3A5;
+        font-size: 17px;
+        margin: 10px;
+    
+}
+.edit-btn:hover{
+    opacity: 0.6;
+    cursor: pointer;
+}
+.noVideo{
+    font-size: 20px;
+    text-align: center;
+    margin-top: 10%;
+}

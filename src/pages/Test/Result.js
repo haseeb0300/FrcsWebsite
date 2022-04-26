@@ -21,21 +21,47 @@ class Result extends Component {
         this.state = {
             serverError: {},
             isLoading: false,
+            answerList:[],
+            correctAnswer:0,
+            wrongAnswer:0
 
         };
     }
 
     componentDidMount() {
+        const {answerList} = this.state;
+        let wrongAnswer = 0
+        let correctAnswer = 0
+        for(var i = 0; i < answerList.length; i ++){
+        if(answerList[i]?.selectedOption === '' || answerList[i]?.selectedOption !== answerList[i].correctOption){
+            wrongAnswer = wrongAnswer + 1
+            console.log('Wrong')
+        }else{
+            correctAnswer = correctAnswer + 1
+            console.log('Correct')
 
+        }
+    }
+        console.log(correctAnswer + '' + wrongAnswer)
+        this.setState({
+            correctAnswer:correctAnswer,
+            wrongAnswer:wrongAnswer
+        })
     }
 
 
+    componentWillMount() {
 
+        if (this?.props?.location?.state?.answerList) {
+            console.log(this.props.location.state.answerList)
+            this.setState({ answerList: this.props.location.state.answerList })
+        }
+    }
 
     render() {
         // const { t, i18n } = this.props
         const { t, i18n, location, user } = this.props
-        const { isLoading } = this.state;
+        const { isLoading, answerList, correctAnswer, wrongAnswer } = this.state;
 
         if (isLoading) {
             return (
@@ -56,7 +82,7 @@ class Result extends Component {
                                 <div className="row">
                                     <div className="col-md-4">
                                         <div className="totalquestioncard">
-                                            <p className="poppins_medium totalquestioncardAmount">10</p>
+                                            <p className="poppins_medium totalquestioncardAmount">{answerList.length}</p>
                                             <p className="poppins_medium totalquestioncardText">Total Questions</p>
 
                                         </div>
@@ -64,14 +90,14 @@ class Result extends Component {
                                     </div>
                                     <div className="col-md-4">
                                         <div className="correctanswercard">
-                                            <p className="poppins_medium totalquestioncardAmount">9</p>
+                                            <p className="poppins_medium totalquestioncardAmount">{correctAnswer}</p>
                                             <p className="poppins_medium totalquestioncardText">Correct Asnswers</p>
 
                                         </div>
                                     </div>
                                     <div className="col-md-4">
                                         <div className="wronganswercard">
-                                            <p className="poppins_medium totalquestioncardAmount">1</p>
+                                            <p className="poppins_medium totalquestioncardAmount">{wrongAnswer}</p>
                                             <p className="poppins_medium totalquestioncardText">Wrong Answers</p>
 
                                         </div>

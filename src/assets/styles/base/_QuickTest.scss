@@ -233,6 +233,27 @@ color: #38A3A5;
         background-color: #26c2c5;
         color: white;
       }
+      .nextScenaro-Btn{
+        border: 2px solid #38A3A5;
+        background-color: #fff;
+        color: #38A3A5;
+        height: 53px;
+        width: 25%;
+        margin-right: 15px;
+        border-radius: 36px;
+        font-size: 16px;
+        font-weight: 700;
+        margin-top: 80px;
+        margin-bottom: 50px;
+      }
+      .nextScenaro-Btn:hover{
+          background-color: #38A3A5;
+          color: white;
+      }
+      .nextScenaro-Btn:focus{
+        background-color: #26c2c5;
+        color: white;
+      }
 }
 
 

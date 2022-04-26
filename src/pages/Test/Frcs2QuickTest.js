@@ -23,12 +23,15 @@ class Frcs2QuickTest extends Component {
             serverError: {},
             isLoading: false,
             questionList: [],
+            clinicalQuestionList: [],
+
             index: 0,
             correctAnsware: 0,
             wrongAnsware: 0,
             answerList: [],
             visibleAnswer: false,
-            testType:'Oral',
+            testType: 'Oral',
+            subIndex: 0,
 
 
         };
@@ -38,7 +41,7 @@ class Frcs2QuickTest extends Component {
             rating: newRating
         });
     }
-    componentWillMount(){
+    componentWillMount() {
         if (this?.props?.location?.state?.testType) {
             console.log(this.props.location.state.testType)
             this.setState({ testType: this.props.location.state.testType })
@@ -46,9 +49,10 @@ class Frcs2QuickTest extends Component {
     }
     componentDidMount() {
 
-        const {testType} = this.state
+        const { testType } = this.state
         this.props.getFrcs2Question(testType).then((res) => {
             console.log(res)
+           
             this.setState({
                 questionList: res.content,
             }, () => {
@@ -111,7 +115,7 @@ class Frcs2QuickTest extends Component {
     render() {
         // const { t, i18n } = this.props
         const { t, i18n, location, user } = this.props
-        const { isLoading, questionList, answerList, index } = this.state;
+        const { isLoading, questionList, answerList, index, subIndex } = this.state;
         const ratingChanged = (newRating) => {
             console.log(newRating)
         }
@@ -130,133 +134,262 @@ class Frcs2QuickTest extends Component {
 
                     <div className="col-md-12">
                         <div className="row">
-                            
-                        {questionList[index]?.frcs2OralQuestions && (
-                        <>
-                            <div className="col-md-6">
-                                <p className='poppins_medium frcs2QuickTest-Heading'>Scenario</p>
-                                <p className='poppins_light frcs2QuickTest-Heading'>{questionList[index]?.Scenario ? questionList[index]?.Scenario :'No Scenario Available'}</p>
 
-                          
-                                <div className="col-md-12 mt-5 p-0">
-                                    <div className="row">
-                                        <div className="col-md-6">
-                                            <img className="w-100 leadinImg" src={questionList[index]?.Image ? questionList[index]?.Image : lightimg} />
+                            {questionList[index]?.frcs2OralQuestions && (
+                                <>
+                                    {/* {questionList[index] && questionList[index]?.frcs2OralQuestions.length > 0 && questionList[index]?.frcs2OralQuestions.map((item, i) => { */}
 
-                                        </div>
-                                        <div className="col-md-6 ">
-                                            <p className='imgurl poppins_medium'>Additional Image URL</p>
-                                            <p className='imgurl poppins_light'>{questionList[index]?.ImageUrl ? questionList[index]?.ImageUrl:'No Url'}</p>
+                                    <div className="col-md-12">
+                                        <p className='poppins_medium frcs2QuickTest-Heading'>{'Scenario ' + (index + 1) + ' of ' + (this.state.questionList.length)}</p>
+                                        {/* <p className='poppins_medium frcs2QuickTest-Heading'>{'Scenario ' + (i + 1) + ' of ' + (questionList[index].frcs2OralQuestions.length)}</p> */}
 
-                                        </div>
+                                        <p className='poppins_light frcs2QuickTest-Heading'>{questionList[index]?.Scenario ? questionList[index]?.Scenario : 'No Scenario Available'}</p>
+
+
+
+
+
                                     </div>
-                                </div>
+                                    <div className='col-md-12'>
+
+                                        <div className="row">
+
+                                            {questionList[index]?.frcs2OralQuestions.map((item, i) => {
+                                                return (
+                                                    <>
+                                                 
+                                                        <div className="col-md-6">
 
 
-                            </div>
-                            <div className="col-md-6">
-                                <p className='poppins_medium frcs2QuickTest-Heading'>{'Question ' + (index + 1) + ' of '+ (questionList.length)}</p>
-                                <p className="poppins_light quicktest-Text">{questionList[index]?.frcs2OralQuestions[0]?.Question ?questionList[index]?.frcs2OralQuestions[0]?.Question: 'No Question Available'} </p>
-                                <p className='poppins_regular frcs2QuickTest-Heading'>Enter Write Answer <label className='staric'>*</label></p>
+                                                            <p className='poppins_medium frcs2QuickTest-Heading'>{'Question ' + (i + 1) + ' of ' + (questionList[index].frcs2OralQuestions.length)}</p>
+                                                            <p className="poppins_light quicktest-Text">{questionList[index]?.frcs2OralQuestions[i]?.Question ? questionList[index]?.frcs2OralQuestions[i]?.Question : 'No Question Available'} </p>
+                                                            <p className='poppins_regular frcs2QuickTest-Heading'>Enter Write Answer <label className='staric'>*</label></p>
 
-                                <textarea className='frcs2QuickTest-Textarea' placeholder='Write Answer Here'></textarea>
-                                <div className="text-right">
-                                    <button className="quicktest-Btn mt-4 mb-4" onClick={(e) => this.setVisibityAnswer(questionList[index], index)}>Check Answer  <img src={rightarrow} /></button>
-                                </div>
-                                {questionList[index]?.visibleAnswer && (
+                                                            <textarea className='frcs2QuickTest-Textarea' placeholder='Write Answer Here'></textarea>
+                                                            <div className="text-right">
+                                                                <button className="quicktest-Btn mt-4 mb-4" onClick={(e) => this.setVisibityAnswer(questionList[index], index)}>Check Answer  <img src={rightarrow} /></button>
+                                                            </div>
+                                                            {questionList[index]?.visibleAnswer && (
 
-                                    <>
-                                        <p className='poppins_regular frcs2QuickTest-Heading'> Write Answer </p>
+                                                                <>
+                                                                    <p className='poppins_regular frcs2QuickTest-Heading'> Write Answer </p>
 
-                                        <div className='writeanwser'>
-                                            <p className='poppins_light'>{questionList[index]?.frcs2OralQuestions[0]?.Answer?questionList[index]?.frcs2OralQuestions[0]?.Answer:'No Right Answer Available'}</p>
+                                                                    <div className='writeanwser'>
+                                                                        <p className='poppins_light'>{questionList[index]?.frcs2OralQuestions[0]?.Answer ? questionList[index]?.frcs2OralQuestions[0]?.Answer : 'No Right Answer Available'}</p>
+                                                                    </div>
+                                                                    <p className='poppins_regular frcs2QuickTest-Heading mt-4'>Point of Discussion </p>
+
+                                                                    <div className='writeanwser1'>
+                                                                        <p className='poppins_light'>{questionList[index]?.frcs2OralQuestions[0]?.Discussion ? questionList[index]?.frcs2OralQuestions[0]?.Discussion : 'No Discussion Available'}</p>
+                                                                    </div>
+                                                                    <p className="poppins_regular explaination mt-5">Question Feedback:</p>
+                                                                    <input className='feedbackinput poppins_regular'></input>
+                                                                    <p className="poppins_regular explaination mt-4">Rate this question</p>
+                                                                    <StarsRating
+                                                                        count={5}
+                                                                        onChange={ratingChanged}
+                                                                        size={30}
+                                                                        color2={'#ffd700'} />
+
+                                                                </>
+
+
+                                                            )}
+                                                        </div>
+                                                        <div className="col-md-6 mt-5 p-0">
+                                                            <div className="row">
+                                                                <div className="col-md-6">
+                                                                    <img className="w-100 leadinImg" src={questionList[index]?.frcs2OralQuestions[0]?.Image ? questionList[index]?.frcs2OralQuestions[0]?.Image : lightimg}
+                                                                    />
+
+                                                                </div>
+                                                                <div className="col-md-6 ">
+                                                                    <p className='imgurl poppins_medium'>Additional Image URL</p>
+
+                                                                    <p className='imgurl poppins_light'>
+                                                                        {questionList[index]?.frcs2OralQuestions[0]?.ImageUrl ? questionList[index]?.frcs2OralQuestions[0]?.ImageUrl : 'No Url'}
+
+                                                                    </p>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </>
+
+                                                )
+
+                                            })}
+
                                         </div>
-                                        <p className='poppins_regular frcs2QuickTest-Heading mt-4'>Point of Discussion </p>
-
-                                        <div className='writeanwser1'>
-                                            <p className='poppins_light'>{questionList[index]?.frcs2OralQuestions[0]?.Discussion?questionList[index]?.frcs2OralQuestions[0]?.Discussion:'No Discussion Available'}</p>
-                                        </div>
-                                        <p className="poppins_regular explaination mt-5">Question Feedback:</p>
-                                        <input className='feedbackinput poppins_regular'></input>
-                                        <p className="poppins_regular explaination mt-4">Rate this question</p>
-                                        <StarsRating
-                                            count={5}
-                                            onChange={ratingChanged}
-                                            size={30}
-                                            color2={'#ffd700'} />
-                                        <button className="quicktest-Btn mt-4 mb-4" onClick={(e) => this.nextIndex(e)}>Next  <img src={rightarrow} /></button>
-
-                                    </>
-
-
-                                )}
-
-                            </div>
-</>
-)}
-            {questionList[index]?.frcs2ClinicalQuestions && (
-                        <>
-                            <div className="col-md-6">
-                                <p className='poppins_medium frcs2QuickTest-Heading'>Scenario</p>
-                                <p className='poppins_light frcs2QuickTest-Heading'>{questionList[index]?.Scenario}</p>
-
-                          
-                                <div className="col-md-12 mt-5 p-0">
-                                    <div className="row">
-                                        <div className="col-md-6">
-                                            <img className="w-100 leadinImg" src={questionList[index]?.Image ? questionList[index]?.Image : lightimg} />
+                                        <div className='text-center'>
+                                        <button className="nextScenaro-Btn mt-4 mb-4" onClick={(e) => this.nextIndex(e)}>Next Scenario  <img src={rightarrow} /></button>
 
                                         </div>
-                                        <div className="col-md-6 ">
-                                            <p className='imgurl poppins_medium'>Additional Image URL</p>
-                                            <p className='imgurl poppins_light'>{questionList[index]?.PresentationOfFindingUrl}</p>
 
-                                        </div>
                                     </div>
-                                </div>
+
+                                </>
+                            )}
+
+{questionList[index]?.frcs2ClinicalQuestions && (
+                                <>
+
+                                    <div className="col-md-12">
+                                        <p className='poppins_medium frcs2QuickTest-Heading'>{'Scenario ' + (index + 1) + ' of ' + (this.state.questionList.length)}</p>
+                                        <p className='poppins_light frcs2QuickTest-Heading'>{questionList[index]?.SenerioTitle ? questionList[index]?.SenerioTitle : 'No Scenario Available'}</p>
 
 
-                            </div>
-                            <div className="col-md-6">
-                                <p className='poppins_medium frcs2QuickTest-Heading'>{'Question ' + (index + 1) + ' of '+ (questionList.length)}</p>
-                                <p className="poppins_light quicktest-Text">{questionList[index]?.frcs2ClinicalQuestions[0]?.Question} </p>
-                                <p className='poppins_regular frcs2QuickTest-Heading'>Enter Write Answer <label className='staric'>*</label></p>
 
-                                <textarea className='frcs2QuickTest-Textarea' placeholder='Write Answer Here'></textarea>
-                                <div className="text-right">
-                                    <button className="quicktest-Btn mt-4 mb-4" onClick={(e) => this.setVisibityAnswer(questionList[index], index)}>Check Answer  <img src={rightarrow} /></button>
-                                </div>
-                                {questionList[index]?.visibleAnswer && (
 
-                                    <>
-                                        <p className='poppins_regular frcs2QuickTest-Heading'> Write Answer </p>
 
-                                        <div className='writeanwser'>
-                                            <p className='poppins_light'>{questionList[index]?.frcs2ClinicalQuestions[0]?.Answer}</p>
+                                    </div>
+                                    <div className='col-md-12'>
+
+                                        <div className="row">
+
+                                            {questionList[index]?.frcs2ClinicalQuestions.map((item, i) => {
+                                                return (
+                                                    <>
+                                                 
+                                                        <div className="col-md-6">
+
+
+                                                            <p className='poppins_medium frcs2QuickTest-Heading'>{'Question ' + (i + 1) + ' of ' + (questionList[index].frcs2ClinicalQuestions.length)}</p>
+                                                            <p className="poppins_light quicktest-Text">{questionList[index]?.frcs2ClinicalQuestions[i]?.Question ? questionList[index]?.frcs2ClinicalQuestions[i]?.Question : 'No Question Available'} </p>
+                                                            <p className='poppins_regular frcs2QuickTest-Heading'>Enter Write Answer <label className='staric'>*</label></p>
+
+                                                            <textarea className='frcs2QuickTest-Textarea' placeholder='Write Answer Here'></textarea>
+                                                            <div className="text-right">
+                                                                <button className="quicktest-Btn mt-4 mb-4" onClick={(e) => this.setVisibityAnswer(questionList[index], index)}>Check Answer  <img src={rightarrow} /></button>
+                                                            </div>
+                                                            {questionList[index]?.visibleAnswer && (
+
+                                                                <>
+                                                                    <p className='poppins_regular frcs2QuickTest-Heading'> Write Answer </p>
+
+                                                                    <div className='writeanwser'>
+                                                                        <p className='poppins_light'>{questionList[index]?.frcs2ClinicalQuestions[0]?.Answer ? questionList[index]?.frcs2ClinicalQuestions[0]?.Answer : 'No Right Answer Available'}</p>
+                                                                    </div>
+                                                                    <p className='poppins_regular frcs2QuickTest-Heading mt-4'>Point of Discussion </p>
+
+                                                                    <div className='writeanwser1'>
+                                                                        <p className='poppins_light'>{questionList[index]?.frcs2ClinicalQuestions[0]?.Discussion ? questionList[index]?.frcs2ClinicalQuestions[0]?.Discussion : 'No Discussion Available'}</p>
+                                                                    </div>
+                                                                    <p className="poppins_regular explaination mt-5">Question Feedback:</p>
+                                                                    <input className='feedbackinput poppins_regular'></input>
+                                                                    <p className="poppins_regular explaination mt-4">Rate this question</p>
+                                                                    <StarsRating
+                                                                        count={5}
+                                                                        onChange={ratingChanged}
+                                                                        size={30}
+                                                                        color2={'#ffd700'} />
+
+                                                                </>
+
+
+                                                            )}
+                                                        </div>
+                                                        <div className="col-md-6 mt-5 p-0">
+                                                            <div className="row">
+                                                                <div className="col-md-6">
+                                                                    <img className="w-100 leadinImg" src={questionList[index]?.frcs2ClinicalQuestions[0]?.PresentationOfFindingUrl ? questionList[index]?.frcs2ClinicalQuestions[0]?.PresentationOfFindingUrl : lightimg}
+                                                                    />
+
+                                                                </div>
+                                                                <div className="col-md-6 ">
+                                                                    <p className='imgurl poppins_medium'>Presentation Of Finding</p>
+
+                                                                    <p className='imgurl poppins_light'>
+                                                                        {questionList[index]?.frcs2ClinicalQuestions[0]?.PresentationOfFinding ? questionList[index]?.frcs2ClinicalQuestions[0]?.PresentationOfFinding : 'No Url'}
+
+                                                                    </p>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </>
+
+                                                )
+
+                                            })}
+
                                         </div>
-                                        <p className='poppins_regular frcs2QuickTest-Heading mt-4'>Point of Discussion </p>
+                                        <div className='text-center'>
+                                        <button className="nextScenaro-Btn mt-4 mb-4" onClick={(e) => this.nextIndex(e)}>Next Scenario  <img src={rightarrow} /></button>
 
-                                        <div className='writeanwser1'>
-                                            <p className='poppins_light'>{questionList[index]?.frcs2ClinicalQuestions[0]?.Discussion}</p>
                                         </div>
-                                        <p className="poppins_regular explaination mt-5">Question Feedback:</p>
-                                        <input className='feedbackinput poppins_regular'></input>
-                                        <p className="poppins_regular explaination mt-4">Rate this question</p>
-                                        <StarsRating
-                                            count={5}
-                                            onChange={ratingChanged}
-                                            size={30}
-                                            color2={'#ffd700'} />
-                                        <button className="quicktest-Btn mt-4 mb-4" onClick={(e) => this.nextIndex(e)}>Next  <img src={rightarrow} /></button>
 
-                                    </>
+                                    </div>
+
+                                </>
+                            )}
 
 
-                                )}
 
-                            </div>
-</>
-)}
+                            {/* {questionList[index]?.frcs2ClinicalQuestions && (
+                                <>
+                                    <div className="col-md-6">
+                                        <p className='poppins_medium frcs2QuickTest-Heading'>Scenario</p>
+                                        <p className='poppins_light frcs2QuickTest-Heading'>{questionList[index]?.Scenario}</p>
+
+
+                                        <div className="col-md-12 mt-5 p-0">
+                                            <div className="row">
+                                                <div className="col-md-6">
+                                                    <img className="w-100 leadinImg" src={questionList[index]?.Image ? questionList[index]?.Image : lightimg} />
+
+                                                </div>
+                                                <div className="col-md-6 ">
+                                                    <p className='imgurl poppins_medium'>Additional Image URL</p>
+                                                    <p className='imgurl poppins_light'>{questionList[index]?.PresentationOfFindingUrl}</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div className="col-md-6">
+
+                                        <p className='poppins_medium frcs2QuickTest-Heading'>{'Question ' + (index + 1) + ' of ' + (questionList.length)}</p>
+                                        <p className="poppins_light quicktest-Text">{questionList[index]?.frcs2ClinicalQuestions[0]?.Question} </p>
+                                        <p className='poppins_regular frcs2QuickTest-Heading'>Enter Write Answer <label className='staric'>*</label></p>
+
+                                        <textarea className='frcs2QuickTest-Textarea' placeholder='Write Answer Here'></textarea>
+                                        <div className="text-right">
+                                            <button className="quicktest-Btn mt-4 mb-4" onClick={(e) => this.setVisibityAnswer(questionList[index], index)}>Check Answer  <img src={rightarrow} /></button>
+                                        </div>
+                                        {questionList[index]?.visibleAnswer && (
+
+                                            <>
+                                                <p className='poppins_regular frcs2QuickTest-Heading'> Write Answer </p>
+
+                                                <div className='writeanwser'>
+                                                    <p className='poppins_light'>{questionList[index]?.frcs2ClinicalQuestions[0]?.Answer}</p>
+                                                </div>
+                                                <p className='poppins_regular frcs2QuickTest-Heading mt-4'>Point of Discussion </p>
+
+                                                <div className='writeanwser1'>
+                                                    <p className='poppins_light'>{questionList[index]?.frcs2ClinicalQuestions[0]?.Discussion}</p>
+                                                </div>
+                                                <p className="poppins_regular explaination mt-5">Question Feedback:</p>
+                                                <input className='feedbackinput poppins_regular'></input>
+                                                <p className="poppins_regular explaination mt-4">Rate this question</p>
+                                                <StarsRating
+                                                    count={5}
+                                                    onChange={ratingChanged}
+                                                    size={30}
+                                                    color2={'#ffd700'} />
+                                                <button className="quicktest-Btn mt-4 mb-4" onClick={(e) => this.nextIndex(e)}>Next  <img src={rightarrow} /></button>
+
+                                            </>
+
+
+                                        )}
+
+                                    </div>
+                                </>
+                            )} */}
 
                         </div>
                     </div>

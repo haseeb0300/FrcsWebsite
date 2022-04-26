@@ -35,8 +35,11 @@ class QuickTest extends Component {
 
         this.props.getFrcs1Question(this?.props?.location?.state?.NumberOfQuestion).then((res) => {
             console.log(res)
+            var newArray = res.content.filter(function (el) {
+                return el.Status == 'Completed'
+              });
             this.setState({
-                questionList: res.content,
+                questionList: newArray,
             }, () => {
                 var tmpArray = []
                 for (var i = 0; i < this.state.questionList.length; i++) {
@@ -134,6 +137,7 @@ class QuickTest extends Component {
 
         return questionList[index]?.QuestionVitalSifnValues && questionList[index]?.QuestionVitalSifnValues.map((item, i) =>
             <>
+            
                 <div className='row'>
                     <div className='col-4 text-center'>
                         <p className='vitalSign-StandardValue poppins_medium '>{item.Name}</p>
@@ -150,6 +154,9 @@ class QuickTest extends Component {
         )
     }
 
+    onClickFinish = () => {
+        this.props.history.push('/result',{'answerList': this.state.answerList})
+    }
     renderReportValue = () => {
         let { questionList, answerList, index } = this.state
 
@@ -235,12 +242,7 @@ class QuickTest extends Component {
                     <div className="col-md-12">
                         <div className="row">
                             <div className="col-md-7">
-                                <p className="poppins_light quicktest-Text">{questionList[index]?.Question}
-                                    {/* <div class="tooltipp"><img className="tooltipp" src={helpicon} />
-
-                                        <span class="tooltipptext">{questionList[index]?.LeadIn}</span>
-                                    </div> */}
-                                </p>
+                                <p className="poppins_light quicktest-Text">{questionList[index]?.Question} </p>
                                 <button class="collapsebtn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                                     <img className="mr-3" src={Polygon} /> Vital Signs
                                 </button>
@@ -259,18 +261,7 @@ class QuickTest extends Component {
                                                     <p className='poppins_medium vitalSign-StandardValue'>Patient Count</p>
                                                 </div>
                                             </div>
-                                            {/* <div className='row'>
-                                             <div className='col-4 text-center'>
-                                                 <p className='vitalSign-StandardValue poppins_medium '>Glocose</p>
-                                                 
-                                             </div>
-                                             <div className='col-4 text-center'>
-                                                 <p className='poppins_light vitalSign-StandardValue'>21.42</p>
-                                             </div>
-                                             <div className='col-4 text-center'>
-                                                 <p  className='poppins_light vitalSign-StandardValue'>12.423</p>
-                                             </div>
-                                         </div> */}
+                                         
                                             {this.renderVitalSign()}
 
                                         </div>
@@ -294,30 +285,7 @@ class QuickTest extends Component {
                                                     <p className='poppins_medium vitalSign-StandardValue'>Patient Count</p>
                                                 </div>
                                             </div>
-                                            {/* <div className='row'>
-                                                <div className='col-4 text-center'>
-                                                    <p className='vitalSign-StandardValue poppins_medium '>Glocose</p>
-
-                                                </div>
-                                                <div className='col-4 text-center'>
-                                                    <p className='poppins_light vitalSign-StandardValue'>21.42</p>
-                                                </div>
-                                                <div className='col-4 text-center'>
-                                                    <p className='poppins_light vitalSign-StandardValue'>12.423</p>
-                                                </div>
-                                            </div>
-                                            <div className='row'>
-                                                <div className='col-4 text-center'>
-                                                    <p className='vitalSign-StandardValue poppins_medium '>Glocose</p>
-
-                                                </div>
-                                                <div className='col-4 text-center'>
-                                                    <p className='poppins_light vitalSign-StandardValue'>21.42</p>
-                                                </div>
-                                                <div className='col-4 text-center'>
-                                                    <p className='poppins_light vitalSign-StandardValue'>12.423</p>
-                                                </div>
-                                            </div> */}
+                                        
                                             {this.renderReportValue()}
                                         </div>
                                     </div>
@@ -368,7 +336,7 @@ class QuickTest extends Component {
                                     <label className='poppins_medium skipThis' onClick={(e) => this.nextIndex(e)}>Skip this</label>
 
                                     {/* <Link to="/result"> */}
-                                    <button className="quicktest-Btn" onClick={(e) => this.nextIndex(e)}>Submit & next <img src={rightarrow} /></button>
+                                    <button className="quicktest-Btn" onClick={questionList.length == (index+1)?()=> this.onClickFinish(): (e) => this.nextIndex(e)}>{questionList.length == (index+1)?"Finish and result": "Submit & next "}<img src={rightarrow} /></button>
                                     {/* </Link> */}
                                 </div>
                             </div>
