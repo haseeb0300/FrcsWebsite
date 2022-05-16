@@ -26,10 +26,7 @@ class QuickTest extends Component {
             correctAnsware: 0,
             wrongAnsware: 0,
             answerList: [],
-<<<<<<< Updated upstream
             NumberOfQuestion: '',
-=======
->>>>>>> Stashed changes
 
         };
     }
@@ -42,17 +39,10 @@ class QuickTest extends Component {
                 return el.Status == 'Completed'
               });
             this.setState({
-<<<<<<< Updated upstream
                 questionList: newArray,
             }, () => {
                 var tmpArray = []
                 for (var i = 0; i < this.state.questionList.length; i++) {
-=======
-                questionList: res.content,
-            },() => {
-                var tmpArray = []
-                for (var i = 0 ; i < this.state.questionList.length;i++){
->>>>>>> Stashed changes
                     //console.log(this.state.questionList[i])
                     var obj = {
                         question: this.state.questionList[i],
@@ -60,15 +50,9 @@ class QuickTest extends Component {
                         correctOption: this.state.questionList[i]?.CorrectOption,
                         key: i,
                     }
-<<<<<<< Updated upstream
                     tmpArray.push(obj)
                 }
                 this.setState({ answerList: tmpArray })
-=======
-                    tmpArray.push(obj) 
-                }
-                this.setState({answerList:tmpArray})
->>>>>>> Stashed changes
             })
 
         }).catch((err) => {
