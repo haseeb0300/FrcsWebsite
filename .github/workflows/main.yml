@@ -23,8 +23,6 @@ jobs:
       run: |
         yarn build
 
-    - name: Deploy to S3
-      uses: jakejarvis/s3-sync-action@master
     - name: Deploy to my EC2 instance
       uses: easingthemes/ssh-deploy@v2.1.5
       env:
