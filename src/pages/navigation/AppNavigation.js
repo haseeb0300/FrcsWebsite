@@ -67,7 +67,7 @@ import jwt_decode from 'jwt-decode';
 import { logoutUser, setCurrentUser } from '../../store/actions/authAction';
 if (process.env.NODE_ENV === 'production') {
     // axios.defaults.baseURL = 'https://3.92.255.28.com:4002/v1';
-    axios.defaults.baseURL = 'https://api.grabthefrcs.com/';
+    axios.defaults.baseURL = 'https://api.grabthefrcs.com/v1';
     // axios.defaults.baseURL = 'https://grabthefrcs.com//v1';
 
 } else {
