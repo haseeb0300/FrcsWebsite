@@ -40,8 +40,8 @@ class Header extends Component {
 
   onLogIn = () => {
    var obj = {
-      'Email': this.state.Email,
-      'Password': this.state.Password,
+      'email': this.state.Email,
+      'password': this.state.Password,
   }
   this.props.loginStudent(obj).then((res) => {
       this.setState({ isLoading: false })
@@ -183,7 +183,7 @@ class Header extends Component {
                               </Link>
 
                               </div>
-                             
+
                            </div>
                            <div className="col-md-4 col-xl-3 col-lg-5 vertical_Center">
 
