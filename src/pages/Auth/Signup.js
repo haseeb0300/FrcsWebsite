@@ -15,6 +15,7 @@ class Signup extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            errors: {},
             serverError: {},
             isLoading: false,
             newBookList: [],
@@ -82,11 +83,26 @@ class Signup extends Component {
         })
         //this.props.history.push('/payement')}
     }
+    renderServerError() {
+        if (this.state.serverError != null && this.state.serverError.length > 0) {
+          return (
+    
+            <div className=" servererror1 form-group alert alert-danger" role="alert" >
+              <strong className="pr-2 ohsnaptext">  {"  "}</strong>
+              <label className="servererrorText"> 
+              {this.state.serverError[0].msg}
+              </label> 
+            </div>
+          )
+        }
+      }
 
     render() {
         // const { t, i18n } = this.props
         const { t, i18n, location, user } = this.props
         const { isLoading } = this.state;
+        const { errors } = this.state
+
 
         if (isLoading) {
             return (
@@ -117,22 +133,35 @@ class Signup extends Component {
                                 </div>
                             </div>
                             <div className="col-md-12 mt-4">
+                                <div className='text-center'>
+                                {this.renderServerError()}
+
+                                </div>
                                 <div className="row">
                                     <div className="col-md-4 ">
                                         <p className="poppins_regular signup_text1">Full Name  <label className="staric">*</label></p>
                                         <input className="poppins_light signup_input" placeholder="Enter Here" name='Full_Name' onChange={this.onChange} ></input>
+                                        {errors.Full_Name && <div className="invaliderror1">{errors.Full_Name}</div>}
+
                                         <p className="poppins_regular signup_text1">Email Address  <label className="staric">*</label></p>
                                         <input className="poppins_light signup_input" placeholder="Enter Here" name='Email' onChange={this.onChange} value={this.state.Email}></input>
+                                        {errors.Email && <div className="invaliderror1">{errors.Email}</div>}
+
                                         <p className="poppins_regular signup_text1">Phone No  <label className="staric">*</label></p>
                                         <input className="poppins_light signup_input" placeholder="Enter Here" type="number" name='Mobile_Number' onChange={this.onChange} value={this.state.Mobile_Number}></input>
+                                        {errors.Mobile_Number && <div className="invaliderror1">{errors.Mobile_Number}</div>}
 
 
                                     </div>
                                     <div className="col-md-4">
                                         <p className="poppins_regular signup_text1">Date of Birth <label className="staric">*</label></p>
                                         <input className="poppins_light signup_input" placeholder="Enter Here" type="date" name='Date_Of_Birth' onChange={this.onChange} value={this.state.Date_Of_Birth}></input>
+                                        {errors.Date_Of_Birth && <div className="invaliderror1">{errors.Date_Of_Birth}</div>}
+
                                         <p className="poppins_regular signup_text1">Qualification  <label className="staric">*</label></p>
                                         <input className="poppins_light signup_input" placeholder="Enter Here" name='Qualification' onChange={this.onChange} value={this.state.Qualification}></input>
+                                        {errors.Qualification && <div className="invaliderror1">{errors.Qualification}</div>}
+
                                         <p className="poppins_regular signup_text1">Gender   <label className="staric">*</label></p>
                                         <select className="poppins_light signup_input" placeholder="Enter Here" name='Gender' onChange={this.onChange} value={this.state.Gender}>
                                             <option>Please Select</option>
@@ -141,13 +170,17 @@ class Signup extends Component {
                                             <option value='Female'>Female</option>
 
                                         </select>
+                                        {errors.Gender && <div className="invaliderror1">{errors.Gender}</div>}
+
                                     </div>
                                     <div className="col-md-4">
                                         <p className="poppins_regular signup_text1">Password <label className="staric">*</label></p>
                                         <input className="poppins_light signup_input" placeholder="Enter Here" type="password" name='Password' onChange={this.onChange} value={this.state.Password}></input>
+                                        {errors.password && <div className="invaliderror1">{errors.password}</div>}
 
                                         <p className="poppins_regular signup_text1">Re Password  <label className="staric">*</label></p>
                                         <input className="poppins_light signup_input" placeholder="Enter Here" type="password" name='Password2' onChange={this.onChange} value={this.state.Password2}></input>
+                                        {errors.Password2 && <div className="invaliderror1">{errors.Password2}</div>}
 
                                     </div>
                                 </div>

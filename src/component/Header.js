@@ -19,6 +19,7 @@ class Header extends Component {
    constructor(props) {
       super(props);
       this.state = {
+         errors: {},
          serverError: {},
          isLoading: false,
          newBookList: [],
@@ -73,7 +74,19 @@ class Header extends Component {
       }
   })
   }
+  renderServerError() {
+   if (this.state.serverError != null && this.state.serverError.length > 0) {
+     return (
 
+       <div className=" servererror1 form-group alert alert-danger" role="alert" >
+         <strong className="pr-2 ohsnaptext">  {"  "}</strong>
+         <label className="servererrorText"> 
+         {this.state.serverError[0].msg}
+         </label> 
+       </div>
+     )
+   }
+ }
    toogleModal = () => {
       this.setState({
          LoginModal: !this.state.LoginModal
@@ -85,6 +98,8 @@ class Header extends Component {
       // const { t, i18n } = this.props
       const { t, i18n, location, user } = this.props
       const { isLoading } = this.state;
+      const { errors } = this.state
+
       if (isLoading) {
          return (
             <div className="loader-large"></div>
@@ -112,16 +127,21 @@ class Header extends Component {
                         <div className="text-center">
                            <p className="poppins_medium login_heading">Login to your Account</p>
                            <p className="poppins_regular login_text">Hope you are doing well.</p>
+                           {this.renderServerError()}
+
                         </div>
                      </div>
                      <div className="col-md-12 mt-5 ">
                         <p className="poppins_regular login_text1">Email Address <label className="staric">*</label></p>
                         <input className="poppins_light login_input" placeholder="Enter Here" name="Email" onChange={this.onChange} value={this.state.Email}></input>
+                        {errors.email && <div className="invaliderror">{errors.email}</div>}
 
                      </div>
                      <div className="col-md-12  ">
                         <p className="poppins_regular login_text1">Password  <label className="staric">*</label></p>
                         <input className="poppins_light col-md-12 login_input" placeholder="Enter Here" type="password" name="Password" onChange={this.onChange} value={this.state.Password}></input>
+                        {errors.password && <div className="invaliderror">{errors.password}</div>}
+
                         <img className="visibiltyicon" src={visibilty} />
                      </div>
                      <div className="col-md-12  text-right">
