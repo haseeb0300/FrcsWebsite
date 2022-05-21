@@ -21,31 +21,33 @@ class Result extends Component {
         this.state = {
             serverError: {},
             isLoading: false,
-            answerList:[],
-            correctAnswer:0,
-            wrongAnswer:0
+            answerList: [],
+            correctAnswer: 0,
+            wrongAnswer: 0,
+            showAnswer: false,
+
 
         };
     }
 
     componentDidMount() {
-        const {answerList} = this.state;
+        const { answerList } = this.state;
         let wrongAnswer = 0
         let correctAnswer = 0
-        for(var i = 0; i < answerList.length; i ++){
-        if(answerList[i]?.selectedOption === '' || answerList[i]?.selectedOption !== answerList[i].correctOption){
-            wrongAnswer = wrongAnswer + 1
-            console.log('Wrong')
-        }else{
-            correctAnswer = correctAnswer + 1
-            console.log('Correct')
+        for (var i = 0; i < answerList.length; i++) {
+            if (answerList[i]?.selectedOption === '' || answerList[i]?.selectedOption !== answerList[i].correctOption) {
+                wrongAnswer = wrongAnswer + 1
+                console.log('Wrong')
+            } else {
+                correctAnswer = correctAnswer + 1
+                console.log('Correct')
 
+            }
         }
-    }
         console.log(correctAnswer + '' + wrongAnswer)
         this.setState({
-            correctAnswer:correctAnswer,
-            wrongAnswer:wrongAnswer
+            correctAnswer: correctAnswer,
+            wrongAnswer: wrongAnswer
         })
     }
 
@@ -58,10 +60,34 @@ class Result extends Component {
         }
     }
 
+
+    renderWrongAnswers = () => {
+        if (this.state.answerList && this.state.answerList.length < 1) {
+            return () =>
+                <tr>
+                    <td class="text-center" colspan="7"> <b>  No Data To Display</b>
+                    </td>
+                </tr>
+        }
+        return this.state.answerList.map((item, i) =>
+            <div className='quicktest-container'>
+                <p className='poppins_medium quicktest-Text '>{item.question.Question}</p>
+                <p class="mt-5">
+                    <label className="poppins_light radioLabel " ><label className='poppins_bold'>Your Selected Option is:</label> {item.question[item.selectedOption]}</label>                 
+                  {item.question[item.selectedOption] === item.question[item.correctOption]? <span> <i class="fa fa-check  greencolor" aria-hidden="true"></i></span>: <span> <i class="fa fa-close redcolor"></i></span>}
+ <br></br>
+                    <label className="poppins_light radioLabel " ><label className='poppins_bold'>Your Correct Option is:</label>  {item.question[item.correctOption]}</label> <br></br>
+
+
+                </p>
+            </div>
+        )
+    }
+
     render() {
         // const { t, i18n } = this.props
         const { t, i18n, location, user } = this.props
-        const { isLoading, answerList, correctAnswer, wrongAnswer } = this.state;
+        const { isLoading, answerList, correctAnswer, wrongAnswer, showAnswer } = this.state;
 
         if (isLoading) {
             return (
@@ -96,7 +122,7 @@ class Result extends Component {
                                         </div>
                                     </div>
                                     <div className="col-md-4">
-                                        <div className="wronganswercard">
+                                        <div className="wronganswercard" onClick={() => this.setState({ showAnswer: true })}>
                                             <p className="poppins_medium totalquestioncardAmount">{wrongAnswer}</p>
                                             <p className="poppins_medium totalquestioncardText">Wrong Answers</p>
 
@@ -105,6 +131,16 @@ class Result extends Component {
 
 
                                 </div>
+                                {this.state.showAnswer === true && (
+                                    <div className='col-md-12 text-left'>
+                                        {this.renderWrongAnswers()}
+                                    </div>
+                                )}
+                                {this.state.showCorrectAnswer === true && (
+                                    <div className='col-md-12 text-left'>
+                                        {this.renderWrongAnswers()}
+                                    </div>
+                                )}
                                 <Link to="/testselection">
                                     <button className="back-to-home">Back To Home <img src={rightarrow} /></button>
                                 </Link>
@@ -114,6 +150,8 @@ class Result extends Component {
                                 </Link>
                             </div>
                         </div>
+
+
                     </div>
 
                 </div>

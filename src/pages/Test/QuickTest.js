@@ -32,8 +32,15 @@ class QuickTest extends Component {
     }
 
     componentDidMount() {
+        const {NumberOfQuestion,BasicScienceDomainList,SpecialityDomainList} = this?.props?.location?.state
+        var obj = {
+            "NumberOfQuestion": NumberOfQuestion,
+            "BasicScienceDomainList": BasicScienceDomainList,
+            "SpecialityDomainList": SpecialityDomainList
 
-        this.props.getFrcs1Question(this?.props?.location?.state?.NumberOfQuestion).then((res) => {
+        }
+
+        this.props.getFrcs1Question(obj).then((res) => {
             console.log(res)
             var newArray = res.content.filter(function (el) {
                 return el.Status == 'Completed'

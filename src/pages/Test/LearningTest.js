@@ -34,9 +34,18 @@ class LearningTest extends Component {
     }
 
     componentDidMount() {
+        const { NumberOfQuestion, BasicScienceDomainList, SpecialityDomainList } = this?.props?.location?.state
+        var obj = {
+            "NumberOfQuestion": NumberOfQuestion,
+            "BasicScienceDomainList": BasicScienceDomainList,
+            "SpecialityDomainList": SpecialityDomainList
 
-        this.props.getFrcs1Question(this?.props?.location?.state?.NumberOfQuestion).then((res) => {
+        }
+        this.props.getFrcs1Question(obj).then((res) => {
             console.log(res)
+            var newArray = res.content.filter(function (el) {
+                return el.Status == 'Completed'
+            });
             this.setState({
                 questionList: res.content,
             }, () => {
@@ -231,7 +240,7 @@ class LearningTest extends Component {
                                 <div className="col-md-12 mt-5 p-0">
                                     <div className="row">
                                         <div className="col-md-5">
-                                        <img className="w-100 leadinImg" src={questionList[index]?.Image ? questionList[index]?.Image : lightimg} />
+                                            <img className="w-100 leadinImg" src={questionList[index]?.Image ? questionList[index]?.Image : lightimg} />
                                         </div>
                                         <div className="col-md-7 ">
                                             {/* <p className='leadin'>{questionList[index]?.LeadIn}</p> */}
@@ -240,9 +249,14 @@ class LearningTest extends Component {
                                     </div>
                                     <div className="col-md-5 mt-5 vertical_center">
                                         <p className="poppins_regular refernceText">Reference Link </p>
-                                        <p className="poppins_regular refernceLink">{questionList[index]?.ReferenceUrl} </p>
+                                        <a href={questionList[index]?.ReferenceUrl}>
+                                            <p className="poppins_regular refernceLink">{questionList[index]?.ReferenceUrl} </p>
+                                        </a>
                                         <p className="poppins_regular refernceText">Video Link  </p>
+                                        <a href={questionList[index]?.VideoLink}>
+
                                         <p className="poppins_regular refernceLink">{questionList[index]?.VideoLink}</p>
+                                    </a>
                                     </div>
                                 </div>
 
@@ -251,40 +265,52 @@ class LearningTest extends Component {
                                 <p className='poppins_medium chooseCorrectAns'>{questionList[index]?.LeadIn}</p>
 
                                 <p class="mt-4">
+                                    <label className='poppins_bold radioLabel pr-3'>Option A </label>
                                     <input className="radioInput" type="radio" id="forOptionA" name="radio-group" onClick={(e) => this.selectedOption(e)} />
                                     <label className="poppins_light radioLabel " for="forOptionA">{questionList[index]?.OptionA}</label>
 
                                 </p>
 
                                 <p class="mt-4">
+                                    <label className='poppins_bold radioLabel pr-3'>Option B </label>
+
                                     <input className="radioInput" type="radio" id="forOptionB" name="radio-group" />
                                     <label className="poppins_light radioLabel " for="forOptionB">{questionList[index]?.OptionB}</label>
 
                                 </p>
                                 <p class="mt-4">
+                                    <label className='poppins_bold radioLabel pr-3'>Option C </label>
+
                                     <input className="radioInput" type="radio" id="forOptionC" name="radio-group" />
                                     <label className="poppins_light radioLabel " for="forOptionC">{questionList[index]?.OptionC}</label>
 
                                 </p>
                                 <p class="mt-4">
+                                    <label className='poppins_bold radioLabel pr-3'>Option D </label>
+
                                     <input className="radioInput" type="radio" id="forOptionD" name="radio-group" />
                                     <label className="poppins_light  radioLabel" for="forOptionD">{questionList[index]?.OptionD}</label>
 
                                 </p>
                                 <p class="mt-4">
+                                    <label className='poppins_bold radioLabel pr-3'>Option E </label>
+
                                     <input className="radioInput" type="radio" id="forOptionE" name="radio-group" />
                                     <label className="poppins_light radioLabel " for="forOptionE">{questionList[index]?.OptionE}</label>
 
                                 </p>
-                                <button className='checkAnswerBtn' onClick={(e) => this.setVisibityAnswer(questionList[index],index)} >Check Answer</button>
+                                <button className='checkAnswerBtn' onClick={(e) => this.setVisibityAnswer(questionList[index], index)} >Check Answer</button>
                                 {questionList[index]?.visibleAnswer && (
 
                                     <div className="col-md-12 mt-5">
+                                        <p className='explaination poppins_regular'>Correct Answer is <label className='poppins_bold'>{questionList[index]?.CorrectOption}</label></p>
+
                                         <p className="poppins_regular explaination">Explanation</p>
+
                                         <div className="explainationDiv">
                                             <p className="poppins_light">{questionList[index]?.AnswerExplenation}
                                                 <br></br>
-                                                <label className='seeimg'><i>See Image</i></label>
+                                                {/* <label className='seeimg'><i>See Image</i></label> */}
 
                                             </p>
                                         </div>

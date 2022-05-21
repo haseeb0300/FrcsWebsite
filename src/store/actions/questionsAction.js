@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { SET_CURRENT_USER, GET_ERRORS } from '../actions/type'
 
-export const getFrcs1Question = (NumberOfQuestion) => dispatch => {
+export const getFrcs1Question = (obj) => dispatch => {
     return axios
-      .get('/api/frcs1test?NumberOfQuestion='+NumberOfQuestion)
+      .post('/api/frcs1test',obj)
       .then((res) => {
         console.log(res)
   

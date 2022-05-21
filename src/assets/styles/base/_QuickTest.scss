@@ -6,6 +6,22 @@
     font-size: 15px;
     margin-bottom: 0px;
 }
+.greencolor{
+    color: green;
+    font-size: 30px;
+    position: absolute;
+    margin-top: -6px;
+    margin-left: 8px;
+
+}
+.redcolor{
+    color: red;
+    font-size: 30px;
+    position: absolute;
+    margin-top: -6px;
+    margin-left: 10px;
+
+}
 .QuestionTittle{
     font-size: 17px;
 
@@ -211,6 +227,8 @@ color: #38A3A5;
           background: #BFE7C4;
           padding: 20px;
           border-radius: 7px;
+          font-size: 15px;
+
       }
       .quicktest-Btn{
         border: 2px solid #38A3A5;
