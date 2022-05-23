@@ -15,6 +15,8 @@ import QuickTestFrcs2 from '../Test/Frcs2QuickTest';
 
 import LearningTest from '../Test/LearningTest';
 import LearningTestFrcs2 from '../Test/LearningTestFrcs2';
+import LearningTestOld from '../Test/LearningTestOld';
+
 
 import Result from '../Test/Result';
 
@@ -40,6 +42,9 @@ import Frcs1ChooseResource from '../../pages/Resources/Frcs1ChooseResource'
 import Frcs1Video from '../../pages/Resources/Frcs1Video'
 import Frcs2ClinicalTopic from '../../pages/Resources/Frcs2ClinicalTopic'
 import ClinicalResources from '../../pages/Resources/ClinicalResources'
+import OralResouces from '../../pages/Resources/OralResouces'
+
+import Frcs2OralTopic from '../../pages/Resources/Frcs2OralTopic'
 
 
 
@@ -114,10 +119,18 @@ class AppNavigation extends Component {
 
                     <Route exact path="/clinicalresources"
                             component={ClinicalResources} />
+                            
+                    <Route exact path="/oralresoruces"
+                            component={OralResouces} />
+                            
                     <Route exact path="/frcs1domain"
                             component={Frcs1Domain} />
                                  <Route exact path="/Frcs2clinicaltopic"
                             component={Frcs2ClinicalTopic} />
+                              <Route exact path="/resources/frcs2/topics"
+                            component={Frcs2OralTopic} />
+
+
                                 <Route exact path="/frcs1video"
                             component={Frcs1Video} />
                               
@@ -152,6 +165,8 @@ class AppNavigation extends Component {
                             component={LearningTest} />
                         <Route exact path="/learningtest/frcs2"
                             component={LearningTestFrcs2} />
+                             <Route exact path="/learningtestold"
+                            component={LearningTestOld} />
                         <Route exact path="/result"
                             component={Result} />
 

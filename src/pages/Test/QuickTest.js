@@ -313,27 +313,36 @@ class QuickTest extends Component {
                                 <p className='poppins_medium chooseCorrectAns'>                                          
                                   {questionList[index]?.LeadIn}</p>
                                 <p class="mt-5">
+                                    <label className='radioLabel poppins_medium mr-3'>A</label>
                                     <input checked={answerList[index]?.selectedOption === "OptionA"} className="radioInput" type="radio" id="forOptionA" name="radio-group" onClick={(e) => this.selectedOption(e, questionList[index], 'OptionA')} />
                                     <label className="poppins_light radioLabel " for="forOptionA">{questionList[index]?.OptionA}</label>
 
                                 </p>
 
                                 <p class="mt-5">
+                                <label className='radioLabel poppins_medium mr-3'>B</label>
+
                                     <input checked={answerList[index]?.selectedOption === "OptionB"} className="radioInput" type="radio" id="forOptionB" name="radio-group" onClick={(e) => this.selectedOption(e, questionList[index], 'OptionB')} />
                                     <label className="poppins_light radioLabel " for="forOptionB">{questionList[index]?.OptionB}</label>
 
                                 </p>
                                 <p class="mt-5">
+                                <label className='radioLabel poppins_medium mr-3'>C</label>
+
                                     <input checked={answerList[index]?.selectedOption === "OptionC"} className="radioInput" type="radio" id="forOptionC" name="radio-group" onClick={(e) => this.selectedOption(e, questionList[index], 'OptionC')} />
                                     <label className="poppins_light radioLabel " for="forOptionC">{questionList[index]?.OptionC}</label>
 
                                 </p>
                                 <p class="mt-5">
+                                <label className='radioLabel poppins_medium mr-3'>D</label>
+
                                     <input checked={answerList[index]?.selectedOption === "OptionD"} className="radioInput" type="radio" id="forOptionD" name="radio-group" onClick={(e) => this.selectedOption(e, questionList[index], 'OptionD')} />
                                     <label className="poppins_light  radioLabel" for="forOptionD">{questionList[index]?.OptionD}</label>
 
                                 </p>
                                 <p class="mt-5">
+                                <label className='radioLabel poppins_medium mr-3'>E</label>
+
                                     <input checked={answerList[index]?.selectedOption === "OptionE"} className="radioInput" type="radio" id="forOptionE" name="radio-group" onClick={(e) => this.selectedOption(e, questionList[index], 'OptionE')} />
                                     <label className="poppins_light radioLabel " for="forOptionE">{questionList[index]?.OptionE}</label>
 

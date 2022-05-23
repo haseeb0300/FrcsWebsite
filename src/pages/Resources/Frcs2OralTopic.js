@@ -4,9 +4,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { Dropdown, Modal, Form, DropdownButton } from 'react-bootstrap';
-import { createOralTopic,getOralTopic,getSpecialSubDomain} from '../../store/actions/resourcesAction';
+import { createOralTopic, getOralTopic, getSpecialSubDomain } from '../../store/actions/resourcesAction';
 
 import { Link, withRouter } from 'react-router-dom';
+import LoginHeader from '../../component/LoginHeader'
 
 var cx = require('classnames');
 
@@ -22,12 +23,12 @@ class Frcs2OralTopic extends Component {
             Name: '',
             Description: '',
             Sub_Domain_ID: '',
-            Frcs2OralTopic_ID:'',
+            Frcs2OralTopic_ID: '',
         };
 
     }
 
-  
+
 
 
     componentWillMount() {
@@ -69,12 +70,12 @@ class Frcs2OralTopic extends Component {
     // }
     getUpdatedList = () => {
         this.getOralTopic(this.state.Frcs2OralTopic_ID)
-        
+
     }
 
     onClickChapter = (item) => {
 
-        this.props.history.push('/oral/chooseResource', { item: item })
+        this.props.history.push('/oralresoruces', { item: item })
 
     }
     renderTitleRows = () => {
@@ -86,29 +87,24 @@ class Frcs2OralTopic extends Component {
                 </tr>
         }
         return this.state.TopicList.map((item, i) =>
-            <tr>
-                <td ></td>
-                <td>{item?.Name}</td>
-                <td ></td>
-                <td>{item?.Description}</td>
-                <td ></td>
-                <td >
-                    <span>
-                        <i class="fa fa-edit edit-btn " />
-                    </span>
-                    <span >
-                        <i class="fa fa-trash-o delete-btn " />
-                    </span>
+        <tr>
+        <td className='table-text'></td>
+        <td className='table-text'>{item?.Name}</td>
+        <td className='table-text'></td>
+        <td className='table-text'>{item?.Description}</td>
+        <td className='table-text'></td>
+        <td className='table-text' >
+           
 
-                        <span  onClick={() => this.onClickChapter(item)}>
-                            <i class="fa fa-arrow-right  edit-btn" aria-hidden="true"></i>
-                        </span>
-                </td>
-            </tr>
+                <span  onClick={() => this.onClickChapter(item)}>
+                    <i class="fa fa-arrow-right  edit-btn" aria-hidden="true"></i>
+                </span>
+        </td>
+    </tr>
 
         )
     }
- 
+
 
 
     componentDidMount() {
@@ -116,7 +112,7 @@ class Frcs2OralTopic extends Component {
 
     }
 
-   
+
 
 
 
@@ -130,7 +126,7 @@ class Frcs2OralTopic extends Component {
 
     render() {
 
-        const { isLoading, errors,Name,Description } = this.state;
+        const { isLoading, errors, Name, Description } = this.state;
 
         if (isLoading) {
             return (
@@ -139,52 +135,56 @@ class Frcs2OralTopic extends Component {
         }
 
         return (
+            <>
+                <LoginHeader></LoginHeader>
 
-            <div className="categorization mt-4">
-            
-                <div className="container  p-0">
-                    <div className="test-type-container ">
+                <div className="categorization mt-4">
 
-                        <div className="test-type tableHeight1">
+                    <div className="container  p-0">
+                        <div className="test-type-container ">
 
-                            <table className="table table-hover thead-primary  ">
-                                <thead className="table-head">
-                                    <tr>
+                            <div className="test-type tableHeight1">
 
-                                        <th scope="col table_header poppins_medium"></th>
-                                        <th scope="col table_header poppins_medium">Topic Name</th>
-                                        <th scope="col table_header poppins_medium"></th>
-                                        <th scope="col table_header poppins_medium">Description</th>
-                                        <th scope="col table_header poppins_medium"></th>
-                                        <th scope="col table_header poppins_medium">Action </th>
+                                <table className="table table-hover thead-primary  ">
+                                    <thead className="table-head">
+                                        <tr>
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {this.state.TopicList.length > 0 && this.renderTitleRows()}
+                                            <th scope="col table_header poppins_medium"></th>
+                                            <th scope="col table_header poppins_medium">Topic Name</th>
+                                            <th scope="col table_header poppins_medium"></th>
+                                            <th scope="col table_header poppins_medium">Description</th>
+                                            <th scope="col table_header poppins_medium"></th>
+                                            <th scope="col table_header poppins_medium">Action </th>
 
-
-
-
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.state.TopicList.length > 0 && this.renderTitleRows()}
 
 
-                                </tbody>
 
-                            </table>
+
+
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+
+
+
 
                         </div>
 
 
 
-                      
 
                     </div>
+                </div >
+            </>
 
-
-
-
-                </div>
-            </div >
         )
     }
 

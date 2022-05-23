@@ -13,15 +13,15 @@ export const getFrcs1Question = (obj) => dispatch => {
         return Promise.reject(err)
       })
   }
-  export const getFrcs2Question = (data) => dispatch => {
+  export const getFrcs2Question = (data,obj) => dispatch => {
     let url = ''
     if(data === 'Oral'){
-      url = '/api/frcs2testoral'
+      url = ('/api/frcs2testoral')
     }else{
       url = '/api/frcs2testclinical'
     }
     return axios
-      .get(url)
+      .post(url,obj)
       .then((res) => {
         console.log(res)
   

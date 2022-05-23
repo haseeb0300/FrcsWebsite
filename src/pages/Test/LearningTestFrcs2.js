@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 
 
-import LearningTestHeader from '../../component/LearningTestHeader'
+import TestHeader from '../../component/TestHeader'
 import Footer from '../../component/Footer'
 import { Link, withRouter } from 'react-router-dom';
 
@@ -14,6 +14,7 @@ import rightarrow from '../../assets/Images/TestSelection/rightarrow.png'
 import { getFrcs2Question } from '../../store/actions/questionsAction'
 import skipquestion from '../../assets/Images/TestSelection/skipquestion.png'
 import StarsRating from 'stars-rating'
+import LearningTest from './LearningTest';
 
 class LearningTestFrcs2 extends Component {
 
@@ -23,16 +24,21 @@ class LearningTestFrcs2 extends Component {
             serverError: {},
             isLoading: false,
             questionList: [],
+            clinicalQuestionList: [],
+
             index: 0,
             correctAnsware: 0,
             wrongAnsware: 0,
             answerList: [],
             visibleAnswer: false,
             testType: 'Oral',
+            subIndex: 0,
+            subDomainList: [],
+            clinicalVivaList: []
+
 
         };
     }
-
     changeRating(newRating, name) {
         this.setState({
             rating: newRating
@@ -41,14 +47,30 @@ class LearningTestFrcs2 extends Component {
     componentWillMount() {
         if (this?.props?.location?.state?.testType) {
             console.log(this.props.location.state.testType)
-            this.setState({ testType: this.props.location.state.testType })
+            this.setState({ testType: this.props.location.state.testType, })
+        }
+        if (this?.props?.location?.state?.subDomainList) {
+            console.log(this.props.location.state.subDomainList)
+            this.setState({ subDomainList: this.props.location.state.subDomainList })
+        }
+        if (this?.props?.location?.state?.clinicalVivaList) {
+            console.log(this.props.location.state.clinicalVivaList)
+            this.setState({ clinicalVivaList: this.props.location.state.clinicalVivaList })
         }
     }
     componentDidMount() {
-
+        const { subDomainList, clinicalVivaList } = this?.props?.location?.state
         const { testType } = this.state
-        this.props.getFrcs2Question(testType).then((res) => {
+
+
+        var obj = {
+            "subDomainList": subDomainList,
+            "clinicalVivaList": clinicalVivaList,
+        }
+
+        this.props.getFrcs2Question(testType, obj).then((res) => {
             console.log(res)
+
             this.setState({
                 questionList: res.content,
             }, () => {
@@ -96,6 +118,9 @@ class LearningTestFrcs2 extends Component {
     selectedOption = (e) => {
         console.log(e)
     }
+    onClickFinish = () => {
+        this.props.history.push('/testselection')
+    }
     setVisibityAnswer = (question, i) => {
         const { questionList } = this.state
         let tmpArray = questionList
@@ -111,7 +136,7 @@ class LearningTestFrcs2 extends Component {
     render() {
         // const { t, i18n } = this.props
         const { t, i18n, location, user } = this.props
-        const { isLoading, questionList, index } = this.state;
+        const { isLoading, questionList, answerList, index, subIndex } = this.state;
         const ratingChanged = (newRating) => {
             console.log(newRating)
         }
@@ -125,149 +150,168 @@ class LearningTestFrcs2 extends Component {
 
         return (
             <>
-                <LearningTestHeader />
+                <TestHeader />
                 <div className="quicktest-container frcs2QuickTest-Container">
+                    <div className="col-md-12 ">
+                        <div className="row">
+                            <div className=" col-2 vertical_center">
+                                <button className="leftbtn" onClick={(e) => this.backIndex(e)}><i class="fa fa-angle-left arrowIcon" aria-hidden="true" ></i></button>
+                            </div>
+                            <div className=" col-5  vertical_center text-center">
+                                <p className="poppins_light QuestionsHeading">{'Scenario' + (index + 1) + ' of ' + (questionList.length)}</p>
+                            </div>
+                            <div className=" col-2 text-right vertical_center">
+                                <button className="leftbtn" onClick={(e) => this.nextIndex(e)}><i class="fa fa-angle-right arrowIcon" aria-hidden="true" ></i></button>
 
+                            </div>
+
+                            <div className="quicktest-hr"></div>
+
+
+                        </div>
+                    </div>
                     <div className="col-md-12">
-                        {questionList[index]?.frcs2OralQuestions && (
+                        <div className="row">
 
-                            <div className="row">
-                                <div className="col-md-9">
-                                    <p className='poppins_medium QuestionTittle'>Scenario</p>
-                                    {/* <p className="poppins_light quicktest-Text">{questionList[index]?.Question} </p> */}
-                                    <p className="poppins_light quicktest-Text">{questionList[index]?.Scenario} </p>
+                            {questionList[index]?.frcs2OralQuestions && (
+                                <>
 
+                                    <div className="col-md-12">
+                                        <p className='poppins_medium frcs2QuickTest-Heading'>{'Scenario ' + (index + 1)}</p>
+                                        <p className='poppins_light frcs2QuickTest-Heading'>{questionList[index]?.Scenario ? questionList[index]?.Scenario : 'No Scenario Available'}</p>
+                                    </div>
+                                    <div className="col-md-12">
+                                        <p className='poppins_medium frcs2QuickTest-Heading'>Scenario Title </p>
+                                        <p className='poppins_light frcs2QuickTest-Heading'>{questionList[index]?.SenerioTitle ? questionList[index]?.SenerioTitle : 'No Scenario Title Available'}</p>
+                                    </div>
+                                    <div className='col-md-12'>
 
-
-                                </div>
-                                <div className="col-md-3">
-                                    <div className="col-md-12 mt-5 p-0">
                                         <div className="row">
-                                            <div className="col-md-12">
-                                                <img className="w-100 leadinImg" src={questionList[index]?.Image ? questionList[index]?.Image : lightimg} />
-                                            </div>
 
+                                            {questionList[index]?.frcs2OralQuestions.map((item, i) => {
+                                                return (
+                                                    <>
+                                                        <div className='col-md-9'>
+                                                            <p className='poppins_medium frcs2QuickTest-Heading'>{'Question ' + (i + 1) + ' of ' + (questionList[index].frcs2OralQuestions.length)}</p>
+                                                            <p className="poppins_light quicktest-Text">{questionList[index]?.frcs2OralQuestions[i]?.Question ? questionList[index]?.frcs2OralQuestions[i]?.Question : 'No Question Available'} </p>
+                                                            <p className='poppins_medium frcs2QuickTest-Heading'>Write Answer</p>
+                                                            <div className='writeanwser'>
+                                                                <p className='poppins_light'>{questionList[index]?.frcs2OralQuestions[0]?.Answer ? questionList[index]?.frcs2OralQuestions[0]?.Answer : 'No Right Answer Available'}</p>
+                                                            </div>
+                                                            <p className='poppins_regular frcs2QuickTest-Heading mt-4'>Point of Discussion </p>
+
+                                                            <div className='writeanwser1'>
+                                                                <p className='poppins_light'>{questionList[index]?.frcs2OralQuestions[0]?.Discussion ? questionList[index]?.frcs2OralQuestions[0]?.Discussion : 'No Discussion Available'}</p>
+                                                            </div>
+
+                                                        </div>
+                                                        <div className="col-md-3 mt-5 p-0">
+                                                            <div className="row">
+                                                                <div className="col-md-12">
+                                                                    <img className="w-100 leadinImg" src={questionList[index]?.frcs2OralQuestions[0]?.Image ? questionList[index]?.frcs2OralQuestions[0]?.Image : lightimg}
+                                                                    />
+
+                                                                </div>
+                                                                <div className="col-md-12">
+                                                                    <p className="poppins_regular refernceText">Additional Image Url </p>
+                                                                    <a href={questionList[index]?.frcs2OralQuestions[0]?.ImageUrl}>
+                                                                        <p className="poppins_regular refernceLink">{questionList[index]?.frcs2OralQuestions[0]?.ImageUrl ? questionList[index]?.frcs2OralQuestions[0]?.ImageUrl : 'No Url Available'} </p>
+
+                                                                    </a>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </>
+
+                                                )
+
+                                            })}
 
                                         </div>
-                                        <div className="col-md-12 mt-5 vertical_center">
-                                            <p className="poppins_regular refernceText">Reference Link </p>
-                                            <p className="poppins_regular refernceLink">{questionList[index]?.PresentationOfFindingUrl ?questionList[index]?.PresentationOfFindingUrl:'No Url Available'} </p>
-                                            <p className="poppins_regular refernceText">Video Link  </p>
-                                            <p className="poppins_regular refernceLink">{questionList[index]?.VideoLink ?questionList[index]?.VideoLink :'No Url Available'}</p>
+                                        <div className='text-center'>
+                                            {/* <button className="nextScenaro-Btn mt-4 mb-4" onClick={(e) => this.nextIndex(e)}>Next Scenario  <img src={rightarrow} /></button> */}
+                                            <button className="nextScenaro-Btn mt-4 mb-4" onClick={questionList.length == (index + 1) ? () => this.onClickFinish() : (e) => this.nextIndex(e)}>{questionList.length == (index + 1) ? "Finish" : "Submit & next "}<img src={rightarrow} /></button>
+
                                         </div>
-                                    </div>
-                                </div>
 
-                                <div className='col-md-12'>
-                                    <p className='poppins_medium QuestionTittle'>Question 01</p>
-                                    <p className="poppins_light quicktest-Text">{questionList[index]?.frcs2OralQuestions[0]?.Question ?questionList[index]?.frcs2OralQuestions[0]?.Question: 'No Question Available'} </p>
-                                    <p className='poppins_regular frcs2QuickTest-Heading'> Write Answer </p>
-
-                                    <div className='writeanwser'>
-                                        <p className='poppins_light'>{questionList[index]?.frcs2OralQuestions[0]?.Answer?questionList[index]?.frcs2OralQuestions[0]?.Answer:'No Right Answer Available'}</p>
-                                    </div>
-                                    <p className='poppins_regular frcs2QuickTest-Heading mt-4'>Point of Discussion </p>
-
-                                    <div className='writeanwser1'>
-                                        <p className='poppins_light'>{questionList[index]?.frcs2OralQuestions[0]?.Discussion?questionList[index]?.frcs2OralQuestions[0]?.Discussion:'No Discussion Available'}</p>
                                     </div>
 
-                                </div>
-                                <div className='col-md-12 mt-5'>
-                                    <p className='poppins_medium QuestionTittle'>Question 02</p>
-                                    <p className="poppins_light quicktest-Text">{questionList[index]?.Question} </p>
-                                    <p className='poppins_regular frcs2QuickTest-Heading'> Write Answer </p>
+                                </>
+                            )}
 
-                                    <div className='writeanwser'>
-                                        <p className='poppins_light'>A 45 year old man undergoes a laparoscopic right hemicolectomy.
-                                            There is torrential intraoperative haemorrhage and an emergency blood transfusion is required. In the ensuing panic the patient (who is blood) receives group A blood. This is dangerous for which of the following reasons?</p>
+                            {questionList[index]?.frcs2ClinicalQuestions && (
+                                <>
+
+                                    <div className="col-md-12">
+                                        <p className='poppins_medium frcs2QuickTest-Heading'>{'Scenario ' + (index + 1) + ' of ' + (this.state.questionList.length)}</p>
+                                        <p className='poppins_light frcs2QuickTest-Heading'>{questionList[index]?.SenerioTitle ? questionList[index]?.SenerioTitle : 'No Scenario Available'}</p>
                                     </div>
-                                    <p className='poppins_regular frcs2QuickTest-Heading mt-4'>Point of Discussion </p>
-
-                                    <div className='writeanwser1'>
-                                        <p className='poppins_light'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                    </div>
-
-                                </div>
-
-
-
-                            </div>
-                        )}
-                        {questionList[index]?.frcs2ClinicalQuestions && (
-
-                            <div className="row">
-                                <div className="col-md-9">
-                                    <p className='poppins_medium QuestionTittle'>Scenario</p>
-                                    {/* <p className="poppins_light quicktest-Text">{questionList[index]?.Question} </p> */}
-                                    <p className="poppins_light quicktest-Text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s
-                                        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
-                                        type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
-                                        essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                                        passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                        Ipsum. It is a long established fact that a reader will be distracted by the readable content of a page when looking at
-                                        its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to
-                                        using ‘Content here, content here’, making it look like readable English. Many desktop publishing packages and web
-                                        page editors now use Lorem Ipsum as their default model text, and a search for ‘lorem ipsum’ will uncover many web </p>
-
-
-
-                                </div>
-                                <div className="col-md-3">
-                                    <div className="col-md-12 mt-5 p-0">
+                                    <div className='col-md-12'>
                                         <div className="row">
-                                            <div className="col-md-12">
-                                                <img className="w-100 leadinImg" src={questionList[index]?.Image ? questionList[index]?.Image : lightimg} />
-                                            </div>
+                                            {questionList[index]?.frcs2ClinicalQuestions.map((item, i) => {
+                                                return (
+                                                    <>
+                                                        <div className="col-md-9">
+                                                            <p className='poppins_medium frcs2QuickTest-Heading'>{'Question ' + (i + 1) + ' of ' + (questionList[index].frcs2ClinicalQuestions.length)}</p>
+                                                            <p className="poppins_light quicktest-Text">{questionList[index]?.frcs2ClinicalQuestions[i]?.Question ? questionList[index]?.frcs2ClinicalQuestions[i]?.Question : 'No Question Available'} </p>
+                                                            <p className='poppins_regular frcs2QuickTest-Heading'> Right Answer </p>
+                                                            <div className='writeanwser'>
+                                                                <p className='poppins_light'>{questionList[index]?.frcs2ClinicalQuestions[0]?.Answer ? questionList[index]?.frcs2ClinicalQuestions[0]?.Answer : 'No Right Answer Available'}</p>
+                                                            </div>    
+                                                            <p className='poppins_regular frcs2QuickTest-Heading'> Point of Discussion </p>
+                                                            <div className='writeanwser'>
+                                                                <p className='poppins_light'>{questionList[index]?.frcs2ClinicalQuestions[0]?.Discussion ? questionList[index]?.frcs2ClinicalQuestions[0]?.Discussion : 'No Right Answer Available'}</p>
+                                                            </div>    
+                                                                   
+                                                         
+                                                        </div>
+                                                        <div className="col-md-3 mt-5 p-0">
+                                                            <div className="row">
+                                                                <div className="col-md-12">
+                                                                    <img className="w-100 leadinImg" src={questionList[index]?.frcs2ClinicalQuestions[0]?.PresentationOfFinding ? questionList[index]?.frcs2ClinicalQuestions[0]?.PresentationOfFinding : lightimg}
+                                                                    />
+
+                                                                </div>
+                                                                <div className="col-md-12 ">
+                                                                    <p className='imgurl poppins_medium'>Presentation Of Finding</p>
+                                                                    <a href={questionList[index]?.frcs2ClinicalQuestions[0]?.PresentationOfFindingUrl}>
+                                                                        <p className='imgurl poppins_light'>
+                                                                            {questionList[index]?.frcs2ClinicalQuestions[0]?.PresentationOfFindingUrl ? questionList[index]?.frcs2ClinicalQuestions[0]?.PresentationOfFindingUrl : 'No Url'}
+
+                                                                        </p>
+                                                                    </a>
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </>
+
+                                                )
+
+                                            })}
+
+                                        </div>
+                                        <div className='text-center'>
+                                            {/* <button className="nextScenaro-Btn mt-4 mb-4" onClick={(e) => this.nextIndex(e)}>Next Scenario  <img src={rightarrow} /></button> */}
+                                            <button className="nextScenaro-Btn mt-4 mb-4" onClick={questionList.length == (index + 1) ? () => this.onClickFinish() : (e) => this.nextIndex(e)}>{questionList.length == (index + 1) ? "Finish" : "Next Scenario"}<img src={rightarrow} /></button>
 
 
                                         </div>
-                                        <div className="col-md-12 mt-5 vertical_center">
-                                            <p className="poppins_regular refernceText">Reference Link </p>
-                                            <p className="poppins_regular refernceLink">{questionList[index]?.ReferenceUrl} </p>
-                                            <p className="poppins_regular refernceText">Video Link  </p>
-                                            <p className="poppins_regular refernceLink">{questionList[index]?.VideoLink}</p>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div className='col-md-12'>
-                                    <p className='poppins_medium QuestionTittle'>Question 01</p>
-                                    <p className="poppins_light quicktest-Text">{questionList[index]?.Question} </p>
-                                    <p className='poppins_regular frcs2QuickTest-Heading'> Write Answer </p>
-
-                                    <div className='writeanwser'>
-                                        <p className='poppins_light'>A 45 year old man undergoes a laparoscopic right hemicolectomy.
-                                            There is torrential intraoperative haemorrhage and an emergency blood transfusion is required. In the ensuing panic the patient (who is blood) receives group A blood. This is dangerous for which of the following reasons?</p>
-                                    </div>
-                                    <p className='poppins_regular frcs2QuickTest-Heading mt-4'>Point of Discussion </p>
-
-                                    <div className='writeanwser1'>
-                                        <p className='poppins_light'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                                     </div>
 
-                                </div>
-                                <div className='col-md-12 mt-5'>
-                                    <p className='poppins_medium QuestionTittle'>Question 02</p>
-                                    <p className="poppins_light quicktest-Text">{questionList[index]?.Question} </p>
-                                    <p className='poppins_regular frcs2QuickTest-Heading'> Write Answer </p>
-
-                                    <div className='writeanwser'>
-                                        <p className='poppins_light'>A 45 year old man undergoes a laparoscopic right hemicolectomy.
-                                            There is torrential intraoperative haemorrhage and an emergency blood transfusion is required. In the ensuing panic the patient (who is blood) receives group A blood. This is dangerous for which of the following reasons?</p>
-                                    </div>
-                                    <p className='poppins_regular frcs2QuickTest-Heading mt-4'>Point of Discussion </p>
-
-                                    <div className='writeanwser1'>
-                                        <p className='poppins_light'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                    </div>
-
-                                </div>
+                                </>
+                            )}
 
 
 
-                            </div>
-                        )}
+
+
+                        </div>
                     </div>
                 </div>
 

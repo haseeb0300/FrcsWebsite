@@ -32,6 +32,8 @@ class Frcs2QuickTest extends Component {
             visibleAnswer: false,
             testType: 'Oral',
             subIndex: 0,
+            subDomainList: [],
+            clinicalVivaList: []
 
 
         };
@@ -44,15 +46,30 @@ class Frcs2QuickTest extends Component {
     componentWillMount() {
         if (this?.props?.location?.state?.testType) {
             console.log(this.props.location.state.testType)
-            this.setState({ testType: this.props.location.state.testType })
+            this.setState({ testType: this.props.location.state.testType, })
+        }
+        if (this?.props?.location?.state?.subDomainList) {
+            console.log(this.props.location.state.subDomainList)
+            this.setState({ subDomainList: this.props.location.state.subDomainList })
+        }
+        if (this?.props?.location?.state?.clinicalVivaList) {
+            console.log(this.props.location.state.clinicalVivaList)
+            this.setState({ clinicalVivaList: this.props.location.state.clinicalVivaList })
         }
     }
     componentDidMount() {
-
+        const { subDomainList, clinicalVivaList } = this?.props?.location?.state
         const { testType } = this.state
-        this.props.getFrcs2Question(testType).then((res) => {
+
+
+        var obj = {
+            "subDomainList": subDomainList,
+            "clinicalVivaList": clinicalVivaList,
+        }
+
+        this.props.getFrcs2Question(testType, obj).then((res) => {
             console.log(res)
-           
+
             this.setState({
                 questionList: res.content,
             }, () => {
@@ -100,6 +117,9 @@ class Frcs2QuickTest extends Component {
     selectedOption = (e) => {
         console.log(e)
     }
+    onClickFinish = () => {
+        this.props.history.push('/testselection')
+    }
     setVisibityAnswer = (question, i) => {
         const { questionList } = this.state
         let tmpArray = questionList
@@ -131,7 +151,24 @@ class Frcs2QuickTest extends Component {
             <>
                 <TestHeader />
                 <div className="quicktest-container frcs2QuickTest-Container">
+                <div className="col-md-12 ">
+                        <div className="row">
+                            <div className=" col-2 vertical_center">
+                                <button className="leftbtn" onClick={(e) => this.backIndex(e)}><i class="fa fa-angle-left arrowIcon" aria-hidden="true" ></i></button>
+                            </div>
+                            <div className=" col-5  vertical_center text-center">
+                                <p className="poppins_light QuestionsHeading">{'Scenario' + (index + 1) + ' of ' + (questionList.length)}</p>
+                            </div>
+                            <div className=" col-2 text-right vertical_center">
+                                <button className="leftbtn" onClick={(e) => this.nextIndex(e)}><i class="fa fa-angle-right arrowIcon" aria-hidden="true" ></i></button>
 
+                            </div>
+                            
+                            <div className="quicktest-hr"></div>
+
+
+                        </div>
+                    </div>
                     <div className="col-md-12">
                         <div className="row">
 
@@ -157,7 +194,7 @@ class Frcs2QuickTest extends Component {
                                             {questionList[index]?.frcs2OralQuestions.map((item, i) => {
                                                 return (
                                                     <>
-                                                 
+
                                                         <div className="col-md-6">
 
 
@@ -205,12 +242,12 @@ class Frcs2QuickTest extends Component {
                                                                 </div>
                                                                 <div className="col-md-6 ">
                                                                     <p className='imgurl poppins_medium'>Additional Image URL</p>
+                                                                    <a href={questionList[index]?.frcs2OralQuestions[0]?.ImageUrl}>
+                                                                        <p className='imgurl poppins_light'>
+                                                                            {questionList[index]?.frcs2OralQuestions[0]?.ImageUrl ? questionList[index]?.frcs2OralQuestions[0]?.ImageUrl : 'No Url'}
 
-                                                                    <p className='imgurl poppins_light'>
-                                                                        {questionList[index]?.frcs2OralQuestions[0]?.ImageUrl ? questionList[index]?.frcs2OralQuestions[0]?.ImageUrl : 'No Url'}
-
-                                                                    </p>
-
+                                                                        </p>
+                                                                    </a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -222,7 +259,8 @@ class Frcs2QuickTest extends Component {
 
                                         </div>
                                         <div className='text-center'>
-                                        <button className="nextScenaro-Btn mt-4 mb-4" onClick={(e) => this.nextIndex(e)}>Next Scenario  <img src={rightarrow} /></button>
+                                            {/* <button className="nextScenaro-Btn mt-4 mb-4" onClick={(e) => this.nextIndex(e)}>Next Scenario  <img src={rightarrow} /></button> */}
+                                            <button className="nextScenaro-Btn mt-4 mb-4" onClick={questionList.length == (index+1)?()=> this.onClickFinish(): (e) => this.nextIndex(e)}>{questionList.length == (index+1)?"Finish": "Submit & next "}<img src={rightarrow} /></button>
 
                                         </div>
 
@@ -231,7 +269,7 @@ class Frcs2QuickTest extends Component {
                                 </>
                             )}
 
-{questionList[index]?.frcs2ClinicalQuestions && (
+                            {questionList[index]?.frcs2ClinicalQuestions && (
                                 <>
 
                                     <div className="col-md-12">
@@ -250,14 +288,11 @@ class Frcs2QuickTest extends Component {
                                             {questionList[index]?.frcs2ClinicalQuestions.map((item, i) => {
                                                 return (
                                                     <>
-                                                 
+
                                                         <div className="col-md-6">
-
-
                                                             <p className='poppins_medium frcs2QuickTest-Heading'>{'Question ' + (i + 1) + ' of ' + (questionList[index].frcs2ClinicalQuestions.length)}</p>
                                                             <p className="poppins_light quicktest-Text">{questionList[index]?.frcs2ClinicalQuestions[i]?.Question ? questionList[index]?.frcs2ClinicalQuestions[i]?.Question : 'No Question Available'} </p>
                                                             <p className='poppins_regular frcs2QuickTest-Heading'>Enter Write Answer <label className='staric'>*</label></p>
-
                                                             <textarea className='frcs2QuickTest-Textarea' placeholder='Write Answer Here'></textarea>
                                                             <div className="text-right">
                                                                 <button className="quicktest-Btn mt-4 mb-4" onClick={(e) => this.setVisibityAnswer(questionList[index], index)}>Check Answer  <img src={rightarrow} /></button>
@@ -292,17 +327,19 @@ class Frcs2QuickTest extends Component {
                                                         <div className="col-md-6 mt-5 p-0">
                                                             <div className="row">
                                                                 <div className="col-md-6">
-                                                                    <img className="w-100 leadinImg" src={questionList[index]?.frcs2ClinicalQuestions[0]?.PresentationOfFindingUrl ? questionList[index]?.frcs2ClinicalQuestions[0]?.PresentationOfFindingUrl : lightimg}
+                                                                    <img className="w-100 leadinImg" src={questionList[index]?.frcs2ClinicalQuestions[0]?.PresentationOfFinding ? questionList[index]?.frcs2ClinicalQuestions[0]?.PresentationOfFinding : lightimg}
                                                                     />
 
                                                                 </div>
                                                                 <div className="col-md-6 ">
                                                                     <p className='imgurl poppins_medium'>Presentation Of Finding</p>
+                                                                    <a href={questionList[index]?.frcs2ClinicalQuestions[0]?.PresentationOfFindingUrl}>
+                                                                        <p className='imgurl poppins_light'>
+                                                                            {questionList[index]?.frcs2ClinicalQuestions[0]?.PresentationOfFindingUrl ? questionList[index]?.frcs2ClinicalQuestions[0]?.PresentationOfFindingUrl : 'No Url'}
 
-                                                                    <p className='imgurl poppins_light'>
-                                                                        {questionList[index]?.frcs2ClinicalQuestions[0]?.PresentationOfFinding ? questionList[index]?.frcs2ClinicalQuestions[0]?.PresentationOfFinding : 'No Url'}
+                                                                        </p>
+                                                                    </a>
 
-                                                                    </p>
 
                                                                 </div>
                                                             </div>
@@ -315,7 +352,9 @@ class Frcs2QuickTest extends Component {
 
                                         </div>
                                         <div className='text-center'>
-                                        <button className="nextScenaro-Btn mt-4 mb-4" onClick={(e) => this.nextIndex(e)}>Next Scenario  <img src={rightarrow} /></button>
+                                            {/* <button className="nextScenaro-Btn mt-4 mb-4" onClick={(e) => this.nextIndex(e)}>Next Scenario  <img src={rightarrow} /></button> */}
+                                            <button className="nextScenaro-Btn mt-4 mb-4" onClick={questionList.length == (index+1)?()=> this.onClickFinish(): (e) => this.nextIndex(e)}>{questionList.length == (index+1)?"Finish": "Next Scenario"}<img src={rightarrow} /></button>
+
 
                                         </div>
 

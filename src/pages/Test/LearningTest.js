@@ -146,6 +146,9 @@ class LearningTest extends Component {
     selectedOption = (e) => {
         console.log(e)
     }
+    onClickFinish = () => {
+        this.props.history.push('/testselection')
+    }
 
     setVisibityAnswer = (question, i) => {
         const { questionList } = this.state
@@ -182,11 +185,28 @@ class LearningTest extends Component {
 
                 />
                 <div className="quicktest-container">
+                <div className="col-md-12 ">
+                        <div className="row">
+                            <div className=" col-2 vertical_center">
+                                <button className="leftbtn" onClick={(e) => this.backIndex(e)}><i class="fa fa-angle-left arrowIcon" aria-hidden="true" ></i></button>
+                            </div>
+                            <div className=" col-5  vertical_center text-center">
+                                <p className="poppins_light QuestionsHeading">{'Question' + (index + 1) + ' of ' + (questionList.length)}</p>
+                            </div>
+                            <div className=" col-2 text-right vertical_center">
+                                <button className="leftbtn" onClick={(e) => this.nextIndex(e)}><i class="fa fa-angle-right arrowIcon" aria-hidden="true" ></i></button>
 
+                            </div>
+                            
+                            <div className="quicktest-hr"></div>
+
+
+                        </div>
+                    </div>
                     <div className="col-md-12">
                         <div className="row">
                             <div className="col-md-7">
-                                <p className='poppins_medium QuestionTittle'>Question 01</p>
+                                <p className='poppins_medium QuestionTittle'>{'Question no ' + (index + 1)}</p>
                                 <p className="poppins_light quicktest-Text">{questionList[index]?.Question}
 
                                 </p>
@@ -265,35 +285,35 @@ class LearningTest extends Component {
                                 <p className='poppins_medium chooseCorrectAns'>{questionList[index]?.LeadIn}</p>
 
                                 <p class="mt-4">
-                                    <label className='poppins_bold radioLabel pr-3'>Option A </label>
+                                    <label className='poppins_bold radioLabel pr-3'>A </label>
                                     <input className="radioInput" type="radio" id="forOptionA" name="radio-group" onClick={(e) => this.selectedOption(e)} />
                                     <label className="poppins_light radioLabel " for="forOptionA">{questionList[index]?.OptionA}</label>
 
                                 </p>
 
                                 <p class="mt-4">
-                                    <label className='poppins_bold radioLabel pr-3'>Option B </label>
+                                    <label className='poppins_bold radioLabel pr-3'>B </label>
 
                                     <input className="radioInput" type="radio" id="forOptionB" name="radio-group" />
                                     <label className="poppins_light radioLabel " for="forOptionB">{questionList[index]?.OptionB}</label>
 
                                 </p>
                                 <p class="mt-4">
-                                    <label className='poppins_bold radioLabel pr-3'>Option C </label>
+                                    <label className='poppins_bold radioLabel pr-3'>C </label>
 
                                     <input className="radioInput" type="radio" id="forOptionC" name="radio-group" />
                                     <label className="poppins_light radioLabel " for="forOptionC">{questionList[index]?.OptionC}</label>
 
                                 </p>
                                 <p class="mt-4">
-                                    <label className='poppins_bold radioLabel pr-3'>Option D </label>
+                                    <label className='poppins_bold radioLabel pr-3'>D </label>
 
                                     <input className="radioInput" type="radio" id="forOptionD" name="radio-group" />
                                     <label className="poppins_light  radioLabel" for="forOptionD">{questionList[index]?.OptionD}</label>
 
                                 </p>
                                 <p class="mt-4">
-                                    <label className='poppins_bold radioLabel pr-3'>Option E </label>
+                                    <label className='poppins_bold radioLabel pr-3'>E </label>
 
                                     <input className="radioInput" type="radio" id="forOptionE" name="radio-group" />
                                     <label className="poppins_light radioLabel " for="forOptionE">{questionList[index]?.OptionE}</label>
@@ -325,7 +345,9 @@ class LearningTest extends Component {
                                     </div>
                                 )}
                                 <div className="text-right">
-                                    <button onClick={(e) => this.nextIndex(e)} className="quicktest-Btn">Submit & next <img src={rightarrow} /></button>
+                                    {/* <button onClick={(e) => this.nextIndex(e)} className="quicktest-Btn">Submit & next <img src={rightarrow} /></button> */}
+                                    <button className="quicktest-Btn" onClick={questionList.length == (index+1)?()=> this.onClickFinish(): (e) => this.nextIndex(e)}>{questionList.length == (index+1)?"Finish": "Submit & next "}<img src={rightarrow} /></button>
+
                                 </div>
                             </div>
 

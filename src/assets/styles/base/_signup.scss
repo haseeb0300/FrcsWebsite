@@ -97,8 +97,27 @@ margin-bottom: 5px;
     color: #22577A;
 }
 .checkboxLabel{
+    font-size: 15px;
+    line-height: 1.4;
+
+}
+.checkboxLabel1{
     font-size: 16px;
-    line-height: 1.4;}
+    line-height: 1.4;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.checkboxLabel1:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+    .checkboxLabelActive{
+        font-size: 16px;
+        line-height: 1.4;
+        border-bottom: 3px solid #02C39A;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 .w-2{
     width: 2%;
 }
