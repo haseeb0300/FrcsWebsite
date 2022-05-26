@@ -66,6 +66,10 @@ class Footer extends Component {
                             </div>
                             <div className="col-md-4 text-center">
                                 <p className="poppins_regular footer_heading"> Navigation</p>
+                                <a href='https://admin.grabthefrcs.com/'>
+                                <p className="poppins_light footer_text"> Admin Panel</p>
+
+                                </a>
                                 <p className="poppins_light footer_text"> Exams</p>
                                 <p className="poppins_light footer_text"> Features & Benefits </p>
                                 <p className="poppins_light footer_text"> Subscription Plans</p>

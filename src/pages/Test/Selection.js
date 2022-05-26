@@ -8,7 +8,7 @@ import Header from '../../component/Header'
 
 import Footer from '../../component/Footer'
 import LoginHeader from '../../component/LoginHeader'
-import { getSpecialDomain, getDomain, getSubDomain, getClinicalViva, getBasicScienceDomain } from '../../store/actions/resourcesAction'
+import { getSpecialDomainCount, getDomain, getSubDomainCount, getClinicalViva, getBasicScienceDomain } from '../../store/actions/resourcesAction'
 
 var cx = require('classnames');
 
@@ -35,6 +35,7 @@ class Selection extends Component {
             checkedScienceDomain: [],
             checkedSubDomain: [],
             checkedClinicalVivaDomain: [],
+            questionStatus: "Completed",
 
 
             filterList: [],
@@ -54,7 +55,9 @@ class Selection extends Component {
             console.log(err)
 
         })
-        this.props.getSpecialDomain().then((res) => {
+        const {questionStatus} = this.state
+
+        this.props.getSpecialDomainCount(questionStatus).then((res) => {
             console.log(res)
             this.setState({
                 SpecialityDomainList: res.content,
@@ -74,7 +77,7 @@ class Selection extends Component {
             console.log(err)
 
         })
-        this.props.getSubDomain().then((res) => {
+        this.props.getSubDomainCount(questionStatus).then((res) => {
             console.log(res)
             this.setState({
                 subDomainList: res.content,
@@ -104,6 +107,10 @@ class Selection extends Component {
             console.log(this.props.location.state.lastPage)
             this.setState({ lastPage: this.props.location.state.lastPage })
         }
+    }
+
+    onCheckedAll = (list) => {
+        
     }
 
     onChangeCheckbox = (id) => {
@@ -214,7 +221,7 @@ class Selection extends Component {
 
                     </div>
                     <div className="w-95">
-                        <label className="poppins_light checkboxLabel ml-3" for="SpecialityDomains">{item?.Name}</label>
+                        <label className="poppins_light checkboxLabel ml-3" for="SpecialityDomains">{item?.Name} ( {item.count} )</label>
 
                     </div>
                 </div>
@@ -239,7 +246,7 @@ class Selection extends Component {
 
                 </div>
                 <div className="w-95">
-                    <label className="poppins_light checkboxLabel ml-3" for="SpecialityDomains">{item?.Name}</label>
+                    <label className="poppins_light checkboxLabel ml-3" for="SpecialityDomains">{item?.Name}  ( {item.count} )</label>
 
                 </div>
             </div>
@@ -262,7 +269,7 @@ class Selection extends Component {
 
                 </div>
                 <div className="w-95">
-                    <label className="poppins_light checkboxLabel ml-3" for="SpecialityDomains">{item?.Name}</label>
+                    <label className="poppins_light checkboxLabel ml-3" for="SpecialityDomains">{item?.Name}  ( {item.count} )</label>
 
                 </div>
             </div>
@@ -275,8 +282,10 @@ class Selection extends Component {
             return () =>
                 <></>
         }
+
         return this.state.basicScienceDomainList.map((item, i) =>
             <>
+
                 <div className='row m-0 mt-3 mb-3'>
 
                     <div className="w-5 text-center">
@@ -310,8 +319,8 @@ class Selection extends Component {
 
                             <p className='poppins_medium Selection-Container-Heading'>Test Type</p>
 
-                            <button className={cx({ " FrcsActiveTestBtn": true, "FrcsNonActiveTestBtn  ": this.state.activeTab === 1 })} onClick={() => this.onClickBottomBar(1)}>Frcs 1</button>
-                            <button className={cx({ "FrcsActiveTestBtn": true, "FrcsNonActiveTestBtn": this.state.activeTab === 2 })} onClick={() => this.onClickBottomBar(2)}>Frcs 2</button>
+                            <button className={cx({ " FrcsActiveTestBtn": true, "FrcsNonActiveTestBtn  ": this.state.activeTab === 1 })} onClick={() => this.onClickBottomBar(1)}>FRCS 1</button>
+                            <button className={cx({ "FrcsActiveTestBtn": true, "FrcsNonActiveTestBtn": this.state.activeTab === 2 })} onClick={() => this.onClickBottomBar(2)}>FRCS 2</button>
 
                         </div>
                         {this.state.activeTab === 1 ? (
@@ -320,6 +329,17 @@ class Selection extends Component {
                                 <div className='row'>
                                     <div className='col-md-4'>
                                         <p className='poppins_medium Selection-Container-Heading'>Basic Science Domain</p>
+                                        <div className='row m-0 mt-3 mb-3'>
+
+                                            <div className="w-5 text-center">
+                                                <input type="checkbox" id="SpecialityDomainsAll" onChange={() => this.onCheckedAll()}  />
+
+                                            </div>
+                                            <div className="w-95">
+                                                <label className="poppins_light checkboxLabel ml-3" for="SpecialityDomainsAll">Select All</label>
+
+                                            </div>
+                                        </div>
                                         {this.renderBasicScienceRows()}
 
 
@@ -398,9 +418,9 @@ const mapStatetoProps = ({ auth }) => ({
     user: auth.user
 })
 const mapDispatchToProps = ({
-    getSpecialDomain,
+    getSpecialDomainCount,
     getDomain,
-    getSubDomain,
+    getSubDomainCount,
     getClinicalViva,
     getBasicScienceDomain
 })

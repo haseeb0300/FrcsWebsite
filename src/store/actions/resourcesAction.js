@@ -1,6 +1,33 @@
 import axios from 'axios';
 import { GET_ERRORS} from '../actions/type'
 
+export const getSpecialDomainCount = (questionStatus) => dispatch => {
+  return axios
+    .get('/api/specialdomaincount?Status='+questionStatus)
+    .then((res) => {
+      console.log(res)
+
+      return Promise.resolve(res.data)
+    }).catch((err) => {
+      console.log(err)
+      return Promise.reject(err)
+    })
+}
+
+export const getSubDomainCount = (questionStatus) => dispatch => {
+  return axios
+    .get('/api/subdomaincount?Status='+questionStatus)
+
+    .then((res) => {
+      console.log(res)
+
+      return Promise.resolve(res.data)
+    }).catch((err) => {
+      console.log(err)
+      return Promise.reject(err)
+    })
+}
+
 export const getSpecialDomain = () => dispatch => {
   return axios
     .get('/api/specialdomain')

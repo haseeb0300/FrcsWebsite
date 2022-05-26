@@ -267,17 +267,7 @@ class LearningTest extends Component {
                                         </div>
 
                                     </div>
-                                    <div className="col-md-5 mt-5 vertical_center">
-                                        <p className="poppins_regular refernceText">Reference Link </p>
-                                        <a href={questionList[index]?.ReferenceUrl}>
-                                            <p className="poppins_regular refernceLink">{questionList[index]?.ReferenceUrl} </p>
-                                        </a>
-                                        <p className="poppins_regular refernceText">Video Link  </p>
-                                        <a href={questionList[index]?.VideoLink}>
-
-                                        <p className="poppins_regular refernceLink">{questionList[index]?.VideoLink}</p>
-                                    </a>
-                                    </div>
+                                   
                                 </div>
 
                             </div>
@@ -321,7 +311,6 @@ class LearningTest extends Component {
                                 </p>
                                 <button className='checkAnswerBtn' onClick={(e) => this.setVisibityAnswer(questionList[index], index)} >Check Answer</button>
                                 {questionList[index]?.visibleAnswer && (
-
                                     <div className="col-md-12 mt-5">
                                         <p className='explaination poppins_regular'>Correct Answer is <label className='poppins_bold'>{questionList[index]?.CorrectOption}</label></p>
 
@@ -334,6 +323,17 @@ class LearningTest extends Component {
 
                                             </p>
                                         </div>
+                                        <div className="col-md-12 mt-5 vertical_center">
+                                        <p className="poppins_regular refernceText">Reference Link </p>
+                                        <a href={questionList[index]?.ReferenceUrl}>
+                                            <p className="poppins_regular refernceLink">{questionList[index]?.ReferenceUrl} </p>
+                                        </a>
+                                        <p className="poppins_regular refernceText">Video Link  </p>
+                                        <a href={questionList[index]?.VideoLink}>
+
+                                        <p className="poppins_regular refernceLink">{questionList[index]?.VideoLink}</p>
+                                    </a>
+                                    </div>
                                         <p className="poppins_regular explaination mt-5">Question Feedback:</p>
                                         <input className='feedbackinput poppins_regular'></input>
                                         <p className="poppins_regular explaination mt-4">Rate this question</p>

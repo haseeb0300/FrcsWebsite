@@ -14,7 +14,13 @@ import rightarrow from '../../assets/Images/TestSelection/rightarrow.png'
 import { getFrcs2Question } from '../../store/actions/questionsAction'
 import skipquestion from '../../assets/Images/TestSelection/skipquestion.png'
 import StarsRating from 'stars-rating'
+import Countdown from 'react-countdown';
 
+
+import timer from '../../assets/Images/Header/timer.png'
+
+import Logo from '../../assets/Images/Header/Logo.png'
+import leave from '../../assets/Images/Header/leave.png'
 class Frcs2QuickTest extends Component {
 
     constructor(props) {
@@ -149,9 +155,72 @@ class Frcs2QuickTest extends Component {
 
         return (
             <>
-                <TestHeader />
-                <div className="quicktest-container frcs2QuickTest-Container">
-                <div className="col-md-12 ">
+                <>
+
+                    <div className="headerContainerTest test_header">
+
+                        <div className="col-md-12">
+                            <div className="row">
+                                <div className="col-md-3 text-center ">
+                                    <img className="logo" src={Logo} />
+
+                                </div>
+                                <div className="col-md-5 vertical_center ">
+                                    <div className="vr"></div>
+                                    <p className="mb-0 test_title poppins_medium">Quick Test Mode - FRCS 2</p>
+                                </div>
+                                <div className="col-md-3 vertical_center ">
+                                    <div className="row m-0">
+
+                                        <div className="vr mt-2"></div>
+                                        <img className="timmericon vertical_center" src={timer} />
+                                        <p className="poppins_medium countDown vertical_center">Count Down</p>
+                                        {/* <p className="poppins_semibold time vertical_center">01:50:20</p> */}
+                                        <Countdown
+                                            date={Date.now() + (this.props.NumberOfQuestion * 67500)}
+                                            zeroPadTime={2}
+                                            renderer={props => <p className="poppins_semibold time vertical_center">{props.hours + ':' + props.minutes + ':' + props.seconds}</p>}
+                                        />,
+                                    </div>
+
+                                </div>
+                                <div className="col-md-1">
+                                    <Link to="/testselection">
+
+                                        <div className="leaveCard">
+                                            <img src={leave} />
+                                            <p className="poppins_regular mt-2">Leave</p>
+
+                                        </div>
+                                    </Link>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div className='headerContainerTestMobile'>
+                        <div className="col-md-12 text-center ">
+                            <img className="logo" src={Logo} />
+
+                        </div>
+                        <div className='col-md-12 text-center'>
+                            <img className="timmericon vertical_center" src={timer} />
+                            <p className="poppins_medium countDown vertical_center">Count Down</p>
+                            <p className="poppins_semibold time vertical_center">01:50:20</p>
+                        </div>
+                        <div className='col-md-12 text-center'>
+                            <Link to="/testselection">
+
+                                <p className="poppins_regular leaveTest mt-2">Leave</p>
+                            </Link>
+
+                        </div>
+                    </div>
+
+
+                </>                <div className="quicktest-container frcs2QuickTest-Container">
+                    <div className="col-md-12 ">
                         <div className="row">
                             <div className=" col-2 vertical_center">
                                 <button className="leftbtn" onClick={(e) => this.backIndex(e)}><i class="fa fa-angle-left arrowIcon" aria-hidden="true" ></i></button>
@@ -163,7 +232,7 @@ class Frcs2QuickTest extends Component {
                                 <button className="leftbtn" onClick={(e) => this.nextIndex(e)}><i class="fa fa-angle-right arrowIcon" aria-hidden="true" ></i></button>
 
                             </div>
-                            
+
                             <div className="quicktest-hr"></div>
 
 
@@ -260,7 +329,7 @@ class Frcs2QuickTest extends Component {
                                         </div>
                                         <div className='text-center'>
                                             {/* <button className="nextScenaro-Btn mt-4 mb-4" onClick={(e) => this.nextIndex(e)}>Next Scenario  <img src={rightarrow} /></button> */}
-                                            <button className="nextScenaro-Btn mt-4 mb-4" onClick={questionList.length == (index+1)?()=> this.onClickFinish(): (e) => this.nextIndex(e)}>{questionList.length == (index+1)?"Finish": "Submit & next "}<img src={rightarrow} /></button>
+                                            <button className="nextScenaro-Btn mt-4 mb-4" onClick={questionList.length == (index + 1) ? () => this.onClickFinish() : (e) => this.nextIndex(e)}>{questionList.length == (index + 1) ? "Finish" : "Submit & next "}<img src={rightarrow} /></button>
 
                                         </div>
 
@@ -353,7 +422,7 @@ class Frcs2QuickTest extends Component {
                                         </div>
                                         <div className='text-center'>
                                             {/* <button className="nextScenaro-Btn mt-4 mb-4" onClick={(e) => this.nextIndex(e)}>Next Scenario  <img src={rightarrow} /></button> */}
-                                            <button className="nextScenaro-Btn mt-4 mb-4" onClick={questionList.length == (index+1)?()=> this.onClickFinish(): (e) => this.nextIndex(e)}>{questionList.length == (index+1)?"Finish": "Next Scenario"}<img src={rightarrow} /></button>
+                                            <button className="nextScenaro-Btn mt-4 mb-4" onClick={questionList.length == (index + 1) ? () => this.onClickFinish() : (e) => this.nextIndex(e)}>{questionList.length == (index + 1) ? "Finish" : "Next Scenario"}<img src={rightarrow} /></button>
 
 
                                         </div>

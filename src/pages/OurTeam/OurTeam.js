@@ -9,7 +9,7 @@ import Header from '../../component/Header'
 import Footer from '../../component/Footer'
 import Member1 from '../../assets/Images/OurTeam/1.png'
 import Member2 from '../../assets/Images/OurTeam/2.png'
-import Member3 from '../../assets/Images/OurTeam/3.png'
+import Member3 from '../../assets/Images/OurTeam/1.jpg'
 import Member4 from '../../assets/Images/OurTeam/4.png'
 import Member5 from '../../assets/Images/OurTeam/badder.jpg'
 import Member6 from '../../assets/Images/OurTeam/6.jpg'
@@ -87,9 +87,10 @@ class OurTeam extends Component {
                                         <img className='MemberImg' src={Member3} />
                                         <p className='poppins_medium text mb-0'>Mr. Zubair S Khanzada
                                         </p>
-                                        <p className='poppins_light text mb-0'><i>MBBS; MRCS; MSC; MD; FRCS; Post CCT Fellow MIO
+                                        <p className='poppins_light text mb-0'><i>MBBS; MRCS; MSC; MD;PhD; FRCS
+
                                         </i></p>
-                                        <p className='poppins_medium text'>Section Editor Upper GI and HPB Surgery
+                                        <p className='poppins_medium text'>Section Editor Upper GI and HPB Surgery Consultant Upper GI Surgeon, Shukat Khanam Cancer Hospital, Peshawar, Pakistan
                                         </p>
                                     </div>
 

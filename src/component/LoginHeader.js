@@ -21,14 +21,36 @@ class LoginHeader extends Component {
          isLoading: false,
          newBookList: [],
          LoginModal: false,
+         title: ''
+
 
 
       };
    }
 
+  
    componentDidMount() {
       console.log(this.props)
-   }
+
+    
+      const user = JSON.parse(localStorage.getItem('user'))
+      const firstName = user?.Full_Name
+      const toInitials = str =>
+        str
+          // strip off capital letters (example: "First Last" ==> "FL")
+          .replace(/[^A-Z]/g, "")
+          // append the second character of the first word to end of this new string  (example: "FL" ==> "FLI")
+          .concat(str.charAt(1).toUpperCase())
+          // limit this new string to 2 characters (example: "FLI" ==> "FL")
+          .substring(0, 2);
+  
+          [firstName].forEach(w => {
+            console.log(`${w}: ${toInitials(w)}`)
+            this.setState({
+              title: `${toInitials(w)}`
+            })
+        });
+    }
 
    toogleModal = () => {
       this.setState({
@@ -64,7 +86,7 @@ class LoginHeader extends Component {
                         <div className="row">
                            <p className="poppins_light headerTitle">Hello, <label className="poppins_medium">{this.props?.user?.Full_Name}</label> </p>
                            <div className="headerTitleDiv" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                              <p>MS</p>
+                              <p>{this.state.title}</p>
                            </div>
                            <div class="collapse" id="collapseExample">
                                     <div class="colapseHeader">
@@ -112,7 +134,7 @@ class LoginHeader extends Component {
                  <div className="">
                     <p className="poppins_light headerTitle">Hello, <label className="poppins_medium">Muhammad Saad Iqbal </label> </p>
                     <div className="headerTitleDiv" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                       <p>MS</p>
+                       <p>{this.state.title}</p>
                     </div>
                     <div class="collapse" id="collapseExample">
                              <div class="colapseHeader">
