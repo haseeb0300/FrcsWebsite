@@ -55,7 +55,7 @@ class Selection extends Component {
             console.log(err)
 
         })
-        const {questionStatus} = this.state
+        const { questionStatus } = this.state
 
         this.props.getSpecialDomainCount(questionStatus).then((res) => {
             console.log(res)
@@ -110,7 +110,7 @@ class Selection extends Component {
     }
 
     onCheckedAll = (list) => {
-        
+
     }
 
     onChangeCheckbox = (id) => {
@@ -165,6 +165,59 @@ class Selection extends Component {
         )
 
     };
+
+    onCheckedAllScienceDomain = () => {
+        const { checkedScienceDomain, basicScienceDomainList } = this.state;
+        var temp = [];
+        if (checkedScienceDomain.length === 0) {
+            for (var i = 0; i <= basicScienceDomainList.length; i++) {
+                temp.push(basicScienceDomainList[i]?.Basic_Science_Domain_ID)
+                // console.log(basicScienceDomainList[i]?.Basic_Science_Domain_ID)
+            }
+            this.setState({ checkedScienceDomain: temp })
+        } else {
+            this.setState({ checkedScienceDomain: temp })
+        }
+    }
+    onCheckedAllSpecialtyDomain = () => {
+        const { checkedSpecialityDomain, SpecialityDomainList } = this.state;
+        var temp = [];
+        if (checkedSpecialityDomain.length === 0) {
+            for (var i = 0; i <= SpecialityDomainList.length; i++) {
+                temp.push(SpecialityDomainList[i]?.Speciality_Domain_ID)
+                console.log(SpecialityDomainList[i]?.Speciality_Domain_ID)
+            }
+            this.setState({ checkedSpecialityDomain: temp })
+        } else {
+            this.setState({ checkedSpecialityDomain: temp })
+        }
+    }
+    onCheckedAllOralSubDomain = () => {
+        const { checkedSubDomain, subDomainList } = this.state;
+        var temp = [];
+        if (checkedSubDomain.length === 0) {
+            for (var i = 0; i <= subDomainList.length; i++) {
+                temp.push(subDomainList[i]?.Sub_Domain_ID)
+                console.log(subDomainList[i]?.Sub_Domain_ID)
+            }
+            this.setState({ checkedSubDomain: temp })
+        } else {
+            this.setState({ checkedSubDomain: temp })
+        }
+    }
+    onCheckedAllClinicalSubDomain = () => {
+        const { checkedClinicalVivaDomain, clinicalVivaList } = this.state;
+        var temp = [];
+        if (checkedClinicalVivaDomain.length === 0) {
+            for (var i = 0; i <= clinicalVivaList.length; i++) {
+                temp.push(clinicalVivaList[i]?.Clinical_Viva_ID)
+                console.log(clinicalVivaList[i]?.Clinical_Viva_ID)
+            }
+            this.setState({ checkedClinicalVivaDomain: temp })
+        } else {
+            this.setState({ checkedClinicalVivaDomain: temp })
+        }
+    }
 
 
     onClickBottomBar = (val) => {
@@ -332,11 +385,11 @@ class Selection extends Component {
                                         <div className='row m-0 mt-3 mb-3'>
 
                                             <div className="w-5 text-center">
-                                                <input type="checkbox" id="SpecialityDomainsAll" onChange={() => this.onCheckedAll()}  />
+                                                <input type="checkbox" id="SpecialityDomainsAll" onChange={() => this.onCheckedAllScienceDomain()} />
 
                                             </div>
                                             <div className="w-95">
-                                                <label className="poppins_light checkboxLabel ml-3" for="SpecialityDomainsAll">Select All</label>
+                                                <label className="poppins_light checkboxLabel ml-3" for="SpecialityDomainsAll">All Basic Science Domain</label>
 
                                             </div>
                                         </div>
@@ -346,6 +399,18 @@ class Selection extends Component {
                                     </div>
                                     <div className='col-md-4'>
                                         <p className='poppins_medium Selection-Container-Heading'>Speciality Domain</p>
+
+                                        <div className='row m-0 mt-3 mb-3'>
+
+                                            <div className="w-5 text-center">
+                                                <input type="checkbox" id="SpecialityDomainsAll" onChange={() => this.onCheckedAllSpecialtyDomain()} />
+
+                                            </div>
+                                            <div className="w-95">
+                                                <label className="poppins_light checkboxLabel ml-3" for="SpecialityDomainsAll">All Speciality Domains</label>
+
+                                            </div>
+                                        </div>
                                         {this.renderSpecialDomainRows()}
                                     </div>
                                     <div className='col-md-4'>
@@ -382,11 +447,33 @@ class Selection extends Component {
 
                                         {this.state.testType === 'Oral' ? (
                                             <>
+                                                <div className='row m-0 mt-3 mb-3'>
+
+                                                    <div className="w-5 text-center">
+                                                        <input type="checkbox" id="SpecialityDomainsAll" onChange={() => this.onCheckedAllOralSubDomain()} />
+
+                                                    </div>
+                                                    <div className="w-95">
+                                                        <label className="poppins_light checkboxLabel ml-3" for="SpecialityDomainsAll">All Oral Sub Domain</label>
+
+                                                    </div>
+                                                </div>
                                                 {this.renderOralDomainRows()}
 
                                             </>
                                         ) : this.state.testType === 'Clinical' && (
                                             <>
+                                                <div className='row m-0 mt-3 mb-3'>
+
+                                                    <div className="w-5 text-center">
+                                                        <input type="checkbox" id="SpecialityDomainsAll" onChange={() => this.onCheckedAllClinicalSubDomain()} />
+
+                                                    </div>
+                                                    <div className="w-95">
+                                                        <label className="poppins_light checkboxLabel ml-3" for="SpecialityDomainsAll">All Oral Sub Domain</label>
+
+                                                    </div>
+                                                </div>
                                                 {this.renderClinicalDomainRows()}
 
                                             </>

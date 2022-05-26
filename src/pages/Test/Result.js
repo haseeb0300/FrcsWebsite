@@ -70,6 +70,9 @@ class Result extends Component {
 
 
     renderRightAnswers = () => {
+        const ratingChanged = (newRating) => {
+            console.log(newRating)
+        }
         if (this.state.answerList && this.state.answerList.length < 1) {
             return () =>
                 <tr>
@@ -82,12 +85,133 @@ class Result extends Component {
             item.question[item.selectedOption] === item.question[item.correctOption] && (
                 <div className='quicktest-container'>
                     <p className='poppins_medium quicktest-Text '>{item.question.Question}</p>
-                    <p class="mt-5">
-                        <label className="poppins_light radioLabel " ><label className='poppins_bold'>Your Selected Option is:</label> {item.question[item.selectedOption]}</label>
-                        {item.question[item.selectedOption] === item.question[item.correctOption] ? <span> <i class="fa fa-check  greencolor" aria-hidden="true"></i></span> : <span> <i class="fa fa-close redcolor"></i></span>}
-                        <br></br>
-                        <label className="poppins_light radioLabel " ><label className='poppins_bold'>Your Correct Option is:</label>  {item.question[item.correctOption]}</label> <br></br>
-                    </p>
+                    <button className='checkAnswerBtn' onClick={() => this.setState({ detailAnswer: i })}>View Detail</button>
+                    {this.state.detailAnswer === i && (
+
+                        <div className="col-md-12 mt-5">
+                            <div className="col-md-5">
+                                <img className="w-100 leadinImg" src={item.question?.Image ? item.question?.Image : lightimg} />
+                            </div>
+                            <div className='col-md-12'>
+
+                                <p className="poppins_light explaination mt-5">{item.question.LeadIn}</p>
+                                {item.selectedOption === "OptionA" ?
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>A </label>
+                                        <input className="radioInput" type="radio" id="forOptionA" name="radio-group" checked />
+                                        <label className="poppins_light radioLabel " for="forOptionA">{item.question?.OptionA}</label>
+
+                                    </p>
+                                    :
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>A </label>
+                                        <input className="radioInput" type="radio" id="forOptionA" name="radio-group" disabled />
+                                        <label className="poppins_light radioLabel " for="forOptionA">{item.question?.OptionA}</label>
+
+                                    </p>
+                                }
+                                {item.selectedOption === "OptionB" ?
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>B </label>
+                                        <input className="radioInput" type="radio" id="forOptionB" name="radio-group" checked />
+                                        <label className="poppins_light radioLabel " for="forOptionB">{item.question?.OptionB}</label>
+
+                                    </p>
+                                    :
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>B </label>
+                                        <input className="radioInput" type="radio" id="forOptionB" name="radio-group" disabled />
+                                        <label className="poppins_light radioLabel " for="forOptionB">{item.question?.OptionB}</label>
+
+                                    </p>
+                                }
+                                {item.selectedOption=== "OptionC" ?
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>C </label>
+
+                                        <input className="radioInput" type="radio" id="forOptionC" name="radio-group" checked />
+                                        <label className="poppins_light radioLabel " for="forOptionC" >{item.question?.OptionC}</label>
+
+                                    </p>
+                                    :
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>C </label>
+
+                                        <input className="radioInput" type="radio" id="forOptionC" name="radio-group" disabled />
+                                        <label className="poppins_light radioLabel " for="forOptionC" >{item.question?.OptionC}</label>
+
+                                    </p>
+                                }
+                                {item.selectedOption === "OptionD" ?
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>D </label>
+
+                                        <input className="radioInput" type="radio" id="forOptionD" name="radio-group" checked />
+                                        <label className="poppins_light  radioLabel" for="forOptionD" disabled>{item.question?.OptionD}</label>
+
+                                    </p>
+                                    :
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>D </label>
+
+                                        <input className="radioInput" type="radio" id="forOptionD" name="radio-group" disabled />
+                                        <label className="poppins_light  radioLabel" for="forOptionD" disabled>{item.question?.OptionD}</label>
+
+                                    </p>
+                                }
+                                          {item.selectedOption === "OptionE" ?
+                                   <p class="mt-4">
+                                   <label className='poppins_bold radioLabel pr-3'>E </label>
+
+                                   <input className="radioInput" type="radio" id="forOptionE" name="radio-group" disabled />
+                                   <label className="poppins_light radioLabel " for="forOptionE" disabled>{item.question?.OptionE}</label>
+
+                               </p>
+                                    :
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>E </label>
+
+                                        <input className="radioInput" type="radio" id="forOptionD" name="radio-group" disabled />
+                                        <label className="poppins_light  radioLabel" for="forOptionD" disabled>{item.question?.OptionE}</label>
+
+                                    </p>
+                                }
+                                <label className="poppins_light radioLabel " ><label className='poppins_bold'>Your Correct Option is:  {item.correctOption}</label>  {item.question[item.correctOption]}</label> <br></br>
+                                <p className="poppins_regular explaination">Explanation</p>
+
+                                <div className="explainationDiv">
+                                    <p className="poppins_light">{item.question.AnswerExplenation}
+                                        <br></br>
+
+                                    </p>
+                                </div>
+                                <div className="col-md-12 mt-5 vertical_center">
+                                    <p className="poppins_regular refernceText">Reference Link </p>
+                                    <a href={item.question?.ReferenceUrl}>
+                                        <p className="poppins_regular refernceLink">{item.question?.ReferenceUrl} </p>
+                                    </a>
+                                    <p className="poppins_regular refernceText">Video Link  </p>
+                                    <a href={item.question?.VideoLink}>
+
+                                        <p className="poppins_regular refernceLink">{item.question?.VideoLink}</p>
+                                    </a>
+                                </div>
+                                <p className="poppins_regular explaination mt-5">Question Feedback:</p>
+                                <input className='feedbackinput poppins_regular'></input>
+                                <p className="poppins_regular explaination mt-4">Rate this question</p>
+                                <StarsRating
+                                    count={5}
+                                    onChange={ratingChanged}
+                                    size={30}
+                                    color2={'#ffd700'} />
+                            </div>
+
+
+
+
+
+                        </div>
+                    )}
                 </div>
             )
         )
@@ -108,27 +232,108 @@ class Result extends Component {
             item.question[item.selectedOption] !== item.question[item.correctOption] && (
                 <div className='quicktest-container'>
                     <p className='poppins_medium quicktest-Text '>{item.question.Question}</p>
-                    <p class="mt-5">
-                        <label className="poppins_light radioLabel " ><label className='poppins_bold'>Your Selected Option is:</label> {item.question[item.selectedOption]}</label>
-                        {item.question[item.selectedOption] === item.question[item.correctOption] ? <span> <i class="fa fa-check  greencolor" aria-hidden="true"></i></span> : <span> <i class="fa fa-close redcolor"></i></span>}
-                        <br></br>
-                        <label className="poppins_light radioLabel " ><label className='poppins_bold'>Your Correct Option is:</label>  {item.question[item.correctOption]}</label> <br></br>
-                    </p>
+                
                     <button className='checkAnswerBtn' onClick={() => this.setState({ detailAnswer: i })}>View Detail</button>
                     {this.state.detailAnswer === i && (
 
                         <div className="col-md-12 mt-5">
-                            <div className="col-md-12 mt-5 p-0">
-                                <div className="row">
-                                    <div className="col-md-5">
-                                        <img className="w-100 leadinImg" src={item.question?.Image ? item.question?.Image : lightimg} />
-                                    </div>
-                                    <div className="col-md-7 ">
-                                        {/* <p className='leadin'>{questionList[index]?.LeadIn}</p> */}
-                                    </div>
+                            <div className="col-md-5">
+                                <img className="w-100 leadinImg" src={item.question?.Image ? item.question?.Image : lightimg} />
+                            </div>
+                            <div className='col-md-12'>
 
+                                <p className="poppins_light explaination mt-5">{item.question.LeadIn}</p>
+                                {item.selectedOption === "OptionA" ?
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>A </label>
+                                        <input className="radioInput" type="radio" id="forOptionA" name="radio-group" checked />
+                                        <label className="poppins_light radioLabel " for="forOptionA">{item.question?.OptionA}</label>
+
+                                    </p>
+                                    :
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>A </label>
+                                        <input className="radioInput" type="radio" id="forOptionA" name="radio-group" disabled />
+                                        <label className="poppins_light radioLabel " for="forOptionA">{item.question?.OptionA}</label>
+
+                                    </p>
+                                }
+                                {item.selectedOption === "OptionB" ?
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>B </label>
+                                        <input className="radioInput" type="radio" id="forOptionB" name="radio-group" checked />
+                                        <label className="poppins_light radioLabel " for="forOptionB">{item.question?.OptionB}</label>
+
+                                    </p>
+                                    :
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>B </label>
+                                        <input className="radioInput" type="radio" id="forOptionB" name="radio-group" disabled />
+                                        <label className="poppins_light radioLabel " for="forOptionB">{item.question?.OptionB}</label>
+
+                                    </p>
+                                }
+                                {item.selectedOption=== "OptionC" ?
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>C </label>
+
+                                        <input className="radioInput" type="radio" id="forOptionC" name="radio-group" checked />
+                                        <label className="poppins_light radioLabel " for="forOptionC" >{item.question?.OptionC}</label>
+
+                                    </p>
+                                    :
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>C </label>
+
+                                        <input className="radioInput" type="radio" id="forOptionC" name="radio-group" disabled />
+                                        <label className="poppins_light radioLabel " for="forOptionC" >{item.question?.OptionC}</label>
+
+                                    </p>
+                                }
+                                {item.selectedOption === "OptionD" ?
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>D </label>
+
+                                        <input className="radioInput" type="radio" id="forOptionD" name="radio-group" checked />
+                                        <label className="poppins_light  radioLabel" for="forOptionD" disabled>{item.question?.OptionD}</label>
+
+                                    </p>
+                                    :
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>D </label>
+
+                                        <input className="radioInput" type="radio" id="forOptionD" name="radio-group" disabled />
+                                        <label className="poppins_light  radioLabel" for="forOptionD" disabled>{item.question?.OptionD}</label>
+
+                                    </p>
+                                }
+                                          {item.selectedOption === "OptionE" ?
+                                   <p class="mt-4">
+                                   <label className='poppins_bold radioLabel pr-3'>E </label>
+
+                                   <input className="radioInput" type="radio" id="forOptionE" name="radio-group" disabled />
+                                   <label className="poppins_light radioLabel " for="forOptionE" disabled>{item.question?.OptionE}</label>
+
+                               </p>
+                                    :
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>E </label>
+
+                                        <input className="radioInput" type="radio" id="forOptionD" name="radio-group" disabled />
+                                        <label className="poppins_light  radioLabel" for="forOptionD" disabled>{item.question?.OptionE}</label>
+
+                                    </p>
+                                }
+                                <label className="poppins_light radioLabel " ><label className='poppins_bold'>Your Correct Option is:  {item.correctOption}</label>  {item.question[item.correctOption]}</label> <br></br>
+                                <p className="poppins_regular explaination">Explanation</p>
+
+                                <div className="explainationDiv">
+                                    <p className="poppins_light">{item.question.AnswerExplenation}
+                                        <br></br>
+
+                                    </p>
                                 </div>
-                                <div className="col-md-5 mt-5 vertical_center">
+                                <div className="col-md-12 mt-5 vertical_center">
                                     <p className="poppins_regular refernceText">Reference Link </p>
                                     <a href={item.question?.ReferenceUrl}>
                                         <p className="poppins_regular refernceLink">{item.question?.ReferenceUrl} </p>
@@ -139,33 +344,20 @@ class Result extends Component {
                                         <p className="poppins_regular refernceLink">{item.question?.VideoLink}</p>
                                     </a>
                                 </div>
+                                <p className="poppins_regular explaination mt-5">Question Feedback:</p>
+                                <input className='feedbackinput poppins_regular'></input>
+                                <p className="poppins_regular explaination mt-4">Rate this question</p>
+                                <StarsRating
+                                    count={5}
+                                    onChange={ratingChanged}
+                                    size={30}
+                                    color2={'#ffd700'} />
                             </div>
-                            <p className="poppins_regular explaination">Lead In</p>
 
-                            <div className="explainationDiv">
-                                <p className="poppins_light">{item.question.LeadIn}
-                                    <br></br>
 
-                                </p>
-                            </div>
 
-                            <p className="poppins_regular explaination">Explanation</p>
 
-                            <div className="explainationDiv">
-                                <p className="poppins_light">{item.question.AnswerExplenation}
-                                    <br></br>
-                                    {/* <label className='seeimg'><i>See Image</i></label> */}
 
-                                </p>
-                            </div>
-                            <p className="poppins_regular explaination mt-5">Question Feedback:</p>
-                            <input className='feedbackinput poppins_regular'></input>
-                            <p className="poppins_regular explaination mt-4">Rate this question</p>
-                            <StarsRating
-                                count={5}
-                                onChange={ratingChanged}
-                                size={30}
-                                color2={'#ffd700'} />
                         </div>
                     )}
                 </div>
@@ -174,6 +366,9 @@ class Result extends Component {
 
     }
     renderTotalQuestions = () => {
+        const ratingChanged = (newRating) => {
+            console.log(newRating)
+        }
         if (this.state.answerList && this.state.answerList.length < 1) {
             return () =>
                 <tr>
@@ -185,12 +380,140 @@ class Result extends Component {
         return this.state.answerList.map((item, i) =>
             <div className='quicktest-container'>
                 <p className='poppins_medium quicktest-Text '>{item.question.Question}</p>
+{/*               
                 <p class="mt-5">
                     <label className="poppins_light radioLabel " ><label className='poppins_bold'>Your Selected Option is:</label> {item.question[item.selectedOption]}</label>
                     {item.question[item.selectedOption] === item.question[item.correctOption] ? <span> <i class="fa fa-check  greencolor" aria-hidden="true"></i></span> : <span> <i class="fa fa-close redcolor"></i></span>}
                     <br></br>
                     <label className="poppins_light radioLabel " ><label className='poppins_bold'>Your Correct Option is:</label>  {item.question[item.correctOption]}</label> <br></br>
-                </p>
+                </p> */}
+                <button className='checkAnswerBtn' onClick={() => this.setState({ detailAnswer: i })}>View Detail</button>
+                    {this.state.detailAnswer === i && (
+
+                        <div className="col-md-12 mt-5">
+                            <div className="col-md-5">
+                                <img className="w-100 leadinImg" src={item.question?.Image ? item.question?.Image : lightimg} />
+                            </div>
+                            <div className='col-md-12'>
+
+                                <p className="poppins_light explaination mt-5">{item.question.LeadIn}</p>
+                                {item.selectedOption === "OptionA" ?
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>A </label>
+                                        <input className="radioInput" type="radio" id="forOptionA" name="radio-group" checked />
+                                        <label className="poppins_light radioLabel " for="forOptionA">{item.question?.OptionA}</label>
+
+                                    </p>
+                                    :
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>A </label>
+                                        <input className="radioInput" type="radio" id="forOptionA" name="radio-group" disabled />
+                                        <label className="poppins_light radioLabel " for="forOptionA">{item.question?.OptionA}</label>
+
+                                    </p>
+                                }
+                                {item.selectedOption === "OptionB" ?
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>B </label>
+                                        <input className="radioInput" type="radio" id="forOptionB" name="radio-group" checked />
+                                        <label className="poppins_light radioLabel " for="forOptionB">{item.question?.OptionB}</label>
+
+                                    </p>
+                                    :
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>B </label>
+                                        <input className="radioInput" type="radio" id="forOptionB" name="radio-group" disabled />
+                                        <label className="poppins_light radioLabel " for="forOptionB">{item.question?.OptionB}</label>
+
+                                    </p>
+                                }
+                                {item.selectedOption=== "OptionC" ?
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>C </label>
+
+                                        <input className="radioInput" type="radio" id="forOptionC" name="radio-group" checked />
+                                        <label className="poppins_light radioLabel " for="forOptionC" >{item.question?.OptionC}</label>
+
+                                    </p>
+                                    :
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>C </label>
+
+                                        <input className="radioInput" type="radio" id="forOptionC" name="radio-group" disabled />
+                                        <label className="poppins_light radioLabel " for="forOptionC" >{item.question?.OptionC}</label>
+
+                                    </p>
+                                }
+                                {item.selectedOption === "OptionD" ?
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>D </label>
+
+                                        <input className="radioInput" type="radio" id="forOptionD" name="radio-group" checked />
+                                        <label className="poppins_light  radioLabel" for="forOptionD" disabled>{item.question?.OptionD}</label>
+
+                                    </p>
+                                    :
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>D </label>
+
+                                        <input className="radioInput" type="radio" id="forOptionD" name="radio-group" disabled />
+                                        <label className="poppins_light  radioLabel" for="forOptionD" disabled>{item.question?.OptionD}</label>
+
+                                    </p>
+                                }
+                                          {item.selectedOption === "OptionE" ?
+                                   <p class="mt-4">
+                                   <label className='poppins_bold radioLabel pr-3'>E </label>
+
+                                   <input className="radioInput" type="radio" id="forOptionE" name="radio-group" disabled />
+                                   <label className="poppins_light radioLabel " for="forOptionE" disabled>{item.question?.OptionE}</label>
+
+                               </p>
+                                    :
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>E </label>
+
+                                        <input className="radioInput" type="radio" id="forOptionD" name="radio-group" disabled />
+                                        <label className="poppins_light  radioLabel" for="forOptionD" disabled>{item.question?.OptionE}</label>
+
+                                    </p>
+                                }
+                                <label className="poppins_light radioLabel " ><label className='poppins_bold'>Your Correct Option is:  {item.correctOption}</label>  {item.question[item.correctOption]}</label> <br></br>
+                                <p className="poppins_regular explaination">Explanation</p>
+
+                                <div className="explainationDiv">
+                                    <p className="poppins_light">{item.question.AnswerExplenation}
+                                        <br></br>
+
+                                    </p>
+                                </div>
+                                <div className="col-md-12 mt-5 vertical_center">
+                                    <p className="poppins_regular refernceText">Reference Link </p>
+                                    <a href={item.question?.ReferenceUrl}>
+                                        <p className="poppins_regular refernceLink">{item.question?.ReferenceUrl} </p>
+                                    </a>
+                                    <p className="poppins_regular refernceText">Video Link  </p>
+                                    <a href={item.question?.VideoLink}>
+
+                                        <p className="poppins_regular refernceLink">{item.question?.VideoLink}</p>
+                                    </a>
+                                </div>
+                                <p className="poppins_regular explaination mt-5">Question Feedback:</p>
+                                <input className='feedbackinput poppins_regular'></input>
+                                <p className="poppins_regular explaination mt-4">Rate this question</p>
+                                <StarsRating
+                                    count={5}
+                                    onChange={ratingChanged}
+                                    size={30}
+                                    color2={'#ffd700'} />
+                            </div>
+
+
+
+
+
+                        </div>
+                    )}
             </div>
         )
 
