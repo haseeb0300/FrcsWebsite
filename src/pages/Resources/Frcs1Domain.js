@@ -54,6 +54,8 @@ class Frcs1Domain extends Component {
 
 
     componentDidMount() {
+       
+       
         this.props.getSpecialDomain().then((res) => {
             console.log(res)
             this.setState({

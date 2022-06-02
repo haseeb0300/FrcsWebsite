@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-
-
 import TestHeader from '../../component/TestHeader'
 import Footer from '../../component/Footer'
 import { Link, withRouter } from 'react-router-dom';
-
 import helpicon from '../../assets/Images/TestSelection/help.png'
 import Polygon from '../../assets/Images/TestSelection/Polygon.png'
 import lightimg from '../../assets/Images/TestSelection/lightimg.png'
@@ -15,10 +11,7 @@ import { getFrcs2Question } from '../../store/actions/questionsAction'
 import skipquestion from '../../assets/Images/TestSelection/skipquestion.png'
 import StarsRating from 'stars-rating'
 import Countdown from 'react-countdown';
-
-
 import timer from '../../assets/Images/Header/timer.png'
-
 import Logo from '../../assets/Images/Header/Logo.png'
 import leave from '../../assets/Images/Header/leave.png'
 class Frcs2QuickTest extends Component {
@@ -260,7 +253,7 @@ class Frcs2QuickTest extends Component {
 
                                         <div className="row">
 
-                                            {questionList[index]?.frcs2OralQuestions.map((item, i) => {
+                                            {questionList[index]?.frcs2OralQuestions.sort((a,b)=> a.Question_Num - b.Question_Num).map((item, i) => {
                                                 return (
                                                     <>
 
@@ -281,12 +274,12 @@ class Frcs2QuickTest extends Component {
                                                                     <p className='poppins_regular frcs2QuickTest-Heading'> Write Answer </p>
 
                                                                     <div className='writeanwser'>
-                                                                        <p className='poppins_light'>{questionList[index]?.frcs2OralQuestions[0]?.Answer ? questionList[index]?.frcs2OralQuestions[0]?.Answer : 'No Right Answer Available'}</p>
+                                                                        <p className='poppins_light'>{questionList[index]?.frcs2OralQuestions[i]?.Answer ? questionList[index]?.frcs2OralQuestions[i]?.Answer : 'No Right Answer Available'}</p>
                                                                     </div>
                                                                     <p className='poppins_regular frcs2QuickTest-Heading mt-4'>Point of Discussion </p>
 
                                                                     <div className='writeanwser1'>
-                                                                        <p className='poppins_light'>{questionList[index]?.frcs2OralQuestions[0]?.Discussion ? questionList[index]?.frcs2OralQuestions[0]?.Discussion : 'No Discussion Available'}</p>
+                                                                        <p className='poppins_light'>{questionList[index]?.frcs2OralQuestions[i]?.Discussion ? questionList[index]?.frcs2OralQuestions[i]?.Discussion : 'No Discussion Available'}</p>
                                                                     </div>
                                                                     <p className="poppins_regular explaination mt-5">Question Feedback:</p>
                                                                     <input className='feedbackinput poppins_regular'></input>
@@ -305,15 +298,15 @@ class Frcs2QuickTest extends Component {
                                                         <div className="col-md-6 mt-5 p-0">
                                                             <div className="row">
                                                                 <div className="col-md-6">
-                                                                    <img className="w-100 leadinImg" src={questionList[index]?.frcs2OralQuestions[0]?.Image ? questionList[index]?.frcs2OralQuestions[0]?.Image : lightimg}
+                                                                    <img className="w-100 leadinImg" src={questionList[index]?.frcs2OralQuestions[i]?.Image ? questionList[index]?.frcs2OralQuestions[i]?.Image : lightimg}
                                                                     />
 
                                                                 </div>
                                                                 <div className="col-md-6 ">
                                                                     <p className='imgurl poppins_medium'>Additional Image URL</p>
-                                                                    <a href={questionList[index]?.frcs2OralQuestions[0]?.ImageUrl}>
+                                                                    <a href={questionList[index]?.frcs2OralQuestions[i]?.ImageUrl}>
                                                                         <p className='imgurl poppins_light'>
-                                                                            {questionList[index]?.frcs2OralQuestions[0]?.ImageUrl ? questionList[index]?.frcs2OralQuestions[0]?.ImageUrl : 'No Url'}
+                                                                            {questionList[index]?.frcs2OralQuestions[i]?.ImageUrl ? questionList[index]?.frcs2OralQuestions[i]?.ImageUrl : 'No Url'}
 
                                                                         </p>
                                                                     </a>
@@ -354,7 +347,7 @@ class Frcs2QuickTest extends Component {
 
                                         <div className="row">
 
-                                            {questionList[index]?.frcs2ClinicalQuestions.map((item, i) => {
+                                            {questionList[index]?.frcs2ClinicalQuestions.sort((a,b)=> a.Question_Num - b.Question_Num).map((item, i) => {
                                                 return (
                                                     <>
 
@@ -372,12 +365,12 @@ class Frcs2QuickTest extends Component {
                                                                     <p className='poppins_regular frcs2QuickTest-Heading'> Write Answer </p>
 
                                                                     <div className='writeanwser'>
-                                                                        <p className='poppins_light'>{questionList[index]?.frcs2ClinicalQuestions[0]?.Answer ? questionList[index]?.frcs2ClinicalQuestions[0]?.Answer : 'No Right Answer Available'}</p>
+                                                                        <p className='poppins_light'>{questionList[index]?.frcs2ClinicalQuestions[i]?.Answer ? questionList[index]?.frcs2ClinicalQuestions[i]?.Answer : 'No Right Answer Available'}</p>
                                                                     </div>
                                                                     <p className='poppins_regular frcs2QuickTest-Heading mt-4'>Point of Discussion </p>
 
                                                                     <div className='writeanwser1'>
-                                                                        <p className='poppins_light'>{questionList[index]?.frcs2ClinicalQuestions[0]?.Discussion ? questionList[index]?.frcs2ClinicalQuestions[0]?.Discussion : 'No Discussion Available'}</p>
+                                                                        <p className='poppins_light'>{questionList[index]?.frcs2ClinicalQuestions[i]?.Discussion ? questionList[index]?.frcs2ClinicalQuestions[i]?.Discussion : 'No Discussion Available'}</p>
                                                                     </div>
                                                                     <p className="poppins_regular explaination mt-5">Question Feedback:</p>
                                                                     <input className='feedbackinput poppins_regular'></input>
@@ -396,15 +389,15 @@ class Frcs2QuickTest extends Component {
                                                         <div className="col-md-6 mt-5 p-0">
                                                             <div className="row">
                                                                 <div className="col-md-6">
-                                                                    <img className="w-100 leadinImg" src={questionList[index]?.frcs2ClinicalQuestions[0]?.PresentationOfFinding ? questionList[index]?.frcs2ClinicalQuestions[0]?.PresentationOfFinding : lightimg}
+                                                                    <img className="w-100 leadinImg" src={questionList[index]?.frcs2ClinicalQuestions[i]?.PresentationOfFinding ? questionList[index]?.frcs2ClinicalQuestions[i]?.PresentationOfFinding : lightimg}
                                                                     />
 
                                                                 </div>
                                                                 <div className="col-md-6 ">
                                                                     <p className='imgurl poppins_medium'>Presentation Of Finding</p>
-                                                                    <a href={questionList[index]?.frcs2ClinicalQuestions[0]?.PresentationOfFindingUrl}>
+                                                                    <a href={questionList[index]?.frcs2ClinicalQuestions[i]?.PresentationOfFindingUrl}>
                                                                         <p className='imgurl poppins_light'>
-                                                                            {questionList[index]?.frcs2ClinicalQuestions[0]?.PresentationOfFindingUrl ? questionList[index]?.frcs2ClinicalQuestions[0]?.PresentationOfFindingUrl : 'No Url'}
+                                                                            {questionList[index]?.frcs2ClinicalQuestions[i]?.PresentationOfFindingUrl ? questionList[index]?.frcs2ClinicalQuestions[i]?.PresentationOfFindingUrl : 'No Url'}
 
                                                                         </p>
                                                                     </a>
