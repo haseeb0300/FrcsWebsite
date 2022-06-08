@@ -212,6 +212,7 @@ class QuickTest extends Component {
             <>
                 <TestHeader
                     NumberOfQuestion={this.state.NumberOfQuestion}
+                    questionList={this.state.questionList}
                 />
         
                 {questionList[index]?.Question.length > 0 ? (
