@@ -273,6 +273,23 @@ color: #38A3A5;
         color: white;
       }
 }
+.NoQuestionDiv{
+    display: flex;
+    align-items: center;
+    height: 81vh;
+    font-size: 40px;
+    font-family: 'Poppins';
+    font-weight: 700;
+    color: #9d9d9d;
+    flex-direction: column;
+    justify-content: center;
+}
+.NoQuestionDiv div{
+    height: 50px;
+    width: 100%;
+    text-align: center;
+
+}
 
 
 .vertical_center{

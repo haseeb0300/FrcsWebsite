@@ -346,7 +346,7 @@ class Selection extends Component {
 
                     </div>
                     <div className="w-95">
-                        <label className="poppins_light checkboxLabel ml-3" for="SpecialityDomains">{item?.Name}</label>
+                        <label className="poppins_light checkboxLabel ml-3" for="SpecialityDomains">{item?.Name} ( {item.count} )</label>
 
                     </div>
                 </div>
@@ -357,10 +357,10 @@ class Selection extends Component {
     render() {
         // const { t, i18n } = this.props
         const { t, i18n, location, user } = this.props
-        const { isLoading, testType } = this.state;
+        const { isLoading, testType ,checkedSpecialityDomain ,checkedScienceDomain} = this.state;
         if (isLoading) {
             return (
-                <div className="loader-large"></div>
+                <div className="loader"></div>
             )
         }
         return (
@@ -413,13 +413,25 @@ class Selection extends Component {
                                         </div>
                                         {this.renderSpecialDomainRows()}
                                     </div>
+                                    {checkedSpecialityDomain.length > 0 || checkedScienceDomain.length > 0 ? (
+
                                     <div className='col-md-4'>
-                                        <p className='poppins_medium Selection-Container-Heading'>Test Questions</p>
+                                        <p className='poppins_medium Selection-Container-Heading'>Test  Questions</p>
                                         <p className='poppins_light checkboxLabel'>Number of Questions in a test <label className='staric'>*</label></p>
-                                        <input className='QuestionInput' type='number' name="NumberOfQuestion" onChange={this.onChange} value={this.state.NumberOfQuestion} placeholder='Enter here'></input>
+                                        <input className='QuestionInput' min="0" type='number' name="NumberOfQuestion" onChange={this.onChange} value={this.state.NumberOfQuestion} placeholder='Enter here'></input>
 
                                         <button className='startNowbtn' onClick={(e) => this.onClickStartrcs1()}>Start Now</button>
                                     </div>
+                                    ):
+                                    <div className='col-md-4'>
+                                    <p className='poppins_medium Selection-Container-Heading'>Test Questions</p>
+                                    <p className='poppins_light checkboxLabel'>Number of Questions in a test <label className='staric'>*</label></p>
+                                    <input disabled className='QuestionInput' min="0" type='number' name="NumberOfQuestion" onChange={this.onChange} value={this.state.NumberOfQuestion} placeholder='Enter here'></input>
+
+                                    <button disabled className='startNowbtn' onClick={(e) => this.onClickStartrcs1()}>Start Now</button>
+                                </div>
+    }
+
                                 </div>
 
                             </div>

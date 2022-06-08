@@ -21,13 +21,17 @@ class LearningTest extends Component {
         super(props);
         this.state = {
             serverError: {},
-            isLoading: false,
+            isLoading: true,
             questionList: [],
             index: 0,
             correctAnsware: 0,
             wrongAnsware: 0,
             NumberOfQuestion: '',
             visibleAnswer: false,
+            answerList: [],
+            isLoading: true,
+
+
 
 
         };
@@ -60,11 +64,13 @@ class LearningTest extends Component {
                     }
                     tmpArray.push(obj)
                 }
-                this.setState({ answerList: tmpArray })
+                this.setState({ answerList: tmpArray, isLoading: false })
             })
 
         }).catch((err) => {
             console.log(err)
+            this.setState({ isLoading: false })
+
 
         })
 
@@ -143,8 +149,30 @@ class LearningTest extends Component {
         this.setState({ index: this.state.index - 1 })
     }
 
-    selectedOption = (e) => {
-        console.log(e)
+    selectedOption = (e, question, option) => {
+        var answerList = this.state.answerList
+        var obj = {
+            question: question,
+            selectedOption: option,
+            correctOption: question?.CorrectOption,
+            key: this.state.index,
+        }
+        let isItemExist = answerList.filter(item => item.key === obj.key)
+        if (isItemExist.length <= 0) {
+            let outputItem = { ...obj, "key": obj.key }
+            answerList.push(outputItem)
+            this.setState({ answerList: answerList })
+        } else {
+            answerList.some(item => {
+                if (item.key === obj.key) {
+                    item.selectedOption = obj.selectedOption
+                    return true;    //breaks out of he loop
+                }
+            });
+            this.setState({ answerList: answerList })
+        }
+
+        console.log(answerList)
     }
     onClickFinish = () => {
         this.props.history.push('/testselection')
@@ -165,195 +193,223 @@ class LearningTest extends Component {
     render() {
         // const { t, i18n } = this.props
         const { t, i18n, location, user } = this.props
-        const { isLoading, questionList, index } = this.state;
+        const { isLoading, questionList, index, answerList } = this.state;
         const ratingChanged = (newRating) => {
             console.log(newRating)
         }
         if (isLoading) {
             return (
-                <div className="loader-large"></div>
-            )
+                <div>
+                    <div className='LoaderDiv'>
+                        <div className="loader"> </div>
+                        <p>Loading Please Wait</p>
+
+                    </div>
+
+
+                </div>
+                )
         }
 
 
 
         return (
             <>
+
                 <LearningTestHeader
                     NumberOfQuestion={this.state.NumberOfQuestion}
 
 
                 />
-                <div className="quicktest-container">
-                <div className="col-md-12 ">
-                        <div className="row">
-                            <div className=" col-2 vertical_center">
-                                <button className="leftbtn" onClick={(e) => this.backIndex(e)}><i class="fa fa-angle-left arrowIcon" aria-hidden="true" ></i></button>
-                            </div>
-                            <div className=" col-5  vertical_center text-center">
-                                <p className="poppins_light QuestionsHeading">{'Question' + (index + 1) + ' of ' + (questionList.length)}</p>
-                            </div>
-                            <div className=" col-2 text-right vertical_center">
-                                <button className="leftbtn" onClick={(e) => this.nextIndex(e)}><i class="fa fa-angle-right arrowIcon" aria-hidden="true" ></i></button>
+
+                {questionList[index]?.Question.length > 0 ? (
+
+                    <div className="quicktest-container">
+                        <div className="col-md-12 ">
+                            <div className="row">
+                                <div className=" col-2 vertical_center">
+                                    <button className="leftbtn" onClick={(e) => this.backIndex(e)}><i class="fa fa-angle-left arrowIcon" aria-hidden="true" ></i></button>
+                                </div>
+                                <div className=" col-5  vertical_center text-center">
+                                    <p className="poppins_light QuestionsHeading">{'Question' + (index + 1) + ' of ' + (questionList.length)}</p>
+                                </div>
+                                <div className=" col-2 text-right vertical_center">
+                                    <button className="leftbtn" onClick={(e) => this.nextIndex(e)}><i class="fa fa-angle-right arrowIcon" aria-hidden="true" ></i></button>
+
+                                </div>
+
+                                <div className="quicktest-hr"></div>
+
 
                             </div>
-                            
-                            <div className="quicktest-hr"></div>
+                        </div>
+                        <div className="col-md-12">
+                            <div className="row">
+                                <div className="col-md-7">
+                                    <p className='poppins_medium QuestionTittle'>{'Question no ' + (index + 1)}</p>
+                                    <p className="poppins_light quicktest-Text">{questionList[index]?.Question}
 
+                                    </p>
+                                    <button class="collapsebtn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                        <img className="mr-3" src={Polygon} /> Vital Signs
+                                    </button>
+                                    <div class="collapse" id="collapseExample">
+                                        <div class="card card-body vitalSign-Card">
+                                            <div className='col-12'>
+                                                <div className='row'>
+                                                    <div className='col-4 text-center'>
+                                                        <p className='vitalSign-Heading poppins_medium '>Heading</p>
+
+                                                    </div>
+                                                    <div className='col-4 text-center'>
+                                                        <p className='poppins_medium vitalSign-StandardValue'>Standard Value</p>
+                                                    </div>
+                                                    <div className='col-4 text-center'>
+                                                        <p className='poppins_medium vitalSign-StandardValue'>Patient Count</p>
+                                                    </div>
+                                                </div>
+
+                                                {this.renderVitalSign()}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="collapsebtn" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
+                                        <img className="mr-3" src={Polygon} /> Laboratory Report
+                                    </button>
+                                    <div class="collapse" id="collapseExample1">
+                                        <div class="card card-body vitalSign-Card">
+                                            <div className='col-12'>
+                                                <div className='row'>
+                                                    <div className='col-4 text-center'>
+                                                        <p className='vitalSign-Heading poppins_medium '>Heading</p>
+
+                                                    </div>
+                                                    <div className='col-4 text-center'>
+                                                        <p className='poppins_medium vitalSign-StandardValue'>Standard Value</p>
+                                                    </div>
+                                                    <div className='col-4 text-center'>
+                                                        <p className='poppins_medium vitalSign-StandardValue'>Patient Count</p>
+                                                    </div>
+                                                </div>
+
+                                                {this.renderReportValue()}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-12 mt-5 p-0">
+                                        <div className="row">
+                                            <div className="col-md-5">
+                                                <img className="w-100 leadinImg" src={questionList[index]?.Image ? questionList[index]?.Image : lightimg} />
+                                            </div>
+                                            <div className="col-md-7 ">
+                                                {/* <p className='leadin'>{questionList[index]?.LeadIn}</p> */}
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div className="col-md-5">
+                                    <p className='poppins_medium chooseCorrectAns'>{questionList[index]?.LeadIn}</p>
+
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>A </label>
+                                        <input className="radioInput" type="radio" id="forOptionA" name="radio-group" checked={answerList[index]?.selectedOption === "OptionA"} onClick={(e) => this.selectedOption(e, questionList[index], 'OptionA')} />
+                                        <label className="poppins_light radioLabel " for="forOptionA">{questionList[index]?.OptionA}</label>
+
+                                    </p>
+
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>B </label>
+
+                                        <input className="radioInput" type="radio" id="forOptionB" name="radio-group" checked={answerList[index]?.selectedOption === "OptionB"} onClick={(e) => this.selectedOption(e, questionList[index], 'OptionB')} />
+                                        <label className="poppins_light radioLabel " for="forOptionB">{questionList[index]?.OptionB}</label>
+
+                                    </p>
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>C </label>
+
+                                        <input className="radioInput" type="radio" id="forOptionC" name="radio-group" checked={answerList[index]?.selectedOption === "OptionC"} onClick={(e) => this.selectedOption(e, questionList[index], 'OptionC')} />
+                                        <label className="poppins_light radioLabel " for="forOptionC">{questionList[index]?.OptionC}</label>
+
+                                    </p>
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>D </label>
+
+                                        <input className="radioInput" type="radio" id="forOptionD" name="radio-group" checked={answerList[index]?.selectedOption === "OptionD"} onClick={(e) => this.selectedOption(e, questionList[index], 'OptionD')} />
+                                        <label className="poppins_light  radioLabel" for="forOptionD">{questionList[index]?.OptionD}</label>
+
+                                    </p>
+                                    <p class="mt-4">
+                                        <label className='poppins_bold radioLabel pr-3'>E </label>
+
+                                        <input className="radioInput" type="radio" id="forOptionE" name="radio-group" checked={answerList[index]?.selectedOption === "OptionE"} onClick={(e) => this.selectedOption(e, questionList[index], 'OptionE')} />
+                                        <label className="poppins_light radioLabel " for="forOptionE">{questionList[index]?.OptionE}</label>
+
+                                    </p>
+                                    <button className='checkAnswerBtn' onClick={(e) => this.setVisibityAnswer(questionList[index], index)} >Check Answer</button>
+                                    {questionList[index]?.visibleAnswer && (
+                                        <div className="col-md-12 mt-5">
+                                            <p className='explaination poppins_regular'>Correct Answer is <label className='poppins_bold'>{questionList[index]?.CorrectOption}</label></p>
+
+                                            <p className="poppins_regular explaination">Explanation</p>
+
+                                            <div className="explainationDiv">
+                                                <p className="poppins_light">{questionList[index]?.AnswerExplenation}
+                                                    <br></br>
+                                                    {/* <label className='seeimg'><i>See Image</i></label> */}
+
+                                                </p>
+                                            </div>
+                                            <div className="col-md-12 mt-5 vertical_center">
+                                                <p className="poppins_regular refernceText">Reference Link </p>
+                                                <a href={questionList[index]?.ReferenceUrl}>
+                                                    <p className="poppins_regular refernceLink">{questionList[index]?.ReferenceUrl} </p>
+                                                </a>
+                                                <p className="poppins_regular refernceText">Video Link  </p>
+                                                <a href={questionList[index]?.VideoLink}>
+
+                                                    <p className="poppins_regular refernceLink">{questionList[index]?.VideoLink}</p>
+                                                </a>
+                                            </div>
+                                            <p className="poppins_regular explaination mt-5">Question Feedback:</p>
+                                            <input className='feedbackinput poppins_regular'></input>
+                                            <p className="poppins_regular explaination mt-4">Rate this question</p>
+                                            <StarsRating
+                                                count={5}
+                                                onChange={ratingChanged}
+                                                size={30}
+                                                color2={'#ffd700'} />
+                                        </div>
+                                    )}
+                                    <div className="text-right">
+                                        {/* <button onClick={(e) => this.nextIndex(e)} className="quicktest-Btn">Submit & next <img src={rightarrow} /></button> */}
+                                        <button className="quicktest-Btn" onClick={questionList.length == (index + 1) ? () => this.onClickFinish() : (e) => this.nextIndex(e)}>{questionList.length == (index + 1) ? "Finish" : "Submit & next "}<img src={rightarrow} /></button>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                ) :
+                    <div className='NoQuestionDiv'>
+                        <div>
+                            <p>No Question Available</p><br />
+                        </div>
+                        <div>
+                            <Link to="/testselection">
+                                <button className='back-to-home mt-3'>Back To Selection</button>
+
+                            </Link>
 
                         </div>
                     </div>
-                    <div className="col-md-12">
-                        <div className="row">
-                            <div className="col-md-7">
-                                <p className='poppins_medium QuestionTittle'>{'Question no ' + (index + 1)}</p>
-                                <p className="poppins_light quicktest-Text">{questionList[index]?.Question}
+                }
 
-                                </p>
-                                <button class="collapsebtn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                    <img className="mr-3" src={Polygon} /> Vital Signs
-                                </button>
-                                <div class="collapse" id="collapseExample">
-                                    <div class="card card-body vitalSign-Card">
-                                        <div className='col-12'>
-                                            <div className='row'>
-                                                <div className='col-4 text-center'>
-                                                    <p className='vitalSign-Heading poppins_medium '>Heading</p>
 
-                                                </div>
-                                                <div className='col-4 text-center'>
-                                                    <p className='poppins_medium vitalSign-StandardValue'>Standard Value</p>
-                                                </div>
-                                                <div className='col-4 text-center'>
-                                                    <p className='poppins_medium vitalSign-StandardValue'>Patient Count</p>
-                                                </div>
-                                            </div>
-
-                                            {this.renderVitalSign()}
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="collapsebtn" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
-                                    <img className="mr-3" src={Polygon} /> Laboratory Report
-                                </button>
-                                <div class="collapse" id="collapseExample1">
-                                    <div class="card card-body vitalSign-Card">
-                                        <div className='col-12'>
-                                            <div className='row'>
-                                                <div className='col-4 text-center'>
-                                                    <p className='vitalSign-Heading poppins_medium '>Heading</p>
-
-                                                </div>
-                                                <div className='col-4 text-center'>
-                                                    <p className='poppins_medium vitalSign-StandardValue'>Standard Value</p>
-                                                </div>
-                                                <div className='col-4 text-center'>
-                                                    <p className='poppins_medium vitalSign-StandardValue'>Patient Count</p>
-                                                </div>
-                                            </div>
-
-                                            {this.renderReportValue()}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-md-12 mt-5 p-0">
-                                    <div className="row">
-                                        <div className="col-md-5">
-                                            <img className="w-100 leadinImg" src={questionList[index]?.Image ? questionList[index]?.Image : lightimg} />
-                                        </div>
-                                        <div className="col-md-7 ">
-                                            {/* <p className='leadin'>{questionList[index]?.LeadIn}</p> */}
-                                        </div>
-
-                                    </div>
-                                   
-                                </div>
-
-                            </div>
-                            <div className="col-md-5">
-                                <p className='poppins_medium chooseCorrectAns'>{questionList[index]?.LeadIn}</p>
-
-                                <p class="mt-4">
-                                    <label className='poppins_bold radioLabel pr-3'>A </label>
-                                    <input className="radioInput" type="radio" id="forOptionA" name="radio-group" onClick={(e) => this.selectedOption(e)} />
-                                    <label className="poppins_light radioLabel " for="forOptionA">{questionList[index]?.OptionA}</label>
-
-                                </p>
-
-                                <p class="mt-4">
-                                    <label className='poppins_bold radioLabel pr-3'>B </label>
-
-                                    <input className="radioInput" type="radio" id="forOptionB" name="radio-group" />
-                                    <label className="poppins_light radioLabel " for="forOptionB">{questionList[index]?.OptionB}</label>
-
-                                </p>
-                                <p class="mt-4">
-                                    <label className='poppins_bold radioLabel pr-3'>C </label>
-
-                                    <input className="radioInput" type="radio" id="forOptionC" name="radio-group" />
-                                    <label className="poppins_light radioLabel " for="forOptionC">{questionList[index]?.OptionC}</label>
-
-                                </p>
-                                <p class="mt-4">
-                                    <label className='poppins_bold radioLabel pr-3'>D </label>
-
-                                    <input className="radioInput" type="radio" id="forOptionD" name="radio-group" />
-                                    <label className="poppins_light  radioLabel" for="forOptionD">{questionList[index]?.OptionD}</label>
-
-                                </p>
-                                <p class="mt-4">
-                                    <label className='poppins_bold radioLabel pr-3'>E </label>
-
-                                    <input className="radioInput" type="radio" id="forOptionE" name="radio-group" />
-                                    <label className="poppins_light radioLabel " for="forOptionE">{questionList[index]?.OptionE}</label>
-
-                                </p>
-                                <button className='checkAnswerBtn' onClick={(e) => this.setVisibityAnswer(questionList[index], index)} >Check Answer</button>
-                                {questionList[index]?.visibleAnswer && (
-                                    <div className="col-md-12 mt-5">
-                                        <p className='explaination poppins_regular'>Correct Answer is <label className='poppins_bold'>{questionList[index]?.CorrectOption}</label></p>
-
-                                        <p className="poppins_regular explaination">Explanation</p>
-
-                                        <div className="explainationDiv">
-                                            <p className="poppins_light">{questionList[index]?.AnswerExplenation}
-                                                <br></br>
-                                                {/* <label className='seeimg'><i>See Image</i></label> */}
-
-                                            </p>
-                                        </div>
-                                        <div className="col-md-12 mt-5 vertical_center">
-                                        <p className="poppins_regular refernceText">Reference Link </p>
-                                        <a href={questionList[index]?.ReferenceUrl}>
-                                            <p className="poppins_regular refernceLink">{questionList[index]?.ReferenceUrl} </p>
-                                        </a>
-                                        <p className="poppins_regular refernceText">Video Link  </p>
-                                        <a href={questionList[index]?.VideoLink}>
-
-                                        <p className="poppins_regular refernceLink">{questionList[index]?.VideoLink}</p>
-                                    </a>
-                                    </div>
-                                        <p className="poppins_regular explaination mt-5">Question Feedback:</p>
-                                        <input className='feedbackinput poppins_regular'></input>
-                                        <p className="poppins_regular explaination mt-4">Rate this question</p>
-                                        <StarsRating
-                                            count={5}
-                                            onChange={ratingChanged}
-                                            size={30}
-                                            color2={'#ffd700'} />
-                                    </div>
-                                )}
-                                <div className="text-right">
-                                    {/* <button onClick={(e) => this.nextIndex(e)} className="quicktest-Btn">Submit & next <img src={rightarrow} /></button> */}
-                                    <button className="quicktest-Btn" onClick={questionList.length == (index+1)?()=> this.onClickFinish(): (e) => this.nextIndex(e)}>{questionList.length == (index+1)?"Finish": "Submit & next "}<img src={rightarrow} /></button>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
 
             </>
         )

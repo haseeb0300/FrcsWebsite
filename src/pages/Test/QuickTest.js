@@ -20,7 +20,7 @@ class QuickTest extends Component {
         super(props);
         this.state = {
             serverError: {},
-            isLoading: false,
+            isLoading: true,
             questionList: [],
             index: 0,
             correctAnsware: 0,
@@ -32,7 +32,7 @@ class QuickTest extends Component {
     }
 
     componentDidMount() {
-        const {NumberOfQuestion,BasicScienceDomainList,SpecialityDomainList} = this?.props?.location?.state
+        const { NumberOfQuestion, BasicScienceDomainList, SpecialityDomainList } = this?.props?.location?.state
         var obj = {
             "NumberOfQuestion": NumberOfQuestion,
             "BasicScienceDomainList": BasicScienceDomainList,
@@ -44,7 +44,7 @@ class QuickTest extends Component {
             console.log(res)
             var newArray = res.content.filter(function (el) {
                 return el.Status == 'Completed'
-              });
+            });
             this.setState({
                 questionList: newArray,
             }, () => {
@@ -59,11 +59,12 @@ class QuickTest extends Component {
                     }
                     tmpArray.push(obj)
                 }
-                this.setState({ answerList: tmpArray })
+                this.setState({ answerList: tmpArray ,isLoading : false})
             })
 
         }).catch((err) => {
             console.log(err)
+            this.setState({isLoading : false})
 
         })
 
@@ -144,7 +145,7 @@ class QuickTest extends Component {
 
         return questionList[index]?.QuestionVitalSifnValues && questionList[index]?.QuestionVitalSifnValues.map((item, i) =>
             <>
-            
+
                 <div className='row'>
                     <div className='col-4 text-center'>
                         <p className='vitalSign-StandardValue poppins_medium '>{item.Name}</p>
@@ -162,7 +163,7 @@ class QuickTest extends Component {
     }
 
     onClickFinish = () => {
-        this.props.history.push('/result',{'answerList': this.state.answerList})
+        this.props.history.push('/result', { 'answerList': this.state.answerList })
     }
     renderReportValue = () => {
         let { questionList, answerList, index } = this.state
@@ -192,39 +193,50 @@ class QuickTest extends Component {
 
         if (isLoading) {
             return (
-                <div className="loader-large"></div>
+                <div>
+                <div className='LoaderDiv'>
+                    <div className="loader"> </div>
+                    <p>Loading Please Wait</p>
+
+                </div>
+
+
+            </div>
             )
         }
 
 
 
+        
         return (
             <>
                 <TestHeader
                     NumberOfQuestion={this.state.NumberOfQuestion}
                 />
-                <div className="quicktest-container">
-                    <div className="col-md-12 ">
-                        <div className="row">
-                            <div className=" col-2 vertical_center">
-                                <button className="leftbtn" onClick={(e) => this.backIndex(e)}><i class="fa fa-angle-left arrowIcon" aria-hidden="true" ></i></button>
-                            </div>
-                            <div className=" col-5  vertical_center text-center">
-                                <p className="poppins_light QuestionsHeading">{'Question ' + (index + 1) + ' of ' + (questionList.length)}</p>
-                            </div>
-                            <div className=" col-2 text-right vertical_center">
-                                <button className="leftbtn" onClick={(e) => this.nextIndex(e)}><i class="fa fa-angle-right arrowIcon" aria-hidden="true" ></i></button>
-
-                            </div>
-                            <div className=" col-3  vertical_center">
-                                <div className='text-center'>
-                                    <label className='skipQuestion'>Skipped Questions</label>
-                                    <img src={skipquestion} type="button" data-toggle="collapse" data-target="#SkipQuestionCollapse" aria-expanded="false" aria-controls="SkipQuestionCollapse" />
+        
+                {questionList[index]?.Question.length > 0 ? (
+                    <div className="quicktest-container">
+                        <div className="col-md-12 ">
+                            <div className="row">
+                                <div className=" col-2 vertical_center">
+                                    <button className="leftbtn" onClick={(e) => this.backIndex(e)}><i class="fa fa-angle-left arrowIcon" aria-hidden="true" ></i></button>
                                 </div>
-                                <div class="collapse" id="SkipQuestionCollapse">
-                                    <div class="card card-body skipColaspeCard">
-                                        <div className='row'>
-                                            {/* <div className='col-3 '>
+                                <div className=" col-5  vertical_center text-center">
+                                    <p className="poppins_light QuestionsHeading">{'Question ' + (index + 1) + ' of ' + (questionList.length)}</p>
+                                </div>
+                                <div className=" col-2 text-right vertical_center">
+                                    <button className="leftbtn" onClick={(e) => this.nextIndex(e)}><i class="fa fa-angle-right arrowIcon" aria-hidden="true" ></i></button>
+
+                                </div>
+                                <div className=" col-3  vertical_center">
+                                    <div className='text-center'>
+                                        <label className='skipQuestion'>Skipped Questions</label>
+                                        <img src={skipquestion} type="button" data-toggle="collapse" data-target="#SkipQuestionCollapse" aria-expanded="false" aria-controls="SkipQuestionCollapse" />
+                                    </div>
+                                    <div class="collapse" id="SkipQuestionCollapse">
+                                        <div class="card card-body skipColaspeCard">
+                                            <div className='row'>
+                                                {/* <div className='col-3 '>
                                                 <button className='skipBtn skipBtn-Done'>1</button>
                                             </div>
                                             <div className='col-3'>
@@ -233,133 +245,149 @@ class QuickTest extends Component {
                                             <div className='col-3'>
                                                 <button className='skipBtn'>3</button>
                                             </div> */}
-                                            {this.questionModalButton()}
+                                                {this.questionModalButton()}
 
 
 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="quicktest-hr"></div>
+                                <div className="quicktest-hr"></div>
 
+
+                            </div>
+                        </div>
+                        <div className="col-md-12">
+                            <div className="row">
+                                <div className="col-md-7">
+                                    <p className="poppins_light quicktest-Text">{questionList[index]?.Question} </p>
+                                    <button class="collapsebtn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                        <img className="mr-3" src={Polygon} /> Vital Signs
+                                    </button>
+                                    <div class="collapse" id="collapseExample">
+                                        <div class="card card-body vitalSign-Card">
+                                            <div className='col-12'>
+                                                <div className='row'>
+                                                    <div className='col-4 text-center'>
+                                                        <p className='vitalSign-Heading poppins_medium '>Heading</p>
+
+                                                    </div>
+                                                    <div className='col-4 text-center'>
+                                                        <p className='poppins_medium vitalSign-StandardValue'>Standard Value</p>
+                                                    </div>
+                                                    <div className='col-4 text-center'>
+                                                        <p className='poppins_medium vitalSign-StandardValue'>Patient Count</p>
+                                                    </div>
+                                                </div>
+
+                                                {this.renderVitalSign()}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="collapsebtn" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
+                                        <img className="mr-3" src={Polygon} /> Laboratory Report
+                                    </button>
+                                    <div class="collapse" id="collapseExample1">
+                                        <div class="card card-body vitalSign-Card">
+                                            <div className='col-12'>
+                                                <div className='row'>
+                                                    <div className='col-4 text-center'>
+                                                        <p className='vitalSign-Heading poppins_medium '>Heading</p>
+
+                                                    </div>
+                                                    <div className='col-4 text-center'>
+                                                        <p className='poppins_medium vitalSign-StandardValue'>Standard Value</p>
+                                                    </div>
+                                                    <div className='col-4 text-center'>
+                                                        <p className='poppins_medium vitalSign-StandardValue'>Patient Count</p>
+                                                    </div>
+                                                </div>
+
+                                                {this.renderReportValue()}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-12 mt-5 p-0">
+                                        <div className="row">
+                                            <div className="col-md-5">
+                                                <img className="w-100 leadinImg" src={questionList[index]?.Image ? questionList[index]?.Image : lightimg} />
+                                            </div>
+                                            <div className="col-md-7 ">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div className="col-md-5">
+                                    <p className='poppins_medium chooseCorrectAns'>
+                                        {questionList[index]?.LeadIn}</p>
+                                    <p class="mt-5">
+                                        <label className='radioLabel poppins_medium mr-3'>A</label>
+                                        <input checked={answerList[index]?.selectedOption === "OptionA"} className="radioInput" type="radio" id="forOptionA" name="radio-group" onClick={(e) => this.selectedOption(e, questionList[index], 'OptionA')} />
+                                        <label className="poppins_light radioLabel " for="forOptionA">{questionList[index]?.OptionA}</label>
+
+                                    </p>
+
+                                    <p class="mt-5">
+                                        <label className='radioLabel poppins_medium mr-3'>B</label>
+
+                                        <input checked={answerList[index]?.selectedOption === "OptionB"} className="radioInput" type="radio" id="forOptionB" name="radio-group" onClick={(e) => this.selectedOption(e, questionList[index], 'OptionB')} />
+                                        <label className="poppins_light radioLabel " for="forOptionB">{questionList[index]?.OptionB}</label>
+
+                                    </p>
+                                    <p class="mt-5">
+                                        <label className='radioLabel poppins_medium mr-3'>C</label>
+
+                                        <input checked={answerList[index]?.selectedOption === "OptionC"} className="radioInput" type="radio" id="forOptionC" name="radio-group" onClick={(e) => this.selectedOption(e, questionList[index], 'OptionC')} />
+                                        <label className="poppins_light radioLabel " for="forOptionC">{questionList[index]?.OptionC}</label>
+
+                                    </p>
+                                    <p class="mt-5">
+                                        <label className='radioLabel poppins_medium mr-3'>D</label>
+
+                                        <input checked={answerList[index]?.selectedOption === "OptionD"} className="radioInput" type="radio" id="forOptionD" name="radio-group" onClick={(e) => this.selectedOption(e, questionList[index], 'OptionD')} />
+                                        <label className="poppins_light  radioLabel" for="forOptionD">{questionList[index]?.OptionD}</label>
+
+                                    </p>
+                                    <p class="mt-5">
+                                        <label className='radioLabel poppins_medium mr-3'>E</label>
+
+                                        <input checked={answerList[index]?.selectedOption === "OptionE"} className="radioInput" type="radio" id="forOptionE" name="radio-group" onClick={(e) => this.selectedOption(e, questionList[index], 'OptionE')} />
+                                        <label className="poppins_light radioLabel " for="forOptionE">{questionList[index]?.OptionE}</label>
+
+                                    </p>
+
+                                    <div className="text-right">
+                                        <label className='poppins_medium skipThis' onClick={(e) => this.nextIndex(e)}>Skip this</label>
+
+                                        {/* <Link to="/result"> */}
+                                        <button className="quicktest-Btn" onClick={questionList.length == (index + 1) ? () => this.onClickFinish() : (e) => this.nextIndex(e)}>{questionList.length == (index + 1) ? "Finish and result" : "Submit & next "}<img src={rightarrow} /></button>
+                                        {/* </Link> */}
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                ) :
+                 
+                    <div className='NoQuestionDiv'>
+                        <div>
+                            <p>No Question Available</p><br />
+                        </div>
+                        <div>
+                            <Link to="/testselection">
+                                <button className='back-to-home mt-3'>Back To Selection</button>
+
+                            </Link>
 
                         </div>
                     </div>
-                    <div className="col-md-12">
-                        <div className="row">
-                            <div className="col-md-7">
-                                <p className="poppins_light quicktest-Text">{questionList[index]?.Question} </p>
-                                <button class="collapsebtn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                    <img className="mr-3" src={Polygon} /> Vital Signs
-                                </button>
-                                <div class="collapse" id="collapseExample">
-                                    <div class="card card-body vitalSign-Card">
-                                        <div className='col-12'>
-                                            <div className='row'>
-                                                <div className='col-4 text-center'>
-                                                    <p className='vitalSign-Heading poppins_medium '>Heading</p>
+                }
 
-                                                </div>
-                                                <div className='col-4 text-center'>
-                                                    <p className='poppins_medium vitalSign-StandardValue'>Standard Value</p>
-                                                </div>
-                                                <div className='col-4 text-center'>
-                                                    <p className='poppins_medium vitalSign-StandardValue'>Patient Count</p>
-                                                </div>
-                                            </div>
-                                         
-                                            {this.renderVitalSign()}
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="collapsebtn" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
-                                    <img className="mr-3" src={Polygon} /> Laboratory Report
-                                </button>
-                                <div class="collapse" id="collapseExample1">
-                                    <div class="card card-body vitalSign-Card">
-                                        <div className='col-12'>
-                                            <div className='row'>
-                                                <div className='col-4 text-center'>
-                                                    <p className='vitalSign-Heading poppins_medium '>Heading</p>
-
-                                                </div>
-                                                <div className='col-4 text-center'>
-                                                    <p className='poppins_medium vitalSign-StandardValue'>Standard Value</p>
-                                                </div>
-                                                <div className='col-4 text-center'>
-                                                    <p className='poppins_medium vitalSign-StandardValue'>Patient Count</p>
-                                                </div>
-                                            </div>
-                                        
-                                            {this.renderReportValue()}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-md-12 mt-5 p-0">
-                                    <div className="row">
-                                        <div className="col-md-5">
-                                            <img className="w-100 leadinImg" src={questionList[index]?.Image ? questionList[index]?.Image : lightimg} />
-                                        </div>
-                                        <div className="col-md-7 ">
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                            <div className="col-md-5">
-                                <p className='poppins_medium chooseCorrectAns'>                                          
-                                  {questionList[index]?.LeadIn}</p>
-                                <p class="mt-5">
-                                    <label className='radioLabel poppins_medium mr-3'>A</label>
-                                    <input checked={answerList[index]?.selectedOption === "OptionA"} className="radioInput" type="radio" id="forOptionA" name="radio-group" onClick={(e) => this.selectedOption(e, questionList[index], 'OptionA')} />
-                                    <label className="poppins_light radioLabel " for="forOptionA">{questionList[index]?.OptionA}</label>
-
-                                </p>
-
-                                <p class="mt-5">
-                                <label className='radioLabel poppins_medium mr-3'>B</label>
-
-                                    <input checked={answerList[index]?.selectedOption === "OptionB"} className="radioInput" type="radio" id="forOptionB" name="radio-group" onClick={(e) => this.selectedOption(e, questionList[index], 'OptionB')} />
-                                    <label className="poppins_light radioLabel " for="forOptionB">{questionList[index]?.OptionB}</label>
-
-                                </p>
-                                <p class="mt-5">
-                                <label className='radioLabel poppins_medium mr-3'>C</label>
-
-                                    <input checked={answerList[index]?.selectedOption === "OptionC"} className="radioInput" type="radio" id="forOptionC" name="radio-group" onClick={(e) => this.selectedOption(e, questionList[index], 'OptionC')} />
-                                    <label className="poppins_light radioLabel " for="forOptionC">{questionList[index]?.OptionC}</label>
-
-                                </p>
-                                <p class="mt-5">
-                                <label className='radioLabel poppins_medium mr-3'>D</label>
-
-                                    <input checked={answerList[index]?.selectedOption === "OptionD"} className="radioInput" type="radio" id="forOptionD" name="radio-group" onClick={(e) => this.selectedOption(e, questionList[index], 'OptionD')} />
-                                    <label className="poppins_light  radioLabel" for="forOptionD">{questionList[index]?.OptionD}</label>
-
-                                </p>
-                                <p class="mt-5">
-                                <label className='radioLabel poppins_medium mr-3'>E</label>
-
-                                    <input checked={answerList[index]?.selectedOption === "OptionE"} className="radioInput" type="radio" id="forOptionE" name="radio-group" onClick={(e) => this.selectedOption(e, questionList[index], 'OptionE')} />
-                                    <label className="poppins_light radioLabel " for="forOptionE">{questionList[index]?.OptionE}</label>
-
-                                </p>
-
-                                <div className="text-right">
-                                    <label className='poppins_medium skipThis' onClick={(e) => this.nextIndex(e)}>Skip this</label>
-
-                                    {/* <Link to="/result"> */}
-                                    <button className="quicktest-Btn" onClick={questionList.length == (index+1)?()=> this.onClickFinish(): (e) => this.nextIndex(e)}>{questionList.length == (index+1)?"Finish and result": "Submit & next "}<img src={rightarrow} /></button>
-                                    {/* </Link> */}
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
 
             </>
         )

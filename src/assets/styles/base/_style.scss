@@ -5,7 +5,40 @@
     src: url('../../fonts/poppins/Poppins-Thin.ttf') format('truetype');
     font-weight: 100;
   }
+  .LoaderDiv{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 20px;
+    font-family: poppins;
+    font-weight: 500;
+    color: #9b9b9b;
 
+  }
+
+  .loader {
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50%;
+    border: 26px solid orange;
+    border-top-color: #002147;
+    box-sizing: border-box;
+    background: transparent;
+    animation: loading 1s linear infinite;
+    margin-bottom: 20px;
+  }
+  
+  @keyframes loading {
+    0% {
+      transform: rotate(0deg);
+    }
+    0% {
+      transform: rotate(360deg);
+    }
+  }
+  
   .loader-large{
     border: 16px solid #f3f3f3; /* Light grey */
     border-top:16px solid #3498db; /* Blue */
