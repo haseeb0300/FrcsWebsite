@@ -7,6 +7,7 @@ import Money from '../../assets/Images/Header/money.png'
 import { registerStudent } from '../../store/actions/authAction'
 import { loadStripe } from '@stripe/stripe-js';
 import {PaymentElement} from '@stripe/react-stripe-js';
+import StripeContainer from "../../Stripe/StripeContainer";
 
 
 // const stripePromise = loadStripe('pk_test_51KFF02JxlHP4ZN8g4PdfEe3H694zM1KZCFRMlLLEDDiAeAlq1bnwQTQ4PLF4b0KDhFt7MmZVy7swOsn834hQFhOv00qBt4AFhZ');
@@ -30,6 +31,8 @@ class Signup extends Component {
             options: {
                 clientSecret: '',
             },
+            paymentMethod:'',
+            paymentAmount: '',
         };
     }
 
@@ -86,12 +89,12 @@ class Signup extends Component {
     renderServerError() {
         if (this.state.serverError != null && this.state.serverError.length > 0) {
           return (
-    
+
             <div className=" servererror1 form-group alert alert-danger" role="alert" >
               <strong className="pr-2 ohsnaptext">  {"  "}</strong>
-              <label className="servererrorText"> 
+              <label className="servererrorText">
               {this.state.serverError[0].msg}
-              </label> 
+              </label>
             </div>
           )
         }
@@ -101,7 +104,21 @@ class Signup extends Component {
         // const { t, i18n } = this.props
         const { t, i18n, location, user } = this.props
         const { isLoading } = this.state;
-        const { errors } = this.state
+        const { errors } = this.state;
+        const appearance = {
+            theme: 'stripe',
+
+            variables: {
+              colorPrimary: '#0570de',
+              colorBackground: '#ffffff',
+              colorText: '#30313d',
+              colorDanger: '#df1b41',
+              fontFamily: 'Ideal Sans, system-ui, sans-serif',
+              spacingUnit: '2px',
+              borderRadius: '4px',
+              // See all possible variables below
+            }
+          };
 
 
         if (isLoading) {
@@ -195,19 +212,19 @@ class Signup extends Component {
 
                                         <div className="col-md-6 ">
                                             <p className="poppins_regular signup_text1">Subscription Plans   <label className="staric">*</label></p>
-                                            <select className="poppins_light signup_input" placeholder="Enter Here">
-                                                <option>FRCS 1 - Monthly Subscription</option>
-                                                <option>4 Month - 120 pounds</option>
-                                                <option>8 Month - 220 pounds</option>
-                                                <option>12 Month - 300 pounds</option>
-                                                <option>Monthly Subscriptions at  - 30 pounds</option>
+                                            <select className="poppins_light signup_input" placeholder="Enter Here" onChange={this.onChange} name="paymentAmount" value={this.state.paymentAmount}>
+                                                <option value={-1}>FRCS 1 - Monthly Subscription</option>
+                                                <option value={120}>4 Month - 120 pounds</option>
+                                                <option value={220}>8 Month - 220 pounds</option>
+                                                <option value={300}>12 Month - 300 pounds</option>
+                                                <option value={30}>Monthly Subscriptions at  - 30 pounds</option>
                                             </select>
                                             <p className="poppins_regular signup_text1">Payment Method <label className="staric">*</label></p>
-                                            <select className="poppins_light signup_input1" placeholder="Enter Here">
-                                                <option>please select</option>
-                                                <option>Stripe</option>
-
+                                            <select className="poppins_light signup_input1" placeholder="Enter Here" onChange={this.onChange} name="paymentMethod" value={this.state.paymentMethod}>
+                                                <option value={-1}>please select</option>
+                                                <option value='Stripe'>Stripe</option>
                                             </select>
+
                                             <img className="cashIcon" src={Money} />
                                         </div>
                                         <div className="col-md-6">
@@ -252,6 +269,16 @@ class Signup extends Component {
                                         </div>
 
                                     </div>
+                                    <div className='col-md-6'>
+                                    {this.state.paymentMethod === 'Stripe' && (
+                                            <StripeContainer
+                                            className="signup_text1"
+                                            paymentAmount={this.state.paymentAmount}
+                                            paymentMethod={this.state.paymentMethod}
+                                             />
+                                            )}
+                                    </div>
+
                                 </div>
 
                             </div>

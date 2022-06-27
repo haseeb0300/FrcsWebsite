@@ -5,7 +5,7 @@ import AppNavigation from '../pages/navigation/AppNavigation';
 import { Provider } from 'react-redux';
 import store from '../store/store';
 
- 
+
 import '../assets/styles/base/_style.scss'
 import '../assets/styles/base/_header.scss'
 import '../assets/styles/base/_dashboard.scss'
@@ -25,6 +25,9 @@ import '../assets/styles/base/_frcs2quicktest.scss'
 import '../assets/styles/base/_undercontruction.scss'
 import '../assets/styles/base/_resources.scss'
 
+import StripeContainer from "../Stripe/StripeContainer";
+
+
 
 
 
@@ -37,6 +40,7 @@ class App extends Component {
         return (
             <Provider store={store}>
                 <AppNavigation />
+                {/* <StripeContainer /> */}
             </Provider>
         );
     }
