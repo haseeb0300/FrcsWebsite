@@ -7,7 +7,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { Dropdown, Modal, Form, DropdownButton } from 'react-bootstrap';
 
 
-import Logo from '../assets/Images/Header/Logo.png'
+import Logo from '../assets/Images/Header/Logo.svg'
 import LoginIcon from '../assets/Images/Header/LoginIcon.svg'
 import SignupIcon from '../assets/Images/Header/SignupIcon.svg'
 import visibilty from '../assets/Images/Header/visibilty.png'
@@ -142,7 +142,7 @@ class Header extends Component {
                         <input className="poppins_light col-md-12 login_input" placeholder="Enter Here" type="password" name="Password" onChange={this.onChange} value={this.state.Password}></input>
                         {errors.password && <div className="invaliderror">{errors.password}</div>}
 
-                        <img className="visibiltyicon" src={visibilty} />
+                        {/* <img className="visibiltyicon" src={visibilty} /> */}
                      </div>
                      <div className="col-md-12  text-right">
                         <p className="poppins_regular login_forgetpass">Forget your password?</p>

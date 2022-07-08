@@ -12,7 +12,7 @@ import skipquestion from '../../assets/Images/TestSelection/skipquestion.png'
 import StarsRating from 'stars-rating'
 import Countdown from 'react-countdown';
 import timer from '../../assets/Images/Header/timer.png'
-import Logo from '../../assets/Images/Header/Logo.png'
+import Logo from '../../assets/Images/Header/Logo.svg'
 import leave from '../../assets/Images/Header/leave.png'
 class Frcs2QuickTest extends Component {
 
@@ -212,14 +212,15 @@ class Frcs2QuickTest extends Component {
                     </div>
 
 
-                </>                <div className="quicktest-container frcs2QuickTest-Container">
+                </>
+                <div className="quicktest-container frcs2QuickTest-Container">
                     <div className="col-md-12 ">
                         <div className="row">
                             <div className=" col-2 vertical_center">
                                 <button className="leftbtn" onClick={(e) => this.backIndex(e)}><i class="fa fa-angle-left arrowIcon" aria-hidden="true" ></i></button>
                             </div>
-                            <div className=" col-5  vertical_center text-center">
-                                <p className="poppins_light QuestionsHeading">{'Scenario' + (index + 1) + ' of ' + (questionList.length)}</p>
+                            <div className=" col-8  vertical_center text-center">
+                                <p className="poppins_light QuestionsHeading">{'Scenario ' + (index + 1) + ' of ' + (questionList.length)}</p>
                             </div>
                             <div className=" col-2 text-right vertical_center">
                                 <button className="leftbtn" onClick={(e) => this.nextIndex(e)}><i class="fa fa-angle-right arrowIcon" aria-hidden="true" ></i></button>
@@ -239,7 +240,7 @@ class Frcs2QuickTest extends Component {
                                     {/* {questionList[index] && questionList[index]?.frcs2OralQuestions.length > 0 && questionList[index]?.frcs2OralQuestions.map((item, i) => { */}
 
                                     <div className="col-md-12">
-                                        <p className='poppins_medium frcs2QuickTest-Heading'>{'Scenario ' + (index + 1) + ' of ' + (this.state.questionList.length)}</p>
+                                        <p className='poppins_medium frcs2QuickTest-Heading'>{'Scenario ' +  ( index + 1 )  + ' of ' + (this.state.questionList.length)}</p>
                                         {/* <p className='poppins_medium frcs2QuickTest-Heading'>{'Scenario ' + (i + 1) + ' of ' + (questionList[index].frcs2OralQuestions.length)}</p> */}
 
                                         <p className='poppins_light frcs2QuickTest-Heading'>{questionList[index]?.Scenario ? questionList[index]?.Scenario : 'No Scenario Available'}</p>
@@ -253,9 +254,10 @@ class Frcs2QuickTest extends Component {
 
                                         <div className="row">
 
-                                            {questionList[index]?.frcs2OralQuestions.sort((a,b)=> a.Question_Num - b.Question_Num).map((item, i) => {
+                                            {questionList[index]?.frcs2OralQuestions.sort((a, b) => a.Question_Num - b.Question_Num).map((item, i) => {
                                                 return (
                                                     <>
+                                    <div className='Seprator'></div>
 
                                                         <div className="col-md-6">
 
@@ -347,7 +349,7 @@ class Frcs2QuickTest extends Component {
 
                                         <div className="row">
 
-                                            {questionList[index]?.frcs2ClinicalQuestions.sort((a,b)=> a.Question_Num - b.Question_Num).map((item, i) => {
+                                            {questionList[index]?.frcs2ClinicalQuestions.sort((a, b) => a.Question_Num - b.Question_Num).map((item, i) => {
                                                 return (
                                                     <>
 

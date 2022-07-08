@@ -152,11 +152,12 @@ class QuickTest extends Component {
 
                     </div>
                     <div className='col-4 text-center'>
-                        <p className='poppins_light vitalSign-StandardValue'>{item.Normal_Value}</p>
-                    </div>
-                    <div className='col-4 text-center'>
                         <p className='poppins_light vitalSign-StandardValue'>{item.ChangeValue}</p>
                     </div>
+                    <div className='col-4 text-center'>
+                        <p className='poppins_light vitalSign-StandardValue'>{item.Normal_Value}</p>
+                    </div>
+                 
                 </div>
             </>
         )
@@ -176,11 +177,13 @@ class QuickTest extends Component {
 
                     </div>
                     <div className='col-4 text-center'>
-                        <p className='poppins_light vitalSign-StandardValue'>{item.Normal_Value}</p>
-                    </div>
-                    <div className='col-4 text-center'>
                         <p className='poppins_light vitalSign-StandardValue'>{item.ChangeValue}</p>
                     </div>
+                    <div className='col-4 text-center'>
+                        <p className='poppins_light vitalSign-StandardValue'>{item.Normal_Value}</p>
+                    </div>
+                    
+   
                 </div>
             </>
         )
@@ -275,11 +278,12 @@ class QuickTest extends Component {
 
                                                     </div>
                                                     <div className='col-4 text-center'>
-                                                        <p className='poppins_medium vitalSign-StandardValue'>Standard Value</p>
-                                                    </div>
-                                                    <div className='col-4 text-center'>
                                                         <p className='poppins_medium vitalSign-StandardValue'>Patient Count</p>
                                                     </div>
+                                                    <div className='col-4 text-center'>
+                                                        <p className='poppins_medium vitalSign-StandardValue'>Standard Value</p>
+                                                    </div>
+                                                   
                                                 </div>
 
                                                 {this.renderVitalSign()}
@@ -299,11 +303,12 @@ class QuickTest extends Component {
 
                                                     </div>
                                                     <div className='col-4 text-center'>
-                                                        <p className='poppins_medium vitalSign-StandardValue'>Standard Value</p>
-                                                    </div>
-                                                    <div className='col-4 text-center'>
                                                         <p className='poppins_medium vitalSign-StandardValue'>Patient Count</p>
                                                     </div>
+                                                    <div className='col-4 text-center'>
+                                                        <p className='poppins_medium vitalSign-StandardValue'>Standard Value</p>
+                                                    </div>
+                                                  
                                                 </div>
 
                                                 {this.renderReportValue()}
@@ -312,11 +317,13 @@ class QuickTest extends Component {
                                     </div>
                                     <div className="col-md-12 mt-5 p-0">
                                         <div className="row">
-                                            <div className="col-md-5">
-                                                <img className="w-100 leadinImg" src={questionList[index]?.Image ? questionList[index]?.Image : lightimg} />
+                                            <div className="col-md-12">
+                                                <div className='TestImgDiv'>
+                                                <img className=" " src={questionList[index]?.Image ? questionList[index]?.Image : lightimg} />
+
+                                                </div>
                                             </div>
-                                            <div className="col-md-7 ">
-                                            </div>
+                                       
                                         </div>
                                     </div>
 

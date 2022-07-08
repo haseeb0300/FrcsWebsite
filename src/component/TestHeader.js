@@ -10,7 +10,7 @@ import Countdown from 'react-countdown';
 
 import timer from '../assets/Images/Header/timer.png'
 
-import Logo from '../assets/Images/Header/Logo.png'
+import Logo from '../assets/Images/Header/Logo.svg'
 import leave from '../assets/Images/Header/leave.png'
 
 

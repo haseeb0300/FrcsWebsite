@@ -298,15 +298,17 @@ class LearningTest extends Component {
                                         </div>
                                     </div>
                                     <div className="col-md-12 mt-5 p-0">
-                                        <div className="row">
-                                            <div className="col-md-5">
-                                                <img className="w-100 leadinImg" src={questionList[index]?.Image ? questionList[index]?.Image : lightimg} />
-                                            </div>
-                                            <div className="col-md-7 ">
-                                                {/* <p className='leadin'>{questionList[index]?.LeadIn}</p> */}
-                                            </div>
+                                        <div className='row'>
+                                            <div className='col-md-12'>
+                                            <div className='TestImgDiv'>
+                                    <img className=" leadinImg" src={questionList[index]?.Image ? questionList[index]?.Image : lightimg} />
 
+                                            </div>
                                         </div>
+                                  
+                                    </div>
+
+                                     
 
                                     </div>
 

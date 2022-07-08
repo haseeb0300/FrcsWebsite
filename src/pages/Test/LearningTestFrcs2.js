@@ -20,7 +20,7 @@ import Countdown from 'react-countdown';
 
 import timer from '../../assets/Images/Header/timer.png'
 
-import Logo from '../../assets/Images/Header/Logo.png'
+import Logo from '../../assets/Images/Header/Logo.svg'
 import leave from '../../assets/Images/Header/leave.png'
 
 class LearningTestFrcs2 extends Component {
@@ -284,7 +284,7 @@ class LearningTestFrcs2 extends Component {
                                                                 </div>
                                                                 <div className="col-md-12">
                                                                     <p className="poppins_regular refernceText">Additional Image Url </p>
-                                                                    <a href={questionList[index]?.frcs2OralQuestions[0]?.ImageUrl}>
+                                                                    <a target="_blank" href={questionList[index]?.frcs2OralQuestions[0]?.ImageUrl}>
                                                                         <p className="poppins_regular refernceLink">{questionList[index]?.frcs2OralQuestions[i]?.ImageUrl ? questionList[index]?.frcs2OralQuestions[i]?.ImageUrl : 'No Url Available'} </p>
 
                                                                     </a>
@@ -347,7 +347,7 @@ class LearningTestFrcs2 extends Component {
                                                                 </div>
                                                                 <div className="col-md-12 ">
                                                                     <p className='imgurl poppins_medium'>Presentation Of Finding</p>
-                                                                    <a href={questionList[index]?.frcs2ClinicalQuestions[i]?.PresentationOfFindingUrl}>
+                                                                    <a target="_blank" href={questionList[index]?.frcs2ClinicalQuestions[i]?.PresentationOfFindingUrl}>
                                                                         <p className='imgurl poppins_light'>
                                                                             {questionList[index]?.frcs2ClinicalQuestions[i]?.PresentationOfFindingUrl ? questionList[index]?.frcs2ClinicalQuestions[i]?.PresentationOfFindingUrl : 'No Url'}
 

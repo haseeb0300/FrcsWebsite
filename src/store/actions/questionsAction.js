@@ -31,3 +31,16 @@ export const getFrcs1Question = (obj) => dispatch => {
         return Promise.reject(err)
       })
   }
+
+  export const getFrcs1QuestionCount = () => dispatch => {
+    return axios
+      .get('/api/frcs1/question')
+      .then((res) => {
+        console.log(res)
+  
+        return Promise.resolve(res.data)
+      }).catch((err) => {
+        console.log(err)
+        return Promise.reject(err)
+      })
+  }

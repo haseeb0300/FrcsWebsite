@@ -21,7 +21,10 @@ $pe-7s-font-path: "~pe7-icon/dist/fonts" !default;
 @import 'base/undercontruction';
 @import 'base/resources';
 
-
+.StripeElement {
+    border: 1px solid #ccc;
+    padding: 15px 15px;
+}
 
 
 

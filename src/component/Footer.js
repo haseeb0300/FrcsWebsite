@@ -6,7 +6,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Link, withRouter } from 'react-router-dom';
 import { Dropdown, Modal, Form, DropdownButton } from 'react-bootstrap';
 
-import FooterLogo from '../assets/Images/Footer/FooterLogo.png'
+import FooterLogo from '../assets/Images/Footer/Logo.svg'
 import insta from '../assets/Images/Footer/insta.png'
 import twitter from '../assets/Images/Footer/twitter.png'
 import fb from '../assets/Images/Footer/fb.png'
@@ -53,8 +53,8 @@ class Footer extends Component {
                     <div className="footer">
 
                         <div className="row">
-                            <div className="col-md-4 ">
-                                <img src={FooterLogo} />
+                            <div className="col-md-4 text-center ">
+                                <img className='footerLogo' src={FooterLogo} />
                                 <div className=" socialmediaDiv">
                                     <img className="ml-3 mr-3 socialmediaIcon" src={insta} />
                                     <img className="ml-3 mr-3 socialmediaIcon" src={twitter} />

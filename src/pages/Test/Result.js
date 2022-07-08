@@ -14,7 +14,7 @@ import StarsRating from 'stars-rating'
 
 import { Link, withRouter } from 'react-router-dom';
 
-import Logo from '../../assets/Images/Header/Logo.png'
+import Logo from '../../assets/Images/Header/Logo.svg'
 import leave from '../../assets/Images/Header/leave.png'
 
 class Result extends Component {

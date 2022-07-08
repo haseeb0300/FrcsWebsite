@@ -9,6 +9,7 @@ import Header from '../../component/Header'
 import Footer from '../../component/Footer'
 import LoginHeader from '../../component/LoginHeader'
 import { getSpecialDomainCount, getDomain, getSubDomainCount, getClinicalViva, getBasicScienceDomain } from '../../store/actions/resourcesAction'
+import {getFrcs1QuestionCount} from '../../store/actions/questionsAction'
 
 var cx = require('classnames');
 
@@ -36,6 +37,7 @@ class Selection extends Component {
             checkedSubDomain: [],
             checkedClinicalVivaDomain: [],
             questionStatus: "Completed",
+            Frcs1QuestionCountList:[],
 
 
             filterList: [],
@@ -45,6 +47,16 @@ class Selection extends Component {
     }
 
     componentDidMount() {
+        this.props.getFrcs1QuestionCount().then((res) => {
+            console.log(res)
+            this.setState({
+                Frcs1QuestionCountList: res.content,
+            })
+
+        }).catch((err) => {
+            console.log(err)
+
+        })
         this.props.getBasicScienceDomain().then((res) => {
             console.log(res)
             this.setState({
@@ -357,7 +369,7 @@ class Selection extends Component {
     render() {
         // const { t, i18n } = this.props
         const { t, i18n, location, user } = this.props
-        const { isLoading, testType ,checkedSpecialityDomain ,checkedScienceDomain} = this.state;
+        const { isLoading, testType ,checkedSpecialityDomain ,checkedScienceDomain,Frcs1QuestionCountList ,checkedClinicalVivaDomain,checkedSubDomain,} = this.state;
         if (isLoading) {
             return (
                 <div className="loader"></div>
@@ -389,7 +401,7 @@ class Selection extends Component {
 
                                             </div>
                                             <div className="w-95">
-                                                <label className="poppins_light checkboxLabel ml-3" for="SpecialityDomainsAll">All Basic Science Domain</label>
+                                                <label className="poppins_semibold checkboxLabel ml-3" for="SpecialityDomainsAll">All Basic Science Domain ({Frcs1QuestionCountList.length})</label>
 
                                             </div>
                                         </div>
@@ -407,7 +419,7 @@ class Selection extends Component {
 
                                             </div>
                                             <div className="w-95">
-                                                <label className="poppins_light checkboxLabel ml-3" for="SpecialityDomainsAll">All Speciality Domains</label>
+                                                <label className="poppins_semibold checkboxLabel ml-3" for="SpecialityDomainsAll">All Speciality Domains ({Frcs1QuestionCountList.length})</label>
 
                                             </div>
                                         </div>
@@ -425,10 +437,13 @@ class Selection extends Component {
                                     ):
                                     <div className='col-md-4'>
                                     <p className='poppins_medium Selection-Container-Heading'>Test Questions</p>
-                                    <p className='poppins_light checkboxLabel'>Number of Questions in a test <label className='staric'>*</label></p>
-                                    <input disabled className='QuestionInput' min="0" type='number' name="NumberOfQuestion" onChange={this.onChange} value={this.state.NumberOfQuestion} placeholder='Enter here'></input>
+                                    <p className='poppins_light checkboxLabel'>Please Select Any Domain <label className='staric'>*</label></p>
 
-                                    <button disabled className='startNowbtn' onClick={(e) => this.onClickStartrcs1()}>Start Now</button>
+                                    <p className='poppins_light checkboxLabel'>Number of Questions in a test <label className='staric'>*</label></p>
+                                    <input className='QuestionInput' min="0" type='number' name="NumberOfQuestion" onChange={this.onChange} value={this.state.NumberOfQuestion} placeholder='Enter here'></input>
+
+                                    <button disabled  className='startNowbtnDisabled'>Start Now</button>
+                                
                                 </div>
     }
 
@@ -466,7 +481,7 @@ class Selection extends Component {
 
                                                     </div>
                                                     <div className="w-95">
-                                                        <label className="poppins_light checkboxLabel ml-3" for="SpecialityDomainsAll">All Oral Sub Domain</label>
+                                                        <label className="poppins_semibold checkboxLabel ml-3" for="SpecialityDomainsAll">All Oral Sub Domain</label>
 
                                                     </div>
                                                 </div>
@@ -482,7 +497,7 @@ class Selection extends Component {
 
                                                     </div>
                                                     <div className="w-95">
-                                                        <label className="poppins_light checkboxLabel ml-3" for="SpecialityDomainsAll">All Oral Sub Domain</label>
+                                                        <label className="poppins_semibold checkboxLabel ml-3" for="SpecialityDomainsAll">All Oral Sub Domain</label>
 
                                                     </div>
                                                 </div>
@@ -493,9 +508,19 @@ class Selection extends Component {
 
 
                                     </div>
+                                    {checkedSubDomain.length > 0 || checkedClinicalVivaDomain.length > 0 ? (
+
                                     <div className='col-md-4'>
+                                        
                                         <button className='startNowbtn' onClick={(e) => this.onClickStartrcs2()}>Start Now</button>
                                     </div>
+                                     ) :
+
+                                        <div className='col-md-4'>
+                                    <p className='poppins_light checkboxLabel'>Please Select Any Domain <label className='staric'>*</label></p>
+                                        <button disabled className='startNowbtnDisabled'>Start Now</button>
+                                    </div>
+                                    }
 
                                 </div>
 
@@ -521,7 +546,8 @@ const mapDispatchToProps = ({
     getDomain,
     getSubDomainCount,
     getClinicalViva,
-    getBasicScienceDomain
+    getBasicScienceDomain,
+    getFrcs1QuestionCount
 })
 Selection.propTypes = {
 };
