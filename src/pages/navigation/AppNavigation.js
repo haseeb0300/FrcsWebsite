@@ -79,7 +79,9 @@ if (process.env.NODE_ENV === 'production') {
 
 } else {
     //   axios.defaults.baseURL = 'http://localhost:4002/v1';
-     axios.defaults.baseURL = 'http://ec2-107-20-9-220.compute-1.amazonaws.com:4002/v1';
+    axios.defaults.baseURL = 'https://api.grabthefrcs.com/v1';
+
+    //  axios.defaults.baseURL = 'http://ec2-107-20-9-220.compute-1.amazonaws.com:4002/v1';
 
 }
 axios.defaults.headers.post['Content-Type'] = 'application/json';

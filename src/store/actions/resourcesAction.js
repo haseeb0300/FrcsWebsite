@@ -242,3 +242,15 @@ export const getChapter = (ID) => dispatch => {
       })
   }
   
+  export const getSubscription = () => dispatch => {
+    return axios
+      .get('/api/subscriptionplan')
+      .then((res) => {
+        console.log(res)
+  
+        return Promise.resolve(res.data)
+      }).catch((err) => {
+        console.log(err)
+        return Promise.reject(err)
+      })
+  }

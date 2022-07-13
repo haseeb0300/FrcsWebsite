@@ -8,7 +8,7 @@ import { registerStudent } from '../../store/actions/authAction'
 import { loadStripe } from '@stripe/stripe-js';
 import { PaymentElement } from '@stripe/react-stripe-js';
 import StripeContainer from "../../Stripe/StripeContainer";
-
+import {getSubscription} from '../../store/actions/resourcesAction'
 
 // const stripePromise = loadStripe('pk_test_51KFF02JxlHP4ZN8g4PdfEe3H694zM1KZCFRMlLLEDDiAeAlq1bnwQTQ4PLF4b0KDhFt7MmZVy7swOsn834hQFhOv00qBt4AFhZ');
 
@@ -28,6 +28,12 @@ class Signup extends Component {
             Date_Of_Birth: '',
             Password: '',
             Password2: '',
+            subcriptionList: [],
+            SubscriptionPlan_ID:'',
+            Month:'',
+            Price:'',
+
+
             options: {
                 clientSecret: '',
             },
@@ -37,7 +43,18 @@ class Signup extends Component {
     }
 
     componentDidMount() {
+        this.props.getSubscription().then((res) => {
+            console.log(res)
+            this.setState({
+                subcriptionList: res.content,
 
+            }
+            )
+
+        }).catch((err) => {
+            console.log(err)
+
+        })
     }
 
     onChange = (e) => {
@@ -103,7 +120,7 @@ class Signup extends Component {
     render() {
         // const { t, i18n } = this.props
         const { t, i18n, location, user } = this.props
-        const { isLoading } = this.state;
+        const { isLoading ,subcriptionList ,SubscriptionPlan_ID,Month,Price} = this.state;
         const { errors } = this.state;
         const appearance = {
             theme: 'stripe',
@@ -211,13 +228,27 @@ class Signup extends Component {
 
                                     <div className="col-md-6 ">
                                         <p className="poppins_regular signup_text1">Subscription Plans   <label className="staric">*</label></p>
-                                        <select className="poppins_light signup_input" placeholder="Enter Here" onChange={this.onChange} name="paymentAmount" value={this.state.paymentAmount}>
+                                        <select  className="poppins_light signup_input" 
+                                         name='paymentAmount' 
+                                          onChange={this.onChange}
+                                           >
+                                            <option value={-1}> FRCS 1 - Monthly Subscription </option>
+                                            {subcriptionList.map((item, i) => {
+                                                return (<option value={parseInt( item.Price)}>{item.Month} Month - {item.Price} pounds</option>)
+                                            })}
+                                        </select>  
+                                       
+                                        {/* <select className="poppins_light signup_input"
+                                         placeholder="Enter Here" 
+                                         onChange={this.onChange} 
+                                         name="paymentAmount"
+                                          value={this.state.paymentAmount}>
                                             <option value={-1}>FRCS 1 - Monthly Subscription</option>
                                             <option value={120}>4 Month - 120 pounds</option>
                                             <option value={220}>8 Month - 220 pounds</option>
                                             <option value={300}>12 Month - 300 pounds</option>
                                             <option value={30}>Monthly Subscriptions at  - 30 pounds</option>
-                                        </select>
+                                        </select> */}
                                         <p className="poppins_regular signup_text1">Payment Method <label className="staric">*</label></p>
                                         <select className="poppins_light signup_input1" placeholder="Enter Here" onChange={this.onChange} name="paymentMethod" value={this.state.paymentMethod}>
                                             <option value={-1}>please select</option>
@@ -333,7 +364,8 @@ const mapStatetoProps = ({ auth }) => ({
     user: auth.user
 })
 const mapDispatchToProps = ({
-    registerStudent
+    registerStudent,
+    getSubscription
 })
 Signup.propTypes = {
 };

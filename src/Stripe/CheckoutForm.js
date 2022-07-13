@@ -20,7 +20,7 @@ export const CheckoutForm = (props) => {
       try {
         const { id } = paymentMethod;
         const response = await axios.post(
-          "http://localhost:4002/stripe/charge",
+          "https://api.grabthefrcs.com/stripe/charge",
           {
             amount: props.paymentAmount,
             id: id,
@@ -43,7 +43,7 @@ export const CheckoutForm = (props) => {
     <div onSubmit={handleSubmit} >
 
       <CardElement />
-      <button className="paybtn">Pay</button>
+      <button onClick={handleSubmit} className="paybtn paySignup">Pay</button>
     </div>
   );
 };
