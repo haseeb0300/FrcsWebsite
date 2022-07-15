@@ -8,8 +8,9 @@ import { registerStudent } from '../../store/actions/authAction'
 import { loadStripe } from '@stripe/stripe-js';
 import { PaymentElement } from '@stripe/react-stripe-js';
 import StripeContainer from "../../Stripe/StripeContainer";
-import {getSubscription} from '../../store/actions/resourcesAction'
-
+import { getSubscription } from '../../store/actions/resourcesAction'
+import 'react-phone-number-input/style.css'
+import PhoneInput from 'react-phone-number-input'
 // const stripePromise = loadStripe('pk_test_51KFF02JxlHP4ZN8g4PdfEe3H694zM1KZCFRMlLLEDDiAeAlq1bnwQTQ4PLF4b0KDhFt7MmZVy7swOsn834hQFhOv00qBt4AFhZ');
 
 class Signup extends Component {
@@ -29,9 +30,9 @@ class Signup extends Component {
             Password: '',
             Password2: '',
             subcriptionList: [],
-            SubscriptionPlan_ID:'',
-            Month:'',
-            Price:'',
+            SubscriptionPlan_ID: '',
+            Month: '',
+            Price: '',
 
 
             options: {
@@ -117,10 +118,14 @@ class Signup extends Component {
         }
     }
 
+    setMblNum = (e) => {
+        this.setState({ Mobile_Number: e });
+
+    }
     render() {
         // const { t, i18n } = this.props
         const { t, i18n, location, user } = this.props
-        const { isLoading ,subcriptionList ,SubscriptionPlan_ID,Month,Price} = this.state;
+        const { isLoading, subcriptionList, SubscriptionPlan_ID, Month, Price } = this.state;
         const { errors } = this.state;
         const appearance = {
             theme: 'stripe',
@@ -181,7 +186,19 @@ class Signup extends Component {
                                     {errors.Email && <div className="invaliderror1">{errors.Email}</div>}
 
                                     <p className="poppins_regular signup_text1">Phone No  <label className="staric">*</label></p>
-                                    <input className="poppins_light signup_input" placeholder="Enter Here" type="number" name='Mobile_Number' onChange={this.onChange} value={this.state.Mobile_Number}></input>
+                                    {/* <input 
+                                    className="poppins_light signup_input"
+                                     placeholder="Enter Here"
+                                      type="number"
+                                       name='Mobile_Number' 
+                                       onChange={this.onChange} 
+                                       value={this.state.Mobile_Number}></input> */}
+                                    <PhoneInput
+                                        international
+                                        defaultCountry="PK"
+                                        className="poppins_light signup_input"
+                                        value={this.state.Mobile_Number}
+                                        onChange={e => this.setMblNum(e)} />
                                     {errors.Mobile_Number && <div className="invaliderror1">{errors.Mobile_Number}</div>}
 
 
@@ -201,6 +218,9 @@ class Signup extends Component {
 
                                         <option value='Male'>Male</option>
                                         <option value='Female'>Female</option>
+                                        <option value='Not to say'> Not to say</option>
+
+                                       
 
                                     </select>
                                     {errors.Gender && <div className="invaliderror1">{errors.Gender}</div>}
@@ -228,16 +248,16 @@ class Signup extends Component {
 
                                     <div className="col-md-6 ">
                                         <p className="poppins_regular signup_text1">Subscription Plans   <label className="staric">*</label></p>
-                                        <select  className="poppins_light signup_input" 
-                                         name='paymentAmount' 
-                                          onChange={this.onChange}
-                                           >
+                                        <select className="poppins_light signup_input"
+                                            name='paymentAmount'
+                                            onChange={this.onChange}
+                                        >
                                             <option value={-1}> FRCS 1 - Monthly Subscription </option>
                                             {subcriptionList.map((item, i) => {
-                                                return (<option value={parseInt( item.Price)}>{item.Month} Month - {item.Price} pounds</option>)
+                                                return (<option value={parseInt(item.Price)}>{item.Month} Month - {item.Price} pounds</option>)
                                             })}
-                                        </select>  
-                                       
+                                        </select>
+
                                         {/* <select className="poppins_light signup_input"
                                          placeholder="Enter Here" 
                                          onChange={this.onChange} 

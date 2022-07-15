@@ -3,6 +3,15 @@
     padding: 25px;
 
 }
+.PhoneInputInput {
+    border: none;
+    background: none;
+}
+
+.PhoneInputInput:focus {
+    outline: none;
+
+}
 .stripeContainer{
     border: 1px solid #cdc7c7;
     height: 50px;
@@ -11,6 +20,7 @@
     padding: 15px 30px;
     width: 97%;
     border-radius: 5px;
+    background-color: white;
 
 }
 .paySignup{

@@ -179,13 +179,13 @@ class Header extends Component {
                               <div className=''>
                               <Link to="/UnderConstruction">
 
-                              <label className="poppins_light headerTitle">Exams</label>
+                              {/* <label className="poppins_light headerTitle">Exams</label> */}
                               </Link>
-                              <Link to="/UnderConstruction">
+                              <Link to="/Feature/and/benfits">
 
                               <label className="poppins_light headerTitle">Features & Benefits </label>
                               </Link>
-                              <Link to="/UnderConstruction">
+                              <Link to="/Subscription/Plan">
 
                               <label className="poppins_light headerTitle">Subscription Plans</label>
                               </Link>

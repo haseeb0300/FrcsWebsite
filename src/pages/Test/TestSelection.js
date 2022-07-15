@@ -60,7 +60,7 @@ class TestSelection extends Component {
                             <div className="testCard">
                                 <img src={stopwatch} />
                                 <p className="poppins_medium heading">Quick Test</p>
-                                <p className="poppins_light text ">A time based test to assist your skills under time pressure, which help you to prepare you for the examination test of FRCS</p>
+                                <p className="poppins_light text ">A time based test to assist your skills under time pressure, which helps you to prepare FRCS Exam</p>
                                
 
 
@@ -71,7 +71,7 @@ class TestSelection extends Component {
                             <div className="testCard">
                                 <img src={brain} />
                                 <p className="poppins_medium learningModeHeading">Learning Mode</p>
-                                <p className="poppins_light learningModetext ">A Learning based test to increase your skills and concepts based on random questions, which help you to prepare you for the examination test of FRCS</p>
+                                <p className="poppins_light learningModetext ">A Learning based test to increase your skills and concepts based on random questions, which helps you to prepare FRCS exam</p>
 
 
                                 <button className="learningModebtn" onClick={(e)=> this.onClickLearningTest()}>Start Learning Mode Now</button>
@@ -81,7 +81,7 @@ class TestSelection extends Component {
                             <div className="testCard">
                                 <img src={settingImg} />
                                 <p className="poppins_medium ResourseHeading">Resources</p>
-                                <p className="poppins_light Resoursetext ">All the resources and keynotes provided by Grab the FRCS to help in learning materials, which help you to prepare you for the examination test of FRCS</p>
+                                <p className="poppins_light Resoursetext ">All the resources and keynotes provided by Grab the FRCS to help in learning materials, which helps you to prepare FRCS exam</p>
 
                                 <Link to="/frcs1domain">
 

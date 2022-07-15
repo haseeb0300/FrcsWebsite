@@ -11,7 +11,7 @@ import helpicon from '../../assets/Images/TestSelection/help.png'
 import Polygon from '../../assets/Images/TestSelection/Polygon.png'
 import lightimg from '../../assets/Images/TestSelection/lightimg.png'
 import rightarrow from '../../assets/Images/TestSelection/rightarrow.png'
-import { getFrcs1Question } from '../../store/actions/questionsAction'
+import { getFrcs1Question, getReport } from '../../store/actions/questionsAction'
 import skipquestion from '../../assets/Images/TestSelection/skipquestion.png'
 
 class QuickTest extends Component {
@@ -27,6 +27,7 @@ class QuickTest extends Component {
             wrongAnsware: 0,
             answerList: [],
             NumberOfQuestion: '',
+            ReportValue: [],
 
         };
     }
@@ -40,33 +41,47 @@ class QuickTest extends Component {
 
         }
 
-        this.props.getFrcs1Question(obj).then((res) => {
-            console.log(res)
-            var newArray = res.content.filter(function (el) {
-                return el.Status == 'Completed'
-            });
+        this.props.getReport().then((res) => {
+            console.log("Report", res)
             this.setState({
-                questionList: newArray,
-            }, () => {
-                var tmpArray = []
-                for (var i = 0; i < this.state.questionList.length; i++) {
-                    //console.log(this.state.questionList[i])
-                    var obj = {
-                        question: this.state.questionList[i],
-                        selectedOption: '',
-                        correctOption: this.state.questionList[i]?.CorrectOption,
-                        key: i,
-                    }
-                    tmpArray.push(obj)
-                }
-                this.setState({ answerList: tmpArray ,isLoading : false})
+                ReportValue: res.content,
+            },() => {
+                this.props.getFrcs1Question(obj).then((res) => {
+                    console.log(res)
+                    var newArray = res.content.filter(function (el) {
+                        return el.Status == 'Completed'
+                    });
+                    this.setState({
+                        questionList: newArray,
+                    }, () => {
+                        var tmpArray = []
+                        for (var i = 0; i < this.state.questionList.length; i++) {
+                            //console.log(this.state.questionList[i])
+                            var obj = {
+                                question: this.state.questionList[i],
+                                selectedOption: '',
+                                correctOption: this.state.questionList[i]?.CorrectOption,
+                                key: i,
+                            }
+                            tmpArray.push(obj)
+                        }
+                        this.setState({ answerList: tmpArray ,isLoading : false})
+                    })
+        
+                }).catch((err) => {
+                    console.log(err)
+                    this.setState({isLoading : false})
+        
+                })
             })
 
         }).catch((err) => {
             console.log(err)
-            this.setState({isLoading : false})
 
         })
+
+
+       
 
     }
 
@@ -406,7 +421,8 @@ const mapStatetoProps = ({ auth }) => ({
     user: auth.user
 })
 const mapDispatchToProps = ({
-    getFrcs1Question
+    getFrcs1Question,
+    getReport
 })
 QuickTest.propTypes = {
 };

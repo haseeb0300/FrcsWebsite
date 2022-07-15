@@ -77,15 +77,15 @@ class LoginHeader extends Component {
 
                <div className="col-md-12">
                   <div className="row">
-                     <div className=" col-xl-9 col-lg-7 ">
+                     <div className=" col-xl-8 col-lg-7 ">
                         <Link to="/testselection">
 
                            <img className="logo" src={Logo} />
                         </Link>
 
                      </div>
-                     <div className=" col-xl-3 col-lg-5 vertical_Center text-right">
-                        <div className="row">
+                     <div className=" col-xl-4 col-lg-5 vertical_Center text-right">
+                        <div className="Right">
                            <p className="poppins_light headerTitle">Hello, <label className="poppins_medium">{this.props?.user?.Full_Name}</label> </p>
                            <div className="headerTitleDiv" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                               <p>{this.state.title}</p>

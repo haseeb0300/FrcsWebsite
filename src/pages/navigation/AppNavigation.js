@@ -45,6 +45,8 @@ import ClinicalResources from '../../pages/Resources/ClinicalResources'
 import OralResouces from '../../pages/Resources/OralResouces'
 
 import Frcs2OralTopic from '../../pages/Resources/Frcs2OralTopic'
+import FeatureAndBenfits from '../../pages/FeatureAndBenfits/FeatureAndBenfits'
+import SubscriptionPlan from '../../pages/SubscriptionPlan/SubscriptionPlan'
 
 
 
@@ -73,7 +75,7 @@ import { logoutUser, setCurrentUser } from '../../store/actions/authAction';
 if (process.env.NODE_ENV === 'production') {
     // axios.defaults.baseURL = 'https://3.92.255.28.com:4002/v1';
     // axios.defaults.baseURL = 'http://ec2-107-20-9-220.compute-1.amazonaws.com:4002/v1';
-      axios.defaults.baseURL = 'https://api.grabthefrcs.com/v1';
+    axios.defaults.baseURL = 'https://api.grabthefrcs.com/v1';
     //  axios.defaults.baseURL = 'http://localhost:4002/v1';
 
 
@@ -121,30 +123,30 @@ class AppNavigation extends Component {
                 <ScrollToTop>
                     <Switch >
 
-                    <Route exact path="/clinicalresources"
+                        <Route exact path="/clinicalresources"
                             component={ClinicalResources} />
-                            
-                    <Route exact path="/oralresoruces"
+
+                        <Route exact path="/oralresoruces"
                             component={OralResouces} />
-                            
-                    <Route exact path="/frcs1domain"
+
+                        <Route exact path="/frcs1domain"
                             component={Frcs1Domain} />
-                                 <Route exact path="/Frcs2clinicaltopic"
+                        <Route exact path="/Frcs2clinicaltopic"
                             component={Frcs2ClinicalTopic} />
-                              <Route exact path="/resources/frcs2/topics"
+                        <Route exact path="/resources/frcs2/topics"
                             component={Frcs2OralTopic} />
 
 
-                                <Route exact path="/frcs1video"
+                        <Route exact path="/frcs1video"
                             component={Frcs1Video} />
-                              
-                              <Route exact path="/frcs1chooseresource"
+
+                        <Route exact path="/frcs1chooseresource"
                             component={Frcs1ChooseResource} />
-                              
-                    <Route exact path="/frcs1title"
+
+                        <Route exact path="/frcs1title"
                             component={Frcs1Title} />
-                            
-     <Route exact path="/frcs1chapter"
+
+                        <Route exact path="/frcs1chapter"
                             component={Frcs1Chapter} />
 
 
@@ -169,7 +171,7 @@ class AppNavigation extends Component {
                             component={LearningTest} />
                         <Route exact path="/learningtest/frcs2"
                             component={LearningTestFrcs2} />
-                             <Route exact path="/learningtestold"
+                        <Route exact path="/learningtestold"
                             component={LearningTestOld} />
                         <Route exact path="/result"
                             component={Result} />
@@ -194,6 +196,10 @@ class AppNavigation extends Component {
                             component={QuickTestFrcs2} />
                         <Route exact path="/UnderConstruction"
                             component={UnderConstruction} />
+                        <Route exact path="/Feature/and/benfits"
+                            component={FeatureAndBenfits} />
+   <Route exact path="/Subscription/Plan"
+                            component={SubscriptionPlan} />
 
 
                     </Switch>
