@@ -78,7 +78,7 @@ class Signup extends Component {
             //console.log(res)
             if (res.status) {
                 //console.log(res)
-                this.props.history.push('/testselection')
+                this.props.history.push('/Subscription/Plan')
                 return
             } else {
                 return
