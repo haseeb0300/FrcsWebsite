@@ -33,6 +33,7 @@ import tick from '../../assets/Images/Dashboard/tick.png'
 
 import MultiCarousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { getSubscription } from '../../store/actions/resourcesAction'
 
 
 class Dashboard extends Component {
@@ -43,12 +44,25 @@ class Dashboard extends Component {
          serverError: {},
          isLoading: false,
          newBookList: [],
+         subcriptionList: [],
+
 
       };
    }
 
    componentDidMount() {
+      this.props.getSubscription().then((res) => {
+         console.log(res)
+         this.setState({
+             subcriptionList: res.content,
 
+         }
+         )
+
+     }).catch((err) => {
+         console.log(err)
+
+     })
    }
 
 
@@ -57,7 +71,7 @@ class Dashboard extends Component {
    render() {
       // const { t, i18n } = this.props
       const { t, i18n, location, user } = this.props
-      const { isLoading } = this.state;
+      const { isLoading,subcriptionList } = this.state;
 
       if (isLoading) {
          return (
@@ -117,12 +131,10 @@ class Dashboard extends Component {
                                        </div>
                                        <div className=" col-sm-5 vertical_Center">
                                           <select className="bannerCardSelect poppins_regular">
-                                          <option>please select</option>
-
-                                             <option>4 Month - 120 pounds</option>
-                                             <option>8 Month - 220 pounds</option>
-                                             <option>12 Month - 300 pounds</option>
-                                             <option>Monthly Subscriptions at  - 30 pounds</option>
+                                          <option value={-1}> please select </option>
+                                            {subcriptionList.map((item, i) => {
+                                                return (<option value={parseInt(item.Price)}>{item.Month} Month - {item.Price} pounds</option>)
+                                            })}
 
 
                                           </select>
@@ -324,6 +336,7 @@ const mapStatetoProps = ({ auth }) => ({
    user: auth.user
 })
 const mapDispatchToProps = ({
+   getSubscription
 
 })
 Dashboard.propTypes = {
