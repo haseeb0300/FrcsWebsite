@@ -11,8 +11,9 @@ on:
   push:
   pull_request:
   workflow_dispatch:
-  schedule:
-    - cron: '17 */6 * * *'
+  # NOTE: no `schedule:` on purpose — a cron here multiplies by every repo and burns the
+  # free Actions minutes. The guard runs on real activity (push / PR) only; the central
+  # monitor does the periodic all-branch sweep.
 permissions:
   contents: write
   issues: write
@@ -26,7 +27,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1          # shallow: we only scan the tip tree — full history wasted minutes
           persist-credentials: true
       - name: Scan
         id: scan
